@@ -41,5 +41,5 @@ android {
 dependencies {
     // TDLib : bindings Java + libtdjson.so (arm64-v8a / armeabi-v7a / x86_64)
     // Si cette coordonnée ne résout pas, voir la note "Dépendance TDLib" plus bas.
-    implementation("com.github.tdlib:tdlib-android:1.8.0")
+    implementation("com.github.tdlibx:td:1.8.56")
 }
