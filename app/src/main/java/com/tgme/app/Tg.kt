@@ -18,6 +18,7 @@ object Tg {
 
     /** Notifié à chaque changement d'état d'autorisation. */
     var onAuthState: ((TdApi.AuthorizationState) -> Unit)? = null
+
     /** Notifié sur erreur TDLib. */
     var onError: ((String) -> Unit)? = null
 
@@ -25,34 +26,33 @@ object Tg {
         if (started) return
         started = true
 
-        // NB : si les bindings exposent onResult(long clientId, TdApi.Object),
-        // ajoute le paramètre clientId dans le lambda ci-dessous.
         client = Client.create(
             { obj -> handle(obj) },
             { e -> Log.e(TAG, "tdlib", e) },
             null
         )
 
+        // Les bindings TDLib n'exposent pas de setters fluents : on affecte les champs.
         val dir = File(ctx.filesDir, "tdlib")
 
-        send(
-            TdApi.SetTdlibParameters()
-                .setUseTestDc(false)
-                .setDatabaseDirectory(File(dir, "db").absolutePath)
-                .setFilesDirectory(File(dir, "files").absolutePath)
-                .setUseFileDatabase(true)
-                .setUseChatInfoDatabase(true)
-                .setUseMessageDatabase(true)
-                .setUseSecretChats(true)
-                .setApiId(Config.API_ID)
-                .setApiHash(Config.API_HASH)
-                .setSystemLanguageCode(Config.SYSTEM_LANG)
-                .setDeviceModel(Config.DEVICE_MODEL)
-                .setSystemVersion(Config.SYSTEM_VERSION)
-                .setApplicationVersion(Config.APP_VERSION)
-                .setEnableStorageOptimizer(true)
-                .setIgnoreFileNames(false)
-        )
+        val p = TdApi.SetTdlibParameters()
+        p.useTestDc = false
+        p.databaseDirectory = File(dir, "db").absolutePath
+        p.filesDirectory = File(dir, "files").absolutePath
+        p.useFileDatabase = true
+        p.useChatInfoDatabase = true
+        p.useMessageDatabase = true
+        p.useSecretChats = true
+        p.apiId = Config.API_ID
+        p.apiHash = Config.API_HASH
+        p.systemLanguageCode = Config.SYSTEM_LANG
+        p.deviceModel = Config.DEVICE_MODEL
+        p.systemVersion = Config.SYSTEM_VERSION
+        p.applicationVersion = Config.APP_VERSION
+        p.enableStorageOptimizer = true
+        p.ignoreFileNames = false
+
+        send(p)
     }
 
     fun <T : TdApi.Object> send(query: TdApi.Function<T>, onResult: ((T) -> Unit)? = null) {
@@ -61,7 +61,8 @@ object Tg {
             if (obj is TdApi.Error) {
                 onError?.invoke("${obj.code}: ${obj.message}")
             } else {
-                onResult?.invoke(obj)
+                @Suppress("UNCHECKED_CAST")
+                onResult?.invoke(obj as T)
             }
         }
     }

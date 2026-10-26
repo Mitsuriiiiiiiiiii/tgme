@@ -1,0 +1,438 @@
+build	Set up job	﻿2026-10-26T20:41:58.2649479Z Current runner version: '2.338.0'
+build	Set up job	2026-10-26T20:41:58.2676111Z ##[group]Runner Image Provisioner
+build	Set up job	2026-10-26T20:41:58.2677096Z Hosted Compute Agent
+build	Set up job	2026-10-26T20:41:58.2677726Z Version: 20261021.618
+build	Set up job	2026-10-26T20:41:58.2678397Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+build	Set up job	2026-10-26T20:41:58.2679128Z Build Date: 2026-10-21T00:45:21Z
+build	Set up job	2026-10-26T20:41:58.2679811Z Worker ID: {6b80ecb8-27e9-4d65-b3c5-fe178d4ab67a}
+build	Set up job	2026-10-26T20:41:58.2681010Z Region: eastus
+build	Set up job	2026-10-26T20:41:58.2681676Z Cloud: Azure
+build	Set up job	2026-10-26T20:41:58.2682226Z ##[endgroup]
+build	Set up job	2026-10-26T20:41:58.2684260Z ##[group]Operating System
+build	Set up job	2026-10-26T20:41:58.2684937Z Ubuntu
+build	Set up job	2026-10-26T20:41:58.2685536Z 26.04.1
+build	Set up job	2026-10-26T20:41:58.2686083Z LTS
+build	Set up job	2026-10-26T20:41:58.2686574Z ##[endgroup]
+build	Set up job	2026-10-26T20:41:58.2687184Z ##[group]Runner Image
+build	Set up job	2026-10-26T20:41:58.2687797Z Image: ubuntu-26.04
+build	Set up job	2026-10-26T20:41:58.2688394Z Version: 20261012.163.1
+build	Set up job	2026-10-26T20:41:58.2689500Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+build	Set up job	2026-10-26T20:41:58.2692200Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+build	Set up job	2026-10-26T20:41:58.2693203Z ##[endgroup]
+build	Set up job	2026-10-26T20:41:58.2694495Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-10-26T20:41:58.2697062Z Contents: read
+build	Set up job	2026-10-26T20:41:58.2697726Z Metadata: read
+build	Set up job	2026-10-26T20:41:58.2698285Z Packages: read
+build	Set up job	2026-10-26T20:41:58.2698881Z ##[endgroup]
+build	Set up job	2026-10-26T20:41:58.2701590Z Secret source: Actions
+build	Set up job	2026-10-26T20:41:58.2703157Z Cache mode: write
+build	Set up job	2026-10-26T20:41:58.2704129Z Prepare workflow directory
+build	Set up job	2026-10-26T20:41:58.3039409Z Prepare all required actions
+build	Set up job	2026-10-26T20:41:58.3087786Z Getting action download info
+build	Set up job	2026-10-26T20:41:58.5248007Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+build	Set up job	2026-10-26T20:41:58.6123753Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+build	Set up job	2026-10-26T20:41:58.8010532Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-10-26T20:41:58.9882107Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-10-26T20:41:59.0785709Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0787228Z with:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0788067Z   repository: Mitsuriiiiiiiiiii/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0793913Z   token: ***
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0794412Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0794849Z   ssh-user: git
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0795293Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0795776Z   clean: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0796210Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0796726Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0797146Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0797570Z   show-progress: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0798015Z   lfs: false
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0798411Z   submodules: false
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0798852Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0799346Z   allow-unsafe-pr-checkout: false
+build	Run actions/checkout@v4	2026-10-26T20:41:59.0800514Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1834964Z Syncing repository: Mitsuriiiiiiiiiii/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1838062Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1839284Z Working directory is '/home/runner/work/tgme/tgme'
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1841207Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1874940Z git version 2.55.0
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1897017Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1913507Z Temporarily overriding HOME='/home/runner/work/_temp/b71de415-6733-4e91-8c08-3fa752d6f645' before making global git config changes
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1916183Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1919450Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tgme/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1985395Z Deleting the contents of '/home/runner/work/tgme/tgme'
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1989739Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-10-26T20:41:59.1995717Z [command]/usr/bin/git init /home/runner/work/tgme/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2111939Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2114042Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2115108Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2116215Z hint: call:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2116767Z hint:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2117358Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2118066Z hint:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2118721Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2119700Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2121355Z hint:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2121876Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2122438Z hint:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2123127Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2129852Z Initialized empty Git repository in /home/runner/work/tgme/tgme/.git/
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2142436Z [command]/usr/bin/git remote add origin https://github.com/Mitsuriiiiiiiiiii/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2192444Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2194001Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2196853Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2232996Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2234184Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2239956Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2285501Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2813045Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-10-26T20:41:59.2854666Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3162571Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3196429Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3492095Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3548390Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3549873Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-10-26T20:41:59.3560241Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b705d5cef0f86ecf03dda259f0bc5624dd4d8f95:refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5939830Z From https://github.com/Mitsuriiiiiiiiiii/tgme
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5941140Z  * [new ref]         b705d5cef0f86ecf03dda259f0bc5624dd4d8f95 -> origin/main
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5954434Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5955218Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5956100Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.5956683Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6009308Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6039419Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6043817Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6113835Z Switched to a new branch 'main'
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6117142Z branch 'main' set up to track 'origin/main'.
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6124022Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6175416Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-10-26T20:41:59.6199029Z b705d5cef0f86ecf03dda259f0bc5624dd4d8f95
+build	Run actions/setup-java@v4	﻿2026-10-26T20:41:59.6593457Z ##[group]Run actions/setup-java@v4
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6594069Z with:
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6594474Z   distribution: temurin
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6594940Z   java-version: 17
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6595370Z   java-package: jdk
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6595809Z   check-latest: false
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6596451Z   server-id: github
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6596888Z   server-username: GITHUB_ACTOR
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6597395Z   server-password: GITHUB_TOKEN
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6597896Z   overwrite-settings: true
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6598363Z   job-status: success
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6602186Z   token: ***
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.6602614Z ##[endgroup]
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8314783Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8322849Z ##[group]Installed distributions
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8358801Z Resolved Java 17.0.20+1 from tool-cache
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8360238Z Setting Java 17.0.20+1 as the default
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8370504Z (node:2311) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8371982Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8375649Z Creating toolchains.xml for JDK version 17 from temurin
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8457030Z Writing to /home/runner/.m2/toolchains.xml
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8457863Z 
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8458261Z Java configuration:
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8459148Z   Distribution: temurin
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8460267Z   Version: 17.0.20+1
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8461463Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8462449Z 
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8463416Z ##[endgroup]
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8477513Z Creating settings.xml with server-id: github
+build	Run actions/setup-java@v4	2026-10-26T20:41:59.8504095Z Writing to /home/runner/.m2/settings.xml
+build	Générer le wrapper Gradle	﻿2026-10-26T20:41:59.8695872Z ##[group]Run gradle wrapper --gradle-version 8.7 --distribution-type bin
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8696904Z ^[[36;1mgradle wrapper --gradle-version 8.7 --distribution-type bin^[[0m
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8917983Z shell: /usr/bin/bash -e {0}
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8918613Z env:
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8919211Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8920477Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Générer le wrapper Gradle	2026-10-26T20:41:59.8921278Z ##[endgroup]
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2541001Z 
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2542280Z Welcome to Gradle 9.8.1!
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2543043Z 
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2551088Z Here are the highlights of this release:
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2552323Z  - Java 27 support
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2553016Z  - Maven mirror settings reuse
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2553642Z  - Linked problem locations in build output
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2554090Z 
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2554515Z For more details see https://docs.gradle.org/9.8.1/release-notes.html
+build	Générer le wrapper Gradle	2026-10-26T20:42:03.2555237Z 
+build	Générer le wrapper Gradle	2026-10-26T20:42:04.0534269Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Générer le wrapper Gradle	2026-10-26T20:43:12.9557469Z > Task :wrapper
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0531421Z 
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0553958Z [Incubating] Problems report is available at: file:///home/runner/work/tgme/tgme/build/reports/problems/problems-report.html
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0582138Z 
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0583125Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0610691Z 
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0611721Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0612876Z 
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0614058Z For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0615379Z 
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0615677Z BUILD SUCCESSFUL in 1m 12s
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.0616267Z 1 actionable task: 1 executed
+build	Générer le wrapper Gradle	2026-10-26T20:43:13.1202275Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html
+build	Build APK release signé	﻿2026-10-26T20:43:13.4554421Z ##[group]Run ./gradlew assembleRelease --stacktrace
+build	Build APK release signé	2026-10-26T20:43:13.4554888Z ^[[36;1m./gradlew assembleRelease --stacktrace^[[0m
+build	Build APK release signé	2026-10-26T20:43:13.4618299Z shell: /usr/bin/bash -e {0}
+build	Build APK release signé	2026-10-26T20:43:13.4618822Z env:
+build	Build APK release signé	2026-10-26T20:43:13.4619149Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-26T20:43:13.4619693Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-26T20:43:13.4620242Z ##[endgroup]
+build	Build APK release signé	2026-10-26T20:43:13.5671021Z Fetching distribution.
+build	Build APK release signé	2026-10-26T20:43:13.5691582Z Downloading https://services.gradle.org/distributions/gradle-8.7-bin.zip
+build	Build APK release signé	2026-10-26T20:43:15.0935716Z ............10%.............20%.............30%.............40%............50%.............60%.............70%.............80%.............90%............100%
+build	Build APK release signé	2026-10-26T20:43:16.2348171Z 
+build	Build APK release signé	2026-10-26T20:43:16.2355511Z Welcome to Gradle 8.7!
+build	Build APK release signé	2026-10-26T20:43:16.2356262Z 
+build	Build APK release signé	2026-10-26T20:43:16.2356773Z Here are the highlights of this release:
+build	Build APK release signé	2026-10-26T20:43:16.2357655Z  - Compiling and testing with Java 22
+build	Build APK release signé	2026-10-26T20:43:16.2358402Z  - Cacheable Groovy script compilation
+build	Build APK release signé	2026-10-26T20:43:16.2359229Z  - New methods in lazy collection properties
+build	Build APK release signé	2026-10-26T20:43:16.2359878Z 
+build	Build APK release signé	2026-10-26T20:43:16.2360679Z For more details see https://docs.gradle.org/8.7/release-notes.html
+build	Build APK release signé	2026-10-26T20:43:16.2361414Z 
+build	Build APK release signé	2026-10-26T20:43:16.3322473Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build APK release signé	2026-10-26T20:44:09.4343649Z > Task :app:buildKotlinToolingMetadata
+build	Build APK release signé	2026-10-26T20:44:09.4345163Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build APK release signé	2026-10-26T20:44:09.4346664Z > Task :app:preBuild UP-TO-DATE
+build	Build APK release signé	2026-10-26T20:44:09.4357978Z > Task :app:preReleaseBuild UP-TO-DATE
+build	Build APK release signé	2026-10-26T20:44:10.0349207Z > Task :app:checkReleaseAarMetadata FAILED
+build	Build APK release signé	2026-10-26T20:44:10.1330951Z 
+build	Build APK release signé	2026-10-26T20:44:10.1364755Z FAILURE: Build failed with an exception.
+build	Build APK release signé	2026-10-26T20:44:10.1440593Z 
+build	Build APK release signé	2026-10-26T20:44:10.1446929Z * What went wrong:
+build	Build APK release signé	2026-10-26T20:44:10.1476901Z Execution failed for task ':app:checkReleaseAarMetadata'.
+build	Build APK release signé	2026-10-26T20:44:10.1501469Z > Could not resolve all files for configuration ':app:releaseRuntimeClasspath'.
+build	Build APK release signé	2026-10-26T20:44:10.1531637Z    > Could not resolve com.github.tdlib:tdlib-android:1.8.0.
+build	Build APK release signé	2026-10-26T20:44:10.1560569Z      Required by:
+build	Build APK release signé	2026-10-26T20:44:10.1570832Z          project :app
+build	Build APK release signé	2026-10-26T20:44:10.1600886Z       > Could not resolve com.github.tdlib:tdlib-android:1.8.0.
+build	Build APK release signé	2026-10-26T20:44:10.1631305Z          > Could not get resource 'https://jitpack.io/com/github/tdlib/tdlib-android/1.8.0/tdlib-android-1.8.0.pom'.
+build	Build APK release signé	2026-10-26T20:44:10.1651676Z             > Could not GET 'https://jitpack.io/com/github/tdlib/tdlib-android/1.8.0/tdlib-android-1.8.0.pom'. Received status code 401 from server: Unauthorized
+build	Build APK release signé	2026-10-26T20:44:10.1653094Z 3 actionable tasks: 3 executed
+build	Build APK release signé	2026-10-26T20:44:10.1653943Z 
+build	Build APK release signé	2026-10-26T20:44:10.1654322Z * Try:
+build	Build APK release signé	2026-10-26T20:44:10.1655053Z > Run with --info or --debug option to get more log output.
+build	Build APK release signé	2026-10-26T20:44:10.1655944Z > Run with --scan to get full insights.
+build	Build APK release signé	2026-10-26T20:44:10.1656804Z > Get more help at https://help.gradle.org.
+build	Build APK release signé	2026-10-26T20:44:10.1657444Z 
+build	Build APK release signé	2026-10-26T20:44:10.1657799Z * Exception is:
+build	Build APK release signé	2026-10-26T20:44:10.1658902Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkReleaseAarMetadata'.
+build	Build APK release signé	2026-10-26T20:44:10.1661018Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
+build	Build APK release signé	2026-10-26T20:44:10.1663200Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-26T20:44:10.1665342Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-26T20:44:10.1667205Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-26T20:44:10.1669296Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-26T20:44:10.1672470Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-26T20:44:10.1674434Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-26T20:44:10.1676474Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1678208Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-26T20:44:10.1679930Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1682056Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-26T20:44:10.1683805Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-26T20:44:10.1685693Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-26T20:44:10.1687444Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-26T20:44:10.1689373Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-26T20:44:10.1691938Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-26T20:44:10.1694328Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-26T20:44:10.1696469Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-26T20:44:10.1698392Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-26T20:44:10.1700788Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-26T20:44:10.1702724Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-26T20:44:10.1704239Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-26T20:44:10.1705768Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-26T20:44:10.1707285Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-26T20:44:10.1709637Z Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:releaseRuntimeClasspath'.
+build	Build APK release signé	2026-10-26T20:44:10.1712372Z 	at org.gradle.api.internal.artifacts.ResolveExceptionContextualizer.mapFailure(ResolveExceptionContextualizer.java:81)
+build	Build APK release signé	2026-10-26T20:44:10.1714424Z 	at org.gradle.api.internal.artifacts.ResolveExceptionContextualizer.mapFailures(ResolveExceptionContextualizer.java:60)
+build	Build APK release signé	2026-10-26T20:44:10.1716632Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.mapFailure(DefaultConfiguration.java:2079)
+build	Build APK release signé	2026-10-26T20:44:10.1718769Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailure(ResolutionHost.java:39)
+build	Build APK release signé	2026-10-26T20:44:10.1721291Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:84)
+build	Build APK release signé	2026-10-26T20:44:10.1723903Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:74)
+build	Build APK release signé	2026-10-26T20:44:10.1725996Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+build	Build APK release signé	2026-10-26T20:44:10.1727785Z 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+build	Build APK release signé	2026-10-26T20:44:10.1729871Z 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:67)
+build	Build APK release signé	2026-10-26T20:44:10.1732054Z 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:92)
+build	Build APK release signé	2026-10-26T20:44:10.1733969Z 	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:285)
+build	Build APK release signé	2026-10-26T20:44:10.1736007Z 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+build	Build APK release signé	2026-10-26T20:44:10.1737915Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+build	Build APK release signé	2026-10-26T20:44:10.1739784Z 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+build	Build APK release signé	2026-10-26T20:44:10.1741804Z 	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+build	Build APK release signé	2026-10-26T20:44:10.1743888Z 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+build	Build APK release signé	2026-10-26T20:44:10.1745647Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+build	Build APK release signé	2026-10-26T20:44:10.1747630Z 	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+build	Build APK release signé	2026-10-26T20:44:10.1749925Z 	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+build	Build APK release signé	2026-10-26T20:44:10.1752182Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+build	Build APK release signé	2026-10-26T20:44:10.1754300Z 	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+build	Build APK release signé	2026-10-26T20:44:10.1756891Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+build	Build APK release signé	2026-10-26T20:44:10.1759731Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+build	Build APK release signé	2026-10-26T20:44:10.1762214Z 	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+build	Build APK release signé	2026-10-26T20:44:10.1764093Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-26T20:44:10.1766297Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-26T20:44:10.1768297Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-26T20:44:10.1770375Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1772286Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-26T20:44:10.1774144Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1776201Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-26T20:44:10.1778136Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-26T20:44:10.1779902Z 	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+build	Build APK release signé	2026-10-26T20:44:10.1782344Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+build	Build APK release signé	2026-10-26T20:44:10.1784819Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+build	Build APK release signé	2026-10-26T20:44:10.1787106Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+build	Build APK release signé	2026-10-26T20:44:10.1789710Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+build	Build APK release signé	2026-10-26T20:44:10.1792219Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+build	Build APK release signé	2026-10-26T20:44:10.1794042Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+build	Build APK release signé	2026-10-26T20:44:10.1796044Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+build	Build APK release signé	2026-10-26T20:44:10.1798233Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+build	Build APK release signé	2026-10-26T20:44:10.1800554Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+build	Build APK release signé	2026-10-26T20:44:10.1802463Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+build	Build APK release signé	2026-10-26T20:44:10.1804168Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+build	Build APK release signé	2026-10-26T20:44:10.1806043Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+build	Build APK release signé	2026-10-26T20:44:10.1807849Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+build	Build APK release signé	2026-10-26T20:44:10.1809565Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+build	Build APK release signé	2026-10-26T20:44:10.1811772Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+build	Build APK release signé	2026-10-26T20:44:10.1813488Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+build	Build APK release signé	2026-10-26T20:44:10.1815322Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+build	Build APK release signé	2026-10-26T20:44:10.1817340Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-26T20:44:10.1819667Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-26T20:44:10.1822110Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+build	Build APK release signé	2026-10-26T20:44:10.1824024Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+build	Build APK release signé	2026-10-26T20:44:10.1825551Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+build	Build APK release signé	2026-10-26T20:44:10.1827018Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+build	Build APK release signé	2026-10-26T20:44:10.1828416Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+build	Build APK release signé	2026-10-26T20:44:10.1830148Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+build	Build APK release signé	2026-10-26T20:44:10.1832076Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+build	Build APK release signé	2026-10-26T20:44:10.1834078Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build APK release signé	2026-10-26T20:44:10.1836076Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build APK release signé	2026-10-26T20:44:10.1838137Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build APK release signé	2026-10-26T20:44:10.1840451Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build APK release signé	2026-10-26T20:44:10.1842444Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build APK release signé	2026-10-26T20:44:10.1844298Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build APK release signé	2026-10-26T20:44:10.1846487Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-26T20:44:10.1848558Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-26T20:44:10.1850556Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-26T20:44:10.1852600Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-26T20:44:10.1854878Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-26T20:44:10.1856948Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-26T20:44:10.1858758Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1860792Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-26T20:44:10.1862660Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.1864460Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-26T20:44:10.1866336Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-26T20:44:10.1868161Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-26T20:44:10.1870426Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-26T20:44:10.1872286Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-26T20:44:10.1874392Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-26T20:44:10.1876659Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-26T20:44:10.1878704Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-26T20:44:10.1880883Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-26T20:44:10.1883302Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-26T20:44:10.1885315Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-26T20:44:10.1886942Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-26T20:44:10.1888604Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-26T20:44:10.1890480Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-26T20:44:10.1892179Z Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.github.tdlib:tdlib-android:1.8.0.
+build	Build APK release signé	2026-10-26T20:44:10.1893495Z Required by:
+build	Build APK release signé	2026-10-26T20:44:10.1894059Z     project :app
+build	Build APK release signé	2026-10-26T20:44:10.1895216Z Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.github.tdlib:tdlib-android:1.8.0.
+build	Build APK release signé	2026-10-26T20:44:10.1897234Z Caused by: org.gradle.api.resources.ResourceException: Could not get resource 'https://jitpack.io/com/github/tdlib/tdlib-android/1.8.0/tdlib-android-1.8.0.pom'.
+build	Build APK release signé	2026-10-26T20:44:10.1898987Z 	at org.gradle.internal.resource.ResourceExceptions.failure(ResourceExceptions.java:74)
+build	Build APK release signé	2026-10-26T20:44:10.1900861Z 	at org.gradle.internal.resource.ResourceExceptions.getFailed(ResourceExceptions.java:57)
+build	Build APK release signé	2026-10-26T20:44:10.1903260Z 	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:154)
+build	Build APK release signé	2026-10-26T20:44:10.1906649Z 	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadStaticResource(DefaultExternalResourceArtifactResolver.java:94)
+build	Build APK release signé	2026-10-26T20:44:10.1909890Z 	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.resolveArtifact(DefaultExternalResourceArtifactResolver.java:60)
+build	Build APK release signé	2026-10-26T20:44:10.1913236Z 	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.parseMetaDataFromArtifact(AbstractRepositoryMetadataSource.java:79)
+build	Build APK release signé	2026-10-26T20:44:10.1915951Z 	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.create(AbstractRepositoryMetadataSource.java:69)
+build	Build APK release signé	2026-10-26T20:44:10.1918400Z 	at org.gradle.api.internal.artifacts.repositories.metadata.DefaultMavenPomMetadataSource.create(DefaultMavenPomMetadataSource.java:40)
+build	Build APK release signé	2026-10-26T20:44:10.1921326Z 	at org.gradle.api.internal.artifacts.repositories.metadata.RedirectingGradleMetadataModuleMetadataSource.create(RedirectingGradleMetadataModuleMetadataSource.java:52)
+build	Build APK release signé	2026-10-26T20:44:10.1924160Z 	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver.resolveStaticDependency(ExternalResourceResolver.java:234)
+build	Build APK release signé	2026-10-26T20:44:10.1926544Z 	at org.gradle.api.internal.artifacts.repositories.resolver.MavenResolver.doResolveComponentMetaData(MavenResolver.java:113)
+build	Build APK release signé	2026-10-26T20:44:10.1929031Z 	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver$RemoteRepositoryAccess.resolveComponentMetaData(ExternalResourceResolver.java:415)
+build	Build APK release signé	2026-10-26T20:44:10.1932345Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaDataAndCache(CachingModuleComponentRepository.java:396)
+build	Build APK release signé	2026-10-26T20:44:10.1935714Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaData(CachingModuleComponentRepository.java:390)
+build	Build APK release signé	2026-10-26T20:44:10.1939232Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$resolveComponentMetaData$5(ErrorHandlingModuleComponentRepository.java:153)
+build	Build APK release signé	2026-10-26T20:44:10.1943294Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$tryResolveAndMaybeBlacklist$15(ErrorHandlingModuleComponentRepository.java:213)
+build	Build APK release signé	2026-10-26T20:44:10.1947222Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeBlacklist(ErrorHandlingModuleComponentRepository.java:227)
+build	Build APK release signé	2026-10-26T20:44:10.1951483Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeBlacklist(ErrorHandlingModuleComponentRepository.java:212)
+build	Build APK release signé	2026-10-26T20:44:10.1955531Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.performOperationWithRetries(ErrorHandlingModuleComponentRepository.java:206)
+build	Build APK release signé	2026-10-26T20:44:10.1959390Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.resolveComponentMetaData(ErrorHandlingModuleComponentRepository.java:152)
+build	Build APK release signé	2026-10-26T20:44:10.1963003Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.process(ComponentMetaDataResolveState.java:70)
+build	Build APK release signé	2026-10-26T20:44:10.1965667Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.resolve(ComponentMetaDataResolveState.java:62)
+build	Build APK release signé	2026-10-26T20:44:10.1968541Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:167)
+build	Build APK release signé	2026-10-26T20:44:10.1971724Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:147)
+build	Build APK release signé	2026-10-26T20:44:10.1974683Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolveModule(RepositoryChainComponentMetaDataResolver.java:117)
+build	Build APK release signé	2026-10-26T20:44:10.1977714Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.lambda$createValueContainerFor$1(RepositoryChainComponentMetaDataResolver.java:87)
+build	Build APK release signé	2026-10-26T20:44:10.1980592Z 	at org.gradle.internal.model.CalculatedValueContainerFactory$SupplierBackedCalculator.calculateValue(CalculatedValueContainerFactory.java:65)
+build	Build APK release signé	2026-10-26T20:44:10.1982727Z 	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.lambda$attachValue$0(CalculatedValueContainer.java:229)
+build	Build APK release signé	2026-10-26T20:44:10.1984110Z 	at org.gradle.internal.Try.ofFailable(Try.java:41)
+build	Build APK release signé	2026-10-26T20:44:10.1985521Z 	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.attachValue(CalculatedValueContainer.java:224)
+build	Build APK release signé	2026-10-26T20:44:10.1987390Z 	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:197)
+build	Build APK release signé	2026-10-26T20:44:10.1989228Z 	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:188)
+build	Build APK release signé	2026-10-26T20:44:10.1991753Z 	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolve(RepositoryChainComponentMetaDataResolver.java:78)
+build	Build APK release signé	2026-10-26T20:44:10.1994558Z 	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.ComponentResolversChain$ComponentMetaDataResolverChain.resolve(ComponentResolversChain.java:90)
+build	Build APK release signé	2026-10-26T20:44:10.1997003Z 	at org.gradle.api.internal.artifacts.ivyservice.clientmodule.ClientModuleResolver.resolve(ClientModuleResolver.java:70)
+build	Build APK release signé	2026-10-26T20:44:10.1999221Z 	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.resolve(ComponentState.java:227)
+build	Build APK release signé	2026-10-26T20:44:10.2001833Z 	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.getMetadataOrNull(ComponentState.java:149)
+build	Build APK release signé	2026-10-26T20:44:10.2004356Z 	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DownloadMetadataOperation.run(DownloadMetadataOperation.java:31)
+build	Build APK release signé	2026-10-26T20:44:10.2006473Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-26T20:44:10.2008416Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.2010483Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-26T20:44:10.2012420Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.2014336Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor$QueueWorker.execute(DefaultBuildOperationExecutor.java:238)
+build	Build APK release signé	2026-10-26T20:44:10.2016366Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runOperation(DefaultBuildOperationQueue.java:272)
+build	Build APK release signé	2026-10-26T20:44:10.2018391Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.doRunBatch(DefaultBuildOperationQueue.java:253)
+build	Build APK release signé	2026-10-26T20:44:10.2020648Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$0(DefaultBuildOperationQueue.java:238)
+build	Build APK release signé	2026-10-26T20:44:10.2022775Z 	at org.gradle.internal.resources.AbstractResourceLockRegistry.whileDisallowingLockChanges(AbstractResourceLockRegistry.java:50)
+build	Build APK release signé	2026-10-26T20:44:10.2025385Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.whileDisallowingProjectLockChanges(DefaultWorkerLeaseService.java:236)
+build	Build APK release signé	2026-10-26T20:44:10.2027703Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$1(DefaultBuildOperationQueue.java:238)
+build	Build APK release signé	2026-10-26T20:44:10.2029584Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+build	Build APK release signé	2026-10-26T20:44:10.2031506Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+build	Build APK release signé	2026-10-26T20:44:10.2033320Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runBatch(DefaultBuildOperationQueue.java:224)
+build	Build APK release signé	2026-10-26T20:44:10.2035233Z 	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.run(DefaultBuildOperationQueue.java:192)
+build	Build APK release signé	2026-10-26T20:44:10.2037023Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-26T20:44:10.2038648Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-26T20:44:10.2041337Z Caused by: org.gradle.internal.resource.transport.http.HttpErrorStatusCodeException: Could not GET 'https://jitpack.io/com/github/tdlib/tdlib-android/1.8.0/tdlib-android-1.8.0.pom'. Received status code 401 from server: Unauthorized
+build	Build APK release signé	2026-10-26T20:44:10.2044008Z 	at org.gradle.internal.resource.transport.http.HttpClientHelper.processResponse(HttpClientHelper.java:249)
+build	Build APK release signé	2026-10-26T20:44:10.2045834Z 	at org.gradle.internal.resource.transport.http.HttpClientHelper.performGet(HttpClientHelper.java:103)
+build	Build APK release signé	2026-10-26T20:44:10.2047687Z 	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:45)
+build	Build APK release signé	2026-10-26T20:44:10.2049536Z 	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:30)
+build	Build APK release signé	2026-10-26T20:44:10.2051864Z 	at org.gradle.internal.resource.transfer.AbstractExternalResourceAccessor.withContent(AbstractExternalResourceAccessor.java:32)
+build	Build APK release signé	2026-10-26T20:44:10.2054103Z 	at org.gradle.internal.resource.transfer.DefaultExternalResourceConnector.withContent(DefaultExternalResourceConnector.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.2056580Z 	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor$DownloadOperation.call(ProgressLoggingExternalResourceAccessor.java:123)
+build	Build APK release signé	2026-10-26T20:44:10.2059051Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-26T20:44:10.2061557Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-26T20:44:10.2063596Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-26T20:44:10.2065426Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.2067274Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-26T20:44:10.2069126Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-26T20:44:10.2071147Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-26T20:44:10.2072968Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-26T20:44:10.2075177Z 	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor.withContent(ProgressLoggingExternalResourceAccessor.java:46)
+build	Build APK release signé	2026-10-26T20:44:10.2077658Z 	at org.gradle.internal.resource.transfer.AccessorBackedExternalResource.withContentIfPresent(AccessorBackedExternalResource.java:103)
+build	Build APK release signé	2026-10-26T20:44:10.2080378Z 	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.copyToCache(DefaultCacheAwareExternalResourceAccessor.java:188)
+build	Build APK release signé	2026-10-26T20:44:10.2083352Z 	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.lambda$getResource$1(DefaultCacheAwareExternalResourceAccessor.java:86)
+build	Build APK release signé	2026-10-26T20:44:10.2085635Z 	at org.gradle.cache.internal.ProducerGuard$AdaptiveProducerGuard.guardByKey(ProducerGuard.java:97)
+build	Build APK release signé	2026-10-26T20:44:10.2087677Z 	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.getResource(DefaultCacheAwareExternalResourceAccessor.java:80)
+build	Build APK release signé	2026-10-26T20:44:10.2090713Z 	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:149)
+build	Build APK release signé	2026-10-26T20:44:10.2092622Z 	... 52 more
+build	Build APK release signé	2026-10-26T20:44:10.2093010Z 
+build	Build APK release signé	2026-10-26T20:44:10.2093189Z 
+build	Build APK release signé	2026-10-26T20:44:10.2093516Z BUILD FAILED in 56s
+build	Build APK release signé	2026-10-26T20:44:10.5702061Z ##[error]Process completed with exit code 1.
+build	Post Run actions/setup-java@v4	﻿2026-10-26T20:44:10.5832666Z Post job cleanup.
+build	Post Run actions/setup-java@v4	2026-10-26T20:44:10.7215384Z (node:2759) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Post Run actions/setup-java@v4	2026-10-26T20:44:10.7216242Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Post Run actions/checkout@v4	﻿2026-10-26T20:44:10.7457092Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8552067Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8612091Z git version 2.55.0
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8660901Z Temporarily overriding HOME='/home/runner/work/_temp/0b6730e6-9a24-4d5a-b32e-a670b9cc5ab1' before making global git config changes
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8662716Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8665110Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tgme/tgme
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8719799Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.8778745Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9118760Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9154849Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9165044Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9203037Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9553501Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-10-26T20:44:10.9594884Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-10-26T20:44:11.0015804Z Cleaning up orphan processes
+build	Complete job	2026-10-26T20:44:11.0385828Z Terminate orphan process: pid (2365) (java)
+build	Complete job	2026-10-26T20:44:11.0575128Z Terminate orphan process: pid (2629) (java)
+build	Complete job	2026-10-26T20:44:11.0645200Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

