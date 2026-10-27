@@ -16,15 +16,7 @@ android {
         versionName = "1.0"
 
         ndk {
-            // On garde seulement les architectures principales pour réduire la taille
             abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a"))
-        }
-
-        python {
-            version = "3.11"
-            pip {
-                install("telethon")
-            }
         }
     }
 
@@ -51,6 +43,16 @@ android {
     kotlinOptions { jvmTarget = "17" }
 }
 
+// ⚠️ NOUVEAU : bloc chaquopy de haut niveau (spécifique KTS)
+chaquopy {
+    defaultConfig {
+        version = "3.11"
+        pip {
+            install("telethon")
+        }
+    }
+}
+
 dependencies {
-    // Plus de Kotlogram ! Chaquopy gère le réseau via Python/Telethon
+    // Chaquopy gère tout
 }
