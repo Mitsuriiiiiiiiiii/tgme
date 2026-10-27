@@ -12,7 +12,10 @@ local.properties
 *.binlog
 *.dec
 session*.txt
+
+# Python de test (Termux), mais PAS celui de l'app
 *.py
+!app/src/main/python/*.py
 
 # Logs
 build.log
