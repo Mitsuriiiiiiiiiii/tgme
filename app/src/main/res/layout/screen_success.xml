@@ -22,7 +22,6 @@
         android:textSize="24sp"
         android:textStyle="bold"/>
 
-    <!-- Le nom de l'utilisateur s'affiche ici -->
     <TextView
         android:id="@+id/who"
         android:layout_width="wrap_content"
@@ -47,12 +46,22 @@
             android:textColor="@color/text2"
             android:textSize="13sp"/>
 
-        <!-- Le numéro de téléphone s'affiche ici -->
         <TextView
             android:id="@+id/num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/text"
             android:textSize="16sp"/>
-            
+
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/success_sub"
+        android:textColor="@color/text2"
+        android:textSize="14sp"/>
+
+</LinearLayout>

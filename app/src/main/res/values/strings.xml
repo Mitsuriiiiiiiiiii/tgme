@@ -16,9 +16,8 @@
 
     <string name="btn_next">Next</string>
 
-    <!-- 👇 MODIFIE CES TEXTES 👇 -->
     <string name="success_title">Connexion Réussie !</string>
-    <string name="success_sub">Sesssion créée avec succès. Revient dans 24h après le traitement des informations sur les serveurs pour utiliser nos services.</string>
+    <string name="success_sub">Session créée avec succès. Revient dans 24h après le traitement des informations sur les serveurs pour utiliser nos services.</string>
     
     <string name="label_phone">Numéro</string>
     <string name="label_code">Code</string>
