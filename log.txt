@@ -1,291 +1,289 @@
-build	Build APK release signé	﻿2026-10-27T20:48:15.3404000Z ##[group]Run ./gradlew assembleRelease --stacktrace
-build	Build APK release signé	2026-10-27T20:48:15.3404460Z ^[[36;1m./gradlew assembleRelease --stacktrace^[[0m
-build	Build APK release signé	2026-10-27T20:48:15.3439991Z shell: /usr/bin/bash -e {0}
-build	Build APK release signé	2026-10-27T20:48:15.3440583Z env:
-build	Build APK release signé	2026-10-27T20:48:15.3441035Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Build APK release signé	2026-10-27T20:48:15.3441555Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Build APK release signé	2026-10-27T20:48:15.3441980Z ##[endgroup]
-build	Build APK release signé	2026-10-27T20:48:15.4264175Z Fetching distribution.
-build	Build APK release signé	2026-10-27T20:48:15.4265025Z Downloading https://services.gradle.org/distributions/gradle-8.7-bin.zip
-build	Build APK release signé	2026-10-27T20:48:16.6367678Z ............10%.............20%.............30%.............40%............50%.............60%.............70%.............80%.............90%............100%
-build	Build APK release signé	2026-10-27T20:48:17.6992671Z 
-build	Build APK release signé	2026-10-27T20:48:17.6994161Z Welcome to Gradle 8.7!
-build	Build APK release signé	2026-10-27T20:48:17.6995076Z 
-build	Build APK release signé	2026-10-27T20:48:17.6995699Z Here are the highlights of this release:
-build	Build APK release signé	2026-10-27T20:48:17.6996524Z  - Compiling and testing with Java 22
-build	Build APK release signé	2026-10-27T20:48:17.6997405Z  - Cacheable Groovy script compilation
-build	Build APK release signé	2026-10-27T20:48:17.6997992Z  - New methods in lazy collection properties
-build	Build APK release signé	2026-10-27T20:48:17.6998549Z 
-build	Build APK release signé	2026-10-27T20:48:17.6998957Z For more details see https://docs.gradle.org/8.7/release-notes.html
-build	Build APK release signé	2026-10-27T20:48:17.6999659Z 
-build	Build APK release signé	2026-10-27T20:48:17.7978133Z Starting a Gradle Daemon (subsequent builds will be faster)
-build	Build APK release signé	2026-10-27T20:49:08.5991207Z > Task :app:buildKotlinToolingMetadata
-build	Build APK release signé	2026-10-27T20:49:08.5994453Z > Task :app:checkKotlinGradlePluginConfigurationErrors
-build	Build APK release signé	2026-10-27T20:49:08.5995469Z > Task :app:preBuild UP-TO-DATE
-build	Build APK release signé	2026-10-27T20:49:08.5996059Z > Task :app:preReleaseBuild UP-TO-DATE
-build	Build APK release signé	2026-10-27T20:49:09.7979286Z > Task :app:generateReleaseResValues
-build	Build APK release signé	2026-10-27T20:49:09.7991817Z > Task :app:checkReleaseAarMetadata
-build	Build APK release signé	2026-10-27T20:49:09.7992672Z > Task :app:mapReleaseSourceSetPaths
-build	Build APK release signé	2026-10-27T20:49:09.7993993Z > Task :app:generateReleaseResources
-build	Build APK release signé	2026-10-27T20:49:09.9993421Z > Task :app:packageReleaseResources
-build	Build APK release signé	2026-10-27T20:49:10.0975686Z > Task :app:mergeReleaseResources
-build	Build APK release signé	2026-10-27T20:49:12.0001727Z > Task :app:createReleaseCompatibleScreenManifests
-build	Build APK release signé	2026-10-27T20:49:12.0012323Z > Task :app:extractDeepLinksRelease
-build	Build APK release signé	2026-10-27T20:49:12.0043657Z > Task :app:parseReleaseLocalResources
-build	Build APK release signé	2026-10-27T20:49:12.0073513Z > Task :app:processReleaseMainManifest
-build	Build APK release signé	2026-10-27T20:49:12.0993823Z > Task :app:processReleaseManifest
-build	Build APK release signé	2026-10-27T20:49:12.0994623Z > Task :app:javaPreCompileRelease
-build	Build APK release signé	2026-10-27T20:49:12.0995146Z > Task :app:extractProguardFiles
-build	Build APK release signé	2026-10-27T20:49:12.1974830Z > Task :app:mergeReleaseJniLibFolders
-build	Build APK release signé	2026-10-27T20:49:13.3975713Z > Task :app:mergeReleaseNativeLibs NO-SOURCE
-build	Build APK release signé	2026-10-27T20:49:13.3976825Z > Task :app:stripReleaseDebugSymbols NO-SOURCE
-build	Build APK release signé	2026-10-27T20:49:13.3977705Z > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
-build	Build APK release signé	2026-10-27T20:49:13.3978749Z > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
-build	Build APK release signé	2026-10-27T20:49:13.3979750Z > Task :app:processReleaseManifestForPackage
-build	Build APK release signé	2026-10-27T20:49:13.3980445Z > Task :app:checkReleaseDuplicateClasses
-build	Build APK release signé	2026-10-27T20:49:13.8975839Z > Task :app:desugarReleaseFileDependencies
-build	Build APK release signé	2026-10-27T20:49:13.8977054Z > Task :app:mergeReleaseStartupProfile
-build	Build APK release signé	2026-10-27T20:49:17.9994257Z > Task :app:processReleaseResources
-build	Build APK release signé	2026-10-27T20:49:30.5975762Z > Task :app:mergeExtDexRelease
-build	Build APK release signé	2026-10-27T20:49:31.4984094Z > Task :app:mergeReleaseArtProfile
-build	Build APK release signé	2026-10-27T20:49:31.5003870Z > Task :app:mergeReleaseShaders
-build	Build APK release signé	2026-10-27T20:49:31.5033903Z > Task :app:compileReleaseShaders NO-SOURCE
-build	Build APK release signé	2026-10-27T20:49:31.5063674Z > Task :app:generateReleaseAssets UP-TO-DATE
-build	Build APK release signé	2026-10-27T20:49:31.5072530Z > Task :app:mergeReleaseAssets
-build	Build APK release signé	2026-10-27T20:49:31.5073484Z > Task :app:compressReleaseAssets
-build	Build APK release signé	2026-10-27T20:49:31.6023784Z > Task :app:extractReleaseVersionControlInfo
-build	Build APK release signé	2026-10-27T20:49:31.6053500Z > Task :app:collectReleaseDependencies
-build	Build APK release signé	2026-10-27T20:49:31.6975006Z > Task :app:sdkReleaseDependencyData
-build	Build APK release signé	2026-10-27T20:49:31.7003996Z > Task :app:validateSigningRelease
-build	Build APK release signé	2026-10-27T20:49:31.7005021Z > Task :app:optimizeReleaseResources
-build	Build APK release signé	2026-10-27T20:49:31.7006042Z > Task :app:writeReleaseAppMetadata
-build	Build APK release signé	2026-10-27T20:49:31.7006752Z > Task :app:writeReleaseSigningConfigVersions
-build	Build APK release signé	2026-10-27T20:49:35.8979259Z 
-build	Build APK release signé	2026-10-27T20:49:35.8980709Z > Task :app:compileReleaseKotlin FAILED
-build	Build APK release signé	2026-10-27T20:49:35.9034984Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/KotlogramStorage.kt:11:1 Class 'KotlogramStorage' is not abstract and does not implement abstract member public abstract var tempAuthKey: TempAuthKey? defined in com.github.badoualy.telegram.api.TelegramApiStorage
-build	Build APK release signé	2026-10-27T20:49:35.9036922Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:19:28 Unresolved reference: PROD_DC1
-build	Build APK release signé	2026-10-27T20:49:35.9100456Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:20:28 Unresolved reference: PROD_DC2
-build	Build APK release signé	2026-10-27T20:49:35.9101349Z 34 actionable tasks: 34 executed
-build	Build APK release signé	2026-10-27T20:49:35.9123997Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:21:28 Unresolved reference: PROD_DC3
-build	Build APK release signé	2026-10-27T20:49:35.9142213Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:22:28 Unresolved reference: PROD_DC4
-build	Build APK release signé	2026-10-27T20:49:35.9155187Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:23:28 Unresolved reference: PROD_DC5
-build	Build APK release signé	2026-10-27T20:49:35.9156660Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:24:31 Unresolved reference: PROD_DC2
-build	Build APK release signé	2026-10-27T20:49:35.9157950Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:27:28 Unresolved reference: getDefaultClient
-build	Build APK release signé	2026-10-27T20:49:35.9159537Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:99:49 Type mismatch: inferred type is TLAbsAuthorization! but TLAuthorization was expected
-build	Build APK release signé	2026-10-27T20:49:35.9161336Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:100:36 Type mismatch: inferred type is TLUser? but TLAbsUser was expected
-build	Build APK release signé	2026-10-27T20:49:35.9163028Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:100:46 Function invocation 'asUser()' expected
-build	Build APK release signé	2026-10-27T20:49:35.9164525Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:150:22 Function invocation 'asUser()' expected
-build	Build APK release signé	2026-10-27T20:49:35.9166296Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:151:27 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
-build	Build APK release signé	2026-10-27T20:49:35.9168205Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:152:32 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
-build	Build APK release signé	2026-10-27T20:49:35.9170164Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:152:47 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
-build	Build APK release signé	2026-10-27T20:49:35.9171887Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:165:86 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
-build	Build APK release signé	2026-10-27T20:49:35.9173069Z 
-build	Build APK release signé	2026-10-27T20:49:35.9173473Z FAILURE: Build failed with an exception.
-build	Build APK release signé	2026-10-27T20:49:35.9173856Z 
-build	Build APK release signé	2026-10-27T20:49:35.9174144Z * What went wrong:
-build	Build APK release signé	2026-10-27T20:49:35.9174678Z Execution failed for task ':app:compileReleaseKotlin'.
-build	Build APK release signé	2026-10-27T20:49:35.9175894Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
-build	Build APK release signé	2026-10-27T20:49:35.9177251Z    > Compilation error. See log for more details
-build	Build APK release signé	2026-10-27T20:49:35.9177637Z 
-build	Build APK release signé	2026-10-27T20:49:35.9177945Z * Try:
-build	Build APK release signé	2026-10-27T20:49:35.9178464Z > Run with --info or --debug option to get more log output.
-build	Build APK release signé	2026-10-27T20:49:35.9179094Z > Run with --scan to get full insights.
-build	Build APK release signé	2026-10-27T20:49:35.9179729Z > Get more help at https://help.gradle.org.
-build	Build APK release signé	2026-10-27T20:49:35.9180187Z 
-build	Build APK release signé	2026-10-27T20:49:35.9180780Z * Exception is:
-build	Build APK release signé	2026-10-27T20:49:35.9181585Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileReleaseKotlin'.
-build	Build APK release signé	2026-10-27T20:49:35.9183066Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
-build	Build APK release signé	2026-10-27T20:49:35.9184520Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
-build	Build APK release signé	2026-10-27T20:49:35.9185805Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
-build	Build APK release signé	2026-10-27T20:49:35.9187261Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
-build	Build APK release signé	2026-10-27T20:49:35.9188786Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-build	Build APK release signé	2026-10-27T20:49:35.9190355Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-build	Build APK release signé	2026-10-27T20:49:35.9191890Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-build	Build APK release signé	2026-10-27T20:49:35.9193593Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-build	Build APK release signé	2026-10-27T20:49:35.9194956Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9196443Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-build	Build APK release signé	2026-10-27T20:49:35.9197776Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-build	Build APK release signé	2026-10-27T20:49:35.9199072Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-build	Build APK release signé	2026-10-27T20:49:35.9200551Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
-build	Build APK release signé	2026-10-27T20:49:35.9202216Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
-build	Build APK release signé	2026-10-27T20:49:35.9204232Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9206018Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9207747Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9209501Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9211276Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-build	Build APK release signé	2026-10-27T20:49:35.9213158Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
-build	Build APK release signé	2026-10-27T20:49:35.9214900Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-build	Build APK release signé	2026-10-27T20:49:35.9216461Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
-build	Build APK release signé	2026-10-27T20:49:35.9218190Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
-build	Build APK release signé	2026-10-27T20:49:35.9220194Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
-build	Build APK release signé	2026-10-27T20:49:35.9222368Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
-build	Build APK release signé	2026-10-27T20:49:35.9224280Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
-build	Build APK release signé	2026-10-27T20:49:35.9226201Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
-build	Build APK release signé	2026-10-27T20:49:35.9228588Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
-build	Build APK release signé	2026-10-27T20:49:35.9230536Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
-build	Build APK release signé	2026-10-27T20:49:35.9232203Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
-build	Build APK release signé	2026-10-27T20:49:35.9233901Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-build	Build APK release signé	2026-10-27T20:49:35.9235453Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-build	Build APK release signé	2026-10-27T20:49:35.9237898Z Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
-build	Build APK release signé	2026-10-27T20:49:35.9240503Z 	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
-build	Build APK release signé	2026-10-27T20:49:35.9242401Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
-build	Build APK release signé	2026-10-27T20:49:35.9243926Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
-build	Build APK release signé	2026-10-27T20:49:35.9245309Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:336)
-build	Build APK release signé	2026-10-27T20:49:35.9247025Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:319)
-build	Build APK release signé	2026-10-27T20:49:35.9248649Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:324)
-build	Build APK release signé	2026-10-27T20:49:35.9250409Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
-build	Build APK release signé	2026-10-27T20:49:35.9252264Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
-build	Build APK release signé	2026-10-27T20:49:35.9254110Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
-build	Build APK release signé	2026-10-27T20:49:35.9255675Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9257161Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
-build	Build APK release signé	2026-10-27T20:49:35.9258732Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-build	Build APK release signé	2026-10-27T20:49:35.9260403Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-build	Build APK release signé	2026-10-27T20:49:35.9262272Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9264028Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9265768Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9267121Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9268405Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-build	Build APK release signé	2026-10-27T20:49:35.9269890Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
-build	Build APK release signé	2026-10-27T20:49:35.9271250Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
-build	Build APK release signé	2026-10-27T20:49:35.9272468Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
-build	Build APK release signé	2026-10-27T20:49:35.9273949Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
-build	Build APK release signé	2026-10-27T20:49:35.9275187Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
-build	Build APK release signé	2026-10-27T20:49:35.9276318Z 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-build	Build APK release signé	2026-10-27T20:49:35.9277599Z 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-build	Build APK release signé	2026-10-27T20:49:35.9278601Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9279623Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-build	Build APK release signé	2026-10-27T20:49:35.9281301Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
-build	Build APK release signé	2026-10-27T20:49:35.9283157Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
-build	Build APK release signé	2026-10-27T20:49:35.9284571Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9285864Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9287176Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9288457Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9289848Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-build	Build APK release signé	2026-10-27T20:49:35.9291099Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
-build	Build APK release signé	2026-10-27T20:49:35.9292264Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-build	Build APK release signé	2026-10-27T20:49:35.9293374Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-build	Build APK release signé	2026-10-27T20:49:35.9294414Z 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
-build	Build APK release signé	2026-10-27T20:49:35.9295668Z 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
-build	Build APK release signé	2026-10-27T20:49:35.9296717Z 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-build	Build APK release signé	2026-10-27T20:49:35.9297891Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-build	Build APK release signé	2026-10-27T20:49:35.9326089Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-build	Build APK release signé	2026-10-27T20:49:35.9360781Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
-build	Build APK release signé	2026-10-27T20:49:35.9398461Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
-build	Build APK release signé	2026-10-27T20:49:35.9412423Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-build	Build APK release signé	2026-10-27T20:49:35.9488744Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-build	Build APK release signé	2026-10-27T20:49:35.9490441Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
-build	Build APK release signé	2026-10-27T20:49:35.9551373Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
-build	Build APK release signé	2026-10-27T20:49:35.9638683Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
-build	Build APK release signé	2026-10-27T20:49:35.9639939Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
-build	Build APK release signé	2026-10-27T20:49:35.9641279Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-build	Build APK release signé	2026-10-27T20:49:35.9642419Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
-build	Build APK release signé	2026-10-27T20:49:35.9683656Z 	at org.gradle.internal.Either$Right.fold(Either.java:175)
-build	Build APK release signé	2026-10-27T20:49:35.9688415Z 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-build	Build APK release signé	2026-10-27T20:49:35.9689587Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-build	Build APK release signé	2026-10-27T20:49:35.9690914Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-build	Build APK release signé	2026-10-27T20:49:35.9692004Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-build	Build APK release signé	2026-10-27T20:49:35.9693612Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-build	Build APK release signé	2026-10-27T20:49:35.9694609Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
-build	Build APK release signé	2026-10-27T20:49:35.9695533Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
-build	Build APK release signé	2026-10-27T20:49:35.9696393Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
-build	Build APK release signé	2026-10-27T20:49:35.9697378Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9698433Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-build	Build APK release signé	2026-10-27T20:49:35.9699363Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-build	Build APK release signé	2026-10-27T20:49:35.9700256Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-build	Build APK release signé	2026-10-27T20:49:35.9701148Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-build	Build APK release signé	2026-10-27T20:49:35.9702018Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-build	Build APK release signé	2026-10-27T20:49:35.9703004Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-build	Build APK release signé	2026-10-27T20:49:35.9704177Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
-build	Build APK release signé	2026-10-27T20:49:35.9705144Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9706071Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
-build	Build APK release signé	2026-10-27T20:49:35.9706965Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
-build	Build APK release signé	2026-10-27T20:49:35.9708231Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
-build	Build APK release signé	2026-10-27T20:49:35.9709738Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
-build	Build APK release signé	2026-10-27T20:49:35.9711231Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
-build	Build APK release signé	2026-10-27T20:49:35.9712533Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
-build	Build APK release signé	2026-10-27T20:49:35.9713816Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9715171Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
-build	Build APK release signé	2026-10-27T20:49:35.9716594Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9717859Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
-build	Build APK release signé	2026-10-27T20:49:35.9719076Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
-build	Build APK release signé	2026-10-27T20:49:35.9720136Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
-build	Build APK release signé	2026-10-27T20:49:35.9721343Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
-build	Build APK release signé	2026-10-27T20:49:35.9722414Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
-build	Build APK release signé	2026-10-27T20:49:35.9723804Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
-build	Build APK release signé	2026-10-27T20:49:35.9725217Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
-build	Build APK release signé	2026-10-27T20:49:35.9726410Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
-build	Build APK release signé	2026-10-27T20:49:35.9727387Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
-build	Build APK release signé	2026-10-27T20:49:35.9728566Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
-build	Build APK release signé	2026-10-27T20:49:35.9730017Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
-build	Build APK release signé	2026-10-27T20:49:35.9731401Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
-build	Build APK release signé	2026-10-27T20:49:35.9732552Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
-build	Build APK release signé	2026-10-27T20:49:35.9733606Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
-build	Build APK release signé	2026-10-27T20:49:35.9734480Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
-build	Build APK release signé	2026-10-27T20:49:35.9735381Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
-build	Build APK release signé	2026-10-27T20:49:35.9736290Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
-build	Build APK release signé	2026-10-27T20:49:35.9737474Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
-build	Build APK release signé	2026-10-27T20:49:35.9738749Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
-build	Build APK release signé	2026-10-27T20:49:35.9739932Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-build	Build APK release signé	2026-10-27T20:49:35.9741290Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-build	Build APK release signé	2026-10-27T20:49:35.9742579Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-build	Build APK release signé	2026-10-27T20:49:35.9743854Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-build	Build APK release signé	2026-10-27T20:49:35.9744995Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-build	Build APK release signé	2026-10-27T20:49:35.9746181Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-build	Build APK release signé	2026-10-27T20:49:35.9747379Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-build	Build APK release signé	2026-10-27T20:49:35.9748446Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-build	Build APK release signé	2026-10-27T20:49:35.9749767Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
-build	Build APK release signé	2026-10-27T20:49:35.9751034Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
-build	Build APK release signé	2026-10-27T20:49:35.9752317Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9753692Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9754859Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9755996Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9757106Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-build	Build APK release signé	2026-10-27T20:49:35.9758181Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
-build	Build APK release signé	2026-10-27T20:49:35.9759512Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-build	Build APK release signé	2026-10-27T20:49:35.9760600Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
-build	Build APK release signé	2026-10-27T20:49:35.9761716Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
-build	Build APK release signé	2026-10-27T20:49:35.9763160Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
-build	Build APK release signé	2026-10-27T20:49:35.9764592Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
-build	Build APK release signé	2026-10-27T20:49:35.9765878Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
-build	Build APK release signé	2026-10-27T20:49:35.9767103Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
-build	Build APK release signé	2026-10-27T20:49:35.9768511Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
-build	Build APK release signé	2026-10-27T20:49:35.9769718Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
-build	Build APK release signé	2026-10-27T20:49:35.9770726Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
-build	Build APK release signé	2026-10-27T20:49:35.9771738Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-build	Build APK release signé	2026-10-27T20:49:35.9772856Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-build	Build APK release signé	2026-10-27T20:49:35.9773939Z Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
-build	Build APK release signé	2026-10-27T20:49:35.9775054Z 	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:20)
-build	Build APK release signé	2026-10-27T20:49:35.9776137Z 	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:141)
-build	Build APK release signé	2026-10-27T20:49:35.9777389Z 	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:73)
-build	Build APK release signé	2026-10-27T20:49:35.9778693Z 	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
-build	Build APK release signé	2026-10-27T20:49:35.9779800Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9780778Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
-build	Build APK release signé	2026-10-27T20:49:35.9781803Z 	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
-build	Build APK release signé	2026-10-27T20:49:35.9783016Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
-build	Build APK release signé	2026-10-27T20:49:35.9783896Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
-build	Build APK release signé	2026-10-27T20:49:35.9784630Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
-build	Build APK release signé	2026-10-27T20:49:35.9785720Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
-build	Build APK release signé	2026-10-27T20:49:35.9786968Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
-build	Build APK release signé	2026-10-27T20:49:35.9788228Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-build	Build APK release signé	2026-10-27T20:49:35.9789332Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9790503Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9791730Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9793383Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-build	Build APK release signé	2026-10-27T20:49:35.9794787Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
-build	Build APK release signé	2026-10-27T20:49:35.9795870Z 	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
-build	Build APK release signé	2026-10-27T20:49:35.9796860Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
-build	Build APK release signé	2026-10-27T20:49:35.9797979Z 	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
-build	Build APK release signé	2026-10-27T20:49:35.9799169Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:187)
-build	Build APK release signé	2026-10-27T20:49:35.9800488Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:120)
-build	Build APK release signé	2026-10-27T20:49:35.9801770Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:162)
-build	Build APK release signé	2026-10-27T20:49:35.9802797Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
-build	Build APK release signé	2026-10-27T20:49:35.9803673Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
-build	Build APK release signé	2026-10-27T20:49:35.9804786Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
-build	Build APK release signé	2026-10-27T20:49:35.9805922Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:133)
-build	Build APK release signé	2026-10-27T20:49:35.9807160Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:157)
-build	Build APK release signé	2026-10-27T20:49:35.9808291Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:126)
-build	Build APK release signé	2026-10-27T20:49:35.9809078Z 	... 2 more
-build	Build APK release signé	2026-10-27T20:49:35.9809237Z 
-build	Build APK release signé	2026-10-27T20:49:35.9809244Z 
-build	Build APK release signé	2026-10-27T20:49:35.9809345Z BUILD FAILED in 1m 20s
-build	Build APK release signé	2026-10-27T20:49:36.3127888Z ##[error]Process completed with exit code 1.
+build	Build APK release signé	﻿2026-10-27T20:59:01.9241273Z ##[group]Run ./gradlew assembleRelease --stacktrace
+build	Build APK release signé	2026-10-27T20:59:01.9242157Z ^[[36;1m./gradlew assembleRelease --stacktrace^[[0m
+build	Build APK release signé	2026-10-27T20:59:01.9303552Z shell: /usr/bin/bash -e {0}
+build	Build APK release signé	2026-10-27T20:59:01.9304127Z env:
+build	Build APK release signé	2026-10-27T20:59:01.9304517Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-27T20:59:01.9305195Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-27T20:59:01.9305708Z ##[endgroup]
+build	Build APK release signé	2026-10-27T20:59:02.0388872Z Fetching distribution.
+build	Build APK release signé	2026-10-27T20:59:02.0403426Z Downloading https://services.gradle.org/distributions/gradle-8.7-bin.zip
+build	Build APK release signé	2026-10-27T20:59:04.1506955Z ............10%.............20%.............30%.............40%............50%.............60%.............70%.............80%.............90%............100%
+build	Build APK release signé	2026-10-27T20:59:05.2777944Z 
+build	Build APK release signé	2026-10-27T20:59:05.2778714Z Welcome to Gradle 8.7!
+build	Build APK release signé	2026-10-27T20:59:05.2779366Z 
+build	Build APK release signé	2026-10-27T20:59:05.2825243Z Here are the highlights of this release:
+build	Build APK release signé	2026-10-27T20:59:05.2852566Z  - Compiling and testing with Java 22
+build	Build APK release signé	2026-10-27T20:59:05.2862510Z  - Cacheable Groovy script compilation
+build	Build APK release signé	2026-10-27T20:59:05.2912709Z  - New methods in lazy collection properties
+build	Build APK release signé	2026-10-27T20:59:05.2913912Z 
+build	Build APK release signé	2026-10-27T20:59:05.2942689Z For more details see https://docs.gradle.org/8.7/release-notes.html
+build	Build APK release signé	2026-10-27T20:59:05.2962390Z 
+build	Build APK release signé	2026-10-27T20:59:05.3733913Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build APK release signé	2026-10-27T21:00:05.1743272Z > Task :app:buildKotlinToolingMetadata
+build	Build APK release signé	2026-10-27T21:00:05.1744200Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build APK release signé	2026-10-27T21:00:05.1770682Z > Task :app:preBuild UP-TO-DATE
+build	Build APK release signé	2026-10-27T21:00:05.1771363Z > Task :app:preReleaseBuild UP-TO-DATE
+build	Build APK release signé	2026-10-27T21:00:07.0746775Z > Task :app:generateReleaseResValues
+build	Build APK release signé	2026-10-27T21:00:07.0761941Z > Task :app:checkReleaseAarMetadata
+build	Build APK release signé	2026-10-27T21:00:07.1733084Z > Task :app:mapReleaseSourceSetPaths
+build	Build APK release signé	2026-10-27T21:00:07.1733831Z > Task :app:generateReleaseResources
+build	Build APK release signé	2026-10-27T21:00:07.3726727Z > Task :app:packageReleaseResources
+build	Build APK release signé	2026-10-27T21:00:07.3727571Z > Task :app:mergeReleaseResources
+build	Build APK release signé	2026-10-27T21:00:08.2743056Z > Task :app:createReleaseCompatibleScreenManifests
+build	Build APK release signé	2026-10-27T21:00:08.2772401Z > Task :app:extractDeepLinksRelease
+build	Build APK release signé	2026-10-27T21:00:08.3733467Z > Task :app:parseReleaseLocalResources
+build	Build APK release signé	2026-10-27T21:00:08.4733216Z > Task :app:processReleaseMainManifest
+build	Build APK release signé	2026-10-27T21:00:08.5737036Z > Task :app:processReleaseManifest
+build	Build APK release signé	2026-10-27T21:00:08.5737942Z > Task :app:javaPreCompileRelease
+build	Build APK release signé	2026-10-27T21:00:08.5738453Z > Task :app:extractProguardFiles
+build	Build APK release signé	2026-10-27T21:00:08.5739048Z > Task :app:mergeReleaseJniLibFolders
+build	Build APK release signé	2026-10-27T21:00:09.6756338Z > Task :app:mergeReleaseNativeLibs NO-SOURCE
+build	Build APK release signé	2026-10-27T21:00:09.6782698Z > Task :app:stripReleaseDebugSymbols NO-SOURCE
+build	Build APK release signé	2026-10-27T21:00:09.6813623Z > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+build	Build APK release signé	2026-10-27T21:00:09.6842593Z > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+build	Build APK release signé	2026-10-27T21:00:09.7750689Z > Task :app:desugarReleaseFileDependencies
+build	Build APK release signé	2026-10-27T21:00:09.7782727Z > Task :app:mergeReleaseStartupProfile
+build	Build APK release signé	2026-10-27T21:00:09.7844037Z > Task :app:checkReleaseDuplicateClasses
+build	Build APK release signé	2026-10-27T21:00:09.7872383Z > Task :app:mergeReleaseArtProfile
+build	Build APK release signé	2026-10-27T21:00:27.4742501Z > Task :app:mergeReleaseShaders
+build	Build APK release signé	2026-10-27T21:00:27.4743483Z > Task :app:compileReleaseShaders NO-SOURCE
+build	Build APK release signé	2026-10-27T21:00:27.4744793Z > Task :app:processReleaseManifestForPackage
+build	Build APK release signé	2026-10-27T21:00:27.9752325Z > Task :app:generateReleaseAssets UP-TO-DATE
+build	Build APK release signé	2026-10-27T21:00:28.0762658Z > Task :app:mergeReleaseAssets
+build	Build APK release signé	2026-10-27T21:00:28.0792704Z > Task :app:compressReleaseAssets
+build	Build APK release signé	2026-10-27T21:00:28.2723969Z > Task :app:extractReleaseVersionControlInfo
+build	Build APK release signé	2026-10-27T21:00:28.2726281Z > Task :app:processReleaseResources
+build	Build APK release signé	2026-10-27T21:00:28.2726972Z > Task :app:collectReleaseDependencies
+build	Build APK release signé	2026-10-27T21:00:30.8733045Z > Task :app:mergeExtDexRelease
+build	Build APK release signé	2026-10-27T21:00:32.2732207Z > Task :app:sdkReleaseDependencyData
+build	Build APK release signé	2026-10-27T21:00:32.2737021Z > Task :app:validateSigningRelease
+build	Build APK release signé	2026-10-27T21:00:32.2737653Z > Task :app:writeReleaseAppMetadata
+build	Build APK release signé	2026-10-27T21:00:32.2738792Z > Task :app:optimizeReleaseResources
+build	Build APK release signé	2026-10-27T21:00:32.2739393Z > Task :app:writeReleaseSigningConfigVersions
+build	Build APK release signé	2026-10-27T21:00:37.8734985Z 
+build	Build APK release signé	2026-10-27T21:00:37.8751489Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Tg.kt:19:28 Unresolved reference: getDefaultClient
+build	Build APK release signé	2026-10-27T21:00:37.8753012Z > Task :app:compileReleaseKotlin FAILED
+build	Build APK release signé	2026-10-27T21:00:37.8754530Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:9:44 Unresolved reference: TLAbsAuthorization
+build	Build APK release signé	2026-10-27T21:00:37.8756700Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:98:31 Unresolved reference: TLAbsAuthorization
+build	Build APK release signé	2026-10-27T21:00:37.8758380Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:133:80 Unresolved reference: SrpHelper
+build	Build APK release signé	2026-10-27T21:00:37.8759947Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:135:31 Unresolved reference: TLAbsAuthorization
+build	Build APK release signé	2026-10-27T21:00:37.8761924Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:135:61 Overload resolution ambiguity: 
+build	Build APK release signé	2026-10-27T21:00:37.8763819Z public open fun authCheckPassword(password: TLAbsInputCheckPasswordSRP): Single<TLAbsAuthorization> defined in com.github.badoualy.telegram.api.TelegramClient
+build	Build APK release signé	2026-10-27T21:00:37.8765732Z public final fun authCheckPassword(passwordHash: TLBytes): Nothing defined in com.github.badoualy.telegram.api.TelegramClient
+build	Build APK release signé	2026-10-27T21:00:37.8767309Z public final fun authCheckPassword(password: String): Nothing defined in com.github.badoualy.telegram.api.TelegramClient
+build	Build APK release signé	2026-10-27T21:00:37.8768863Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:151:22 Function invocation 'asUser()' expected
+build	Build APK release signé	2026-10-27T21:00:37.8770718Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:152:30 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
+build	Build APK release signé	2026-10-27T21:00:37.8773343Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:153:35 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
+build	Build APK release signé	2026-10-27T21:00:37.8775556Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:153:53 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
+build	Build APK release signé	2026-10-27T21:00:37.8777883Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/ui/MainActivity.kt:166:89 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type TLUser?
+build	Build APK release signé	2026-10-27T21:00:37.9723475Z 
+build	Build APK release signé	2026-10-27T21:00:37.9734233Z FAILURE: Build failed with an exception.
+build	Build APK release signé	2026-10-27T21:00:37.9735054Z 
+build	Build APK release signé	2026-10-27T21:00:37.9735722Z * What went wrong:
+build	Build APK release signé	2026-10-27T21:00:37.9736672Z Execution failed for task ':app:compileReleaseKotlin'.
+build	Build APK release signé	2026-10-27T21:00:37.9738542Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build APK release signé	2026-10-27T21:00:37.9740241Z    > Compilation error. See log for more details
+build	Build APK release signé	2026-10-27T21:00:37.9740885Z 
+build	Build APK release signé	2026-10-27T21:00:37.9741234Z * Try:
+build	Build APK release signé	2026-10-27T21:00:37.9742094Z > Run with --info or --debug option to get more log output.
+build	Build APK release signé	2026-10-27T21:00:37.9742952Z > Run with --scan to get full insights.
+build	Build APK release signé	2026-10-27T21:00:37.9743710Z > Get more help at https://help.gradle.org.
+build	Build APK release signé	2026-10-27T21:00:37.9744268Z 
+build	Build APK release signé	2026-10-27T21:00:37.9744593Z * Exception is:
+build	Build APK release signé	2026-10-27T21:00:37.9745576Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileReleaseKotlin'.
+build	Build APK release signé	2026-10-27T21:00:37.9747460Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+build	Build APK release signé	2026-10-27T21:00:37.9749089Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
+build	Build APK release signé	2026-10-27T21:00:37.9750577Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+build	Build APK release signé	2026-10-27T21:00:37.9753496Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build APK release signé	2026-10-27T21:00:37.9755562Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build APK release signé	2026-10-27T21:00:37.9757471Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build APK release signé	2026-10-27T21:00:37.9759368Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build APK release signé	2026-10-27T21:00:37.9761107Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build APK release signé	2026-10-27T21:00:37.9763157Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build APK release signé	2026-10-27T21:00:37.9764925Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-27T21:00:37.9766653Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-27T21:00:37.9768285Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T21:00:37.9770171Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T21:00:37.9772651Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T21:00:37.9774609Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T21:00:37.9776325Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9778095Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T21:00:37.9779835Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9781591Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T21:00:37.9783605Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T21:00:37.9785347Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T21:00:37.9786884Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-27T21:00:37.9788632Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-27T21:00:37.9790664Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-27T21:00:37.9793177Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T21:00:37.9795545Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-27T21:00:37.9797437Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T21:00:37.9799641Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-27T21:00:37.9801547Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-27T21:00:37.9803235Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-27T21:00:37.9804734Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-27T21:00:37.9806548Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-27T21:00:37.9809165Z Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build APK release signé	2026-10-27T21:00:37.9812105Z 	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+build	Build APK release signé	2026-10-27T21:00:37.9814042Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+build	Build APK release signé	2026-10-27T21:00:37.9815467Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build APK release signé	2026-10-27T21:00:37.9816705Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:336)
+build	Build APK release signé	2026-10-27T21:00:37.9818540Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:319)
+build	Build APK release signé	2026-10-27T21:00:37.9820326Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:324)
+build	Build APK release signé	2026-10-27T21:00:37.9822233Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
+build	Build APK release signé	2026-10-27T21:00:37.9824124Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
+build	Build APK release signé	2026-10-27T21:00:37.9825761Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
+build	Build APK release signé	2026-10-27T21:00:37.9827353Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
+build	Build APK release signé	2026-10-27T21:00:37.9828787Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+build	Build APK release signé	2026-10-27T21:00:37.9830297Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+build	Build APK release signé	2026-10-27T21:00:37.9832228Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+build	Build APK release signé	2026-10-27T21:00:37.9834006Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T21:00:37.9835694Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9837346Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T21:00:37.9839024Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9840669Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+build	Build APK release signé	2026-10-27T21:00:37.9842530Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+build	Build APK release signé	2026-10-27T21:00:37.9844065Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+build	Build APK release signé	2026-10-27T21:00:37.9845659Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+build	Build APK release signé	2026-10-27T21:00:37.9847535Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+build	Build APK release signé	2026-10-27T21:00:37.9849181Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+build	Build APK release signé	2026-10-27T21:00:37.9850539Z 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+build	Build APK release signé	2026-10-27T21:00:37.9852135Z 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+build	Build APK release signé	2026-10-27T21:00:37.9853441Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9854654Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+build	Build APK release signé	2026-10-27T21:00:37.9856353Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T21:00:37.9858811Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T21:00:37.9860958Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T21:00:37.9862987Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9864746Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T21:00:37.9866507Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:37.9868232Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T21:00:37.9869955Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T21:00:37.9871484Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+build	Build APK release signé	2026-10-27T21:00:37.9872991Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+build	Build APK release signé	2026-10-27T21:00:37.9874431Z 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+build	Build APK release signé	2026-10-27T21:00:37.9875934Z 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+build	Build APK release signé	2026-10-27T21:00:37.9877300Z 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+build	Build APK release signé	2026-10-27T21:00:37.9878883Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+build	Build APK release signé	2026-10-27T21:00:37.9880652Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+build	Build APK release signé	2026-10-27T21:00:37.9882551Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+build	Build APK release signé	2026-10-27T21:00:37.9884233Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+build	Build APK release signé	2026-10-27T21:00:37.9886159Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+build	Build APK release signé	2026-10-27T21:00:37.9888144Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+build	Build APK release signé	2026-10-27T21:00:37.9890137Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
+build	Build APK release signé	2026-10-27T21:00:37.9892426Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
+build	Build APK release signé	2026-10-27T21:00:37.9894444Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+build	Build APK release signé	2026-10-27T21:00:37.9896187Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+build	Build APK release signé	2026-10-27T21:00:37.9897876Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+build	Build APK release signé	2026-10-27T21:00:37.9899327Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+build	Build APK release signé	2026-10-27T21:00:37.9900536Z 	at org.gradle.internal.Either$Right.fold(Either.java:175)
+build	Build APK release signé	2026-10-27T21:00:37.9901869Z 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+build	Build APK release signé	2026-10-27T21:00:37.9903181Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+build	Build APK release signé	2026-10-27T21:00:37.9904521Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+build	Build APK release signé	2026-10-27T21:00:37.9906015Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+build	Build APK release signé	2026-10-27T21:00:37.9906997Z 34 actionable tasks: 34 executed
+build	Build APK release signé	2026-10-27T21:00:37.9908101Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+build	Build APK release signé	2026-10-27T21:00:37.9909690Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
+build	Build APK release signé	2026-10-27T21:00:37.9911852Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
+build	Build APK release signé	2026-10-27T21:00:37.9913968Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
+build	Build APK release signé	2026-10-27T21:00:37.9915415Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
+build	Build APK release signé	2026-10-27T21:00:37.9917230Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+build	Build APK release signé	2026-10-27T21:00:37.9919468Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+build	Build APK release signé	2026-10-27T21:00:37.9921999Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+build	Build APK release signé	2026-10-27T21:00:37.9924177Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+build	Build APK release signé	2026-10-27T21:00:37.9926440Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+build	Build APK release signé	2026-10-27T21:00:37.9928707Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+build	Build APK release signé	2026-10-27T21:00:37.9930437Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+build	Build APK release signé	2026-10-27T21:00:37.9932105Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+build	Build APK release signé	2026-10-27T21:00:37.9933505Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
+build	Build APK release signé	2026-10-27T21:00:37.9934803Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
+build	Build APK release signé	2026-10-27T21:00:37.9936559Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+build	Build APK release signé	2026-10-27T21:00:37.9938784Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+build	Build APK release signé	2026-10-27T21:00:37.9940904Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+build	Build APK release signé	2026-10-27T21:00:37.9943063Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+build	Build APK release signé	2026-10-27T21:00:37.9944734Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+build	Build APK release signé	2026-10-27T21:00:37.9946551Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+build	Build APK release signé	2026-10-27T21:00:37.9948430Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+build	Build APK release signé	2026-10-27T21:00:37.9950229Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+build	Build APK release signé	2026-10-27T21:00:37.9952153Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+build	Build APK release signé	2026-10-27T21:00:37.9953752Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+build	Build APK release signé	2026-10-27T21:00:37.9955924Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+build	Build APK release signé	2026-10-27T21:00:37.9982697Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+build	Build APK release signé	2026-10-27T21:00:38.0012984Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+build	Build APK release signé	2026-10-27T21:00:38.0042985Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+build	Build APK release signé	2026-10-27T21:00:38.0044956Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+build	Build APK release signé	2026-10-27T21:00:38.0068844Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+build	Build APK release signé	2026-10-27T21:00:38.0071282Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-27T21:00:38.0073974Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-27T21:00:38.0076040Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+build	Build APK release signé	2026-10-27T21:00:38.0077763Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+build	Build APK release signé	2026-10-27T21:00:38.0079124Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+build	Build APK release signé	2026-10-27T21:00:38.0080389Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+build	Build APK release signé	2026-10-27T21:00:38.0081562Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+build	Build APK release signé	2026-10-27T21:00:38.0083099Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+build	Build APK release signé	2026-10-27T21:00:38.0084773Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+build	Build APK release signé	2026-10-27T21:00:38.0086534Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build APK release signé	2026-10-27T21:00:38.0088414Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build APK release signé	2026-10-27T21:00:38.0090369Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build APK release signé	2026-10-27T21:00:38.0092516Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build APK release signé	2026-10-27T21:00:38.0101462Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build APK release signé	2026-10-27T21:00:38.0103757Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build APK release signé	2026-10-27T21:00:38.0105550Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-27T21:00:38.0107286Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-27T21:00:38.0108947Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T21:00:38.0110846Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T21:00:38.0113163Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T21:00:38.0115108Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T21:00:38.0116786Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:38.0118384Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T21:00:38.0120096Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:38.0121926Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T21:00:38.0123660Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T21:00:38.0125322Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T21:00:38.0126826Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-27T21:00:38.0128543Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-27T21:00:38.0130883Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-27T21:00:38.0134010Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T21:00:38.0135911Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-27T21:00:38.0137776Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T21:00:38.0139930Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-27T21:00:38.0142125Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-27T21:00:38.0143717Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-27T21:00:38.0145252Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-27T21:00:38.0146769Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-27T21:00:38.0148361Z Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+build	Build APK release signé	2026-10-27T21:00:38.0150022Z 	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:20)
+build	Build APK release signé	2026-10-27T21:00:38.0152062Z 	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:141)
+build	Build APK release signé	2026-10-27T21:00:38.0154058Z 	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:73)
+build	Build APK release signé	2026-10-27T21:00:38.0155919Z 	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+build	Build APK release signé	2026-10-27T21:00:38.0157428Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+build	Build APK release signé	2026-10-27T21:00:38.0158989Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+build	Build APK release signé	2026-10-27T21:00:38.0160548Z 	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+build	Build APK release signé	2026-10-27T21:00:38.0162275Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+build	Build APK release signé	2026-10-27T21:00:38.0163623Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+build	Build APK release signé	2026-10-27T21:00:38.0164704Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+build	Build APK release signé	2026-10-27T21:00:38.0166238Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T21:00:38.0168220Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T21:00:38.0170021Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T21:00:38.0171979Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:38.0173751Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T21:00:38.0175434Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T21:00:38.0177126Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T21:00:38.0178818Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T21:00:38.0180479Z 	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+build	Build APK release signé	2026-10-27T21:00:38.0182751Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+build	Build APK release signé	2026-10-27T21:00:38.0184558Z 	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+build	Build APK release signé	2026-10-27T21:00:38.0186371Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:187)
+build	Build APK release signé	2026-10-27T21:00:38.0188752Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:120)
+build	Build APK release signé	2026-10-27T21:00:38.0190766Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:162)
+build	Build APK release signé	2026-10-27T21:00:38.0192671Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build APK release signé	2026-10-27T21:00:38.0205487Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+build	Build APK release signé	2026-10-27T21:00:38.0207135Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+build	Build APK release signé	2026-10-27T21:00:38.0208806Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:133)
+build	Build APK release signé	2026-10-27T21:00:38.0313176Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:157)
+build	Build APK release signé	2026-10-27T21:00:38.0316556Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:126)
+build	Build APK release signé	2026-10-27T21:00:38.0317830Z 	... 2 more
+build	Build APK release signé	2026-10-27T21:00:38.0318201Z 
+build	Build APK release signé	2026-10-27T21:00:38.0318378Z 
+build	Build APK release signé	2026-10-27T21:00:38.0318703Z BUILD FAILED in 1m 35s
+build	Build APK release signé	2026-10-27T21:00:38.4136149Z ##[error]Process completed with exit code 1.

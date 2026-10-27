@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.chaquo.python")
 }
 
 android {
@@ -15,7 +16,15 @@ android {
         versionName = "1.0"
 
         ndk {
+            // On garde seulement les architectures principales pour réduire la taille
             abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a"))
+        }
+
+        python {
+            version = "3.11"
+            pip {
+                install("telethon")
+            }
         }
     }
 
@@ -43,5 +52,5 @@ android {
 }
 
 dependencies {
-    implementation("com.github.Miha-x64:kotlogram-resurrected:ac9acf18")
+    // Plus de Kotlogram ! Chaquopy gère le réseau via Python/Telethon
 }
