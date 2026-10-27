@@ -1,5 +1,6 @@
 package com.tgme.app.ui
 
+import java.io.File
 import android.app.Activity
 import android.os.Bundle
 import android.widget.EditText
