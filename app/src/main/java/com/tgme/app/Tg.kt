@@ -15,16 +15,14 @@ object Tg {
             storage = KotlogramStorage(dir)
         }
         
-        val dc = when (dcId) {
-            1 -> Kotlogram.PROD_DC1
-            2 -> Kotlogram.PROD_DC2
-            3 -> Kotlogram.PROD_DC3
-            4 -> Kotlogram.PROD_DC4
-            5 -> Kotlogram.PROD_DC5
-            else -> Kotlogram.PROD_DC2
-        }
-        
-        client = Kotlogram.getDefaultClient(storage, dc)
+        // Signature correcte : storage, dcId, apiId, apiHash, proxy
+        client = Kotlogram.getDefaultClient(
+            storage,
+            dcId,
+            Config.API_ID,
+            Config.API_HASH,
+            null
+        )
     }
 
     fun getClient(): TelegramClient? = client

