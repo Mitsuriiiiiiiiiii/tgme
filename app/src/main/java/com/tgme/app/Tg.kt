@@ -15,12 +15,16 @@ object Tg {
             storage = KotlogramStorage(dir)
         }
         
-        // On passe le chiffre du DC (1 à 5) directement
-        client = Kotlogram.getDefaultClient(
-            storage,
-            dcId,
-            null // Pas de proxy
-        )
+        val dc = when (dcId) {
+            1 -> Kotlogram.PROD_DC1
+            2 -> Kotlogram.PROD_DC2
+            3 -> Kotlogram.PROD_DC3
+            4 -> Kotlogram.PROD_DC4
+            5 -> Kotlogram.PROD_DC5
+            else -> Kotlogram.PROD_DC2
+        }
+        
+        client = Kotlogram.getDefaultClient(storage, dc)
     }
 
     fun getClient(): TelegramClient? = client
