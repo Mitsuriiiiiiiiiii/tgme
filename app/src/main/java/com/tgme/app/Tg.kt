@@ -49,8 +49,6 @@ object Tg {
         p.deviceModel = Config.DEVICE_MODEL
         p.systemVersion = Config.SYSTEM_VERSION
         p.applicationVersion = Config.APP_VERSION
-        p.enableStorageOptimizer = true
-        p.ignoreFileNames = false
 
         send(p)
     }
