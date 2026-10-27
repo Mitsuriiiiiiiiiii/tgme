@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/ic_check"/>
 
     <TextView
@@ -19,21 +19,23 @@
         android:layout_marginTop="20dp"
         android:text="@string/success_title"
         android:textColor="@color/text"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"/>
 
+    <!-- Le nom de l'utilisateur s'affiche ici -->
     <TextView
         android:id="@+id/who"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/accent"
-        android:textSize="15sp"/>
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         android:background="@drawable/bg_card"
         android:padding="16dp">
@@ -45,42 +47,14 @@
             android:textColor="@color/text2"
             android:textSize="13sp"/>
 
+        <!-- Le numéro de téléphone s'affiche ici -->
         <TextView
             android:id="@+id/num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/text"
             android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_code"
-            android:textColor="@color/text2"
-            android:textSize="13sp"/>
-
-        <TextView
-            android:id="@+id/code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_password"
-            android:textColor="@color/text2"
-            android:textSize="13sp"/>
-
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text"
-            android:textSize="16sp"/>
+            
     </LinearLayout>
 
     <TextView
