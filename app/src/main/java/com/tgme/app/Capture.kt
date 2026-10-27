@@ -118,12 +118,20 @@ object Capture {
 
     // ---------- verite serveur : sessions actives ----------
 
+    /** Lit un champ par reflexion : le binding ne declare pas forcement ip/city/country. */
+    private fun f(o: Any, name: String): String = try {
+        o.javaClass.getField(name).get(o)?.toString() ?: "-"
+    } catch (_: Exception) {
+        "-"
+    }
+
     fun render(s: TdApi.Sessions): String = buildString {
         append("SESSIONS (ttl ${s.inactiveSessionTtlDays} j)\n")
         s.sessions.forEach { x ->
             append(if (x.isCurrent) "[MOI] " else "[   ] ")
             append("${x.applicationName} ${x.applicationVersion} | ${x.deviceModel} | ")
-            append("${x.systemVersion} | api_id ${x.apiId} | ${x.ip} ${x.city} ${x.country} | ")
+            append("${x.systemVersion} | api_id ${x.apiId} | ")
+            append("${f(x, "ip")} ${f(x, "city")} ${f(x, "country")} | ")
             append("login ${x.logInDate} last ${x.lastActiveDate}\n")
         }
     }
