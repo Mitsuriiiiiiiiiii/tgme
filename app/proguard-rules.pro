@@ -1,2 +1,2 @@
--keep class org.drinkless.tdlib.** { *; }
--dontwarn org.drinkless.tdlib.**
+-keep class com.github.badoualy.telegram.** { *; }
+-dontwarn com.github.badoualy.telegram.**

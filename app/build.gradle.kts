@@ -43,7 +43,5 @@ android {
 }
 
 dependencies {
-    // TDLib : bindings Java + libtdjson.so (arm64-v8a / armeabi-v7a / x86_64)
-    // Si cette coordonnée ne résout pas, voir la note "Dépendance TDLib" plus bas.
-    implementation("com.github.tdlibx:td:1.8.56")
+    implementation("com.github.Miha-x64:kotlogram-resurrected:ac9acf18")
 }
