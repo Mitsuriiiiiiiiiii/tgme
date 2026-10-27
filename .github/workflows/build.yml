@@ -16,12 +16,26 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      # 1. Télécharger Gradle 8.7 explicitement (compatible Chaquopy)
+      - name: Télécharger Gradle 8.7
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q gradle-8.7-bin.zip
+          echo "$PWD/gradle-8.7/bin" >> $GITHUB_PATH
+
+      # 2. Vérifier la version
+      - name: Vérifier la version de Gradle
+        run: gradle --version
+
+      # 3. Générer le wrapper avec Gradle 8.7 (et non 9.8.1)
       - name: Générer le wrapper Gradle
         run: gradle wrapper --gradle-version 8.7 --distribution-type bin
 
+      # 4. Build avec le wrapper (Gradle 8.7)
       - name: Build APK release signé
         run: ./gradlew assembleRelease --stacktrace
 
+      # 5. Upload
       - name: Debug outputs
         if: always()
         run: find app/build/outputs -type f | head -50

@@ -1,59 +1,43 @@
-build	Générer le wrapper Gradle	﻿2026-10-27T21:29:34.3726111Z ##[group]Run gradle wrapper --gradle-version 8.7 --distribution-type bin
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3727531Z ^[[36;1mgradle wrapper --gradle-version 8.7 --distribution-type bin^[[0m
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3934970Z shell: /usr/bin/bash -e {0}
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3935579Z env:
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3936150Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3936941Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Générer le wrapper Gradle	2026-10-27T21:29:34.3937613Z ##[endgroup]
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7820510Z 
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7822048Z Welcome to Gradle 9.8.1!
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7823559Z 
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7833983Z Here are the highlights of this release:
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7835106Z  - Java 27 support
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7835807Z  - Maven mirror settings reuse
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7839285Z  - Linked problem locations in build output
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7840277Z 
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7840927Z For more details see https://docs.gradle.org/9.8.1/release-notes.html
-build	Générer le wrapper Gradle	2026-10-27T21:29:37.7841844Z 
-build	Générer le wrapper Gradle	2026-10-27T21:29:38.2809507Z Starting a Gradle Daemon (subsequent builds will be faster)
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2823737Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2859903Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2860781Z FAILURE: Build completed with 2 failures.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2861981Z [Incubating] Problems report is available at: file:///home/runner/work/tgme/tgme/build/reports/problems/problems-report.html
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2863349Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2883625Z 1: Task failed with an exception.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2913134Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2913471Z -----------
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2923889Z * What went wrong:
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2924666Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2925783Z org/gradle/util/VersionNumber
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2926402Z > org.gradle.util.VersionNumber
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2943335Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2943597Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2973367Z * Try:
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2974437Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2979359Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2984069Z > Run with --stacktrace option to get the stack trace.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.2987666Z > Run with --info or --debug option to get more log output.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3004440Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3006366Z For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3014583Z > Get more help at https://help.gradle.org.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3015516Z ==============================================================================
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3063365Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3073741Z 2: Task failed with an exception.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3085142Z -----------
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3085733Z * What went wrong:
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3086451Z Failed to query the value of property 'buildFlowServiceProperty'.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3094238Z > Could not isolate value org.jetbrains.kotlin.gradle.plugin.statistics.BuildFlowService$Parameters_Decorated@3eddab60 of type BuildFlowService.Parameters
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3104148Z    > Build completed with 1 failures.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3118394Z       > org/gradle/util/VersionNumber
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3144615Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3147369Z * Try:
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3148201Z > Run with --stacktrace option to get the stack trace.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3149144Z > Run with --info or --debug option to get more log output.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3150048Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3150899Z > Get more help at https://help.gradle.org.
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3151574Z ==============================================================================
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3152019Z 
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.3152193Z BUILD FAILED in 1m 2s
-build	Générer le wrapper Gradle	2026-10-27T21:30:38.7565790Z ##[error]Process completed with exit code 1.
+build	Générer le wrapper Gradle	﻿2026-10-27T21:43:45.4634839Z ##[group]Run gradle wrapper --gradle-version 8.7 --distribution-type bin
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4636666Z ^[[36;1mgradle wrapper --gradle-version 8.7 --distribution-type bin^[[0m
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4774833Z shell: /usr/bin/bash -e {0}
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4775486Z env:
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4776248Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4777698Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Générer le wrapper Gradle	2026-10-27T21:43:45.4778707Z ##[endgroup]
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9225458Z 
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9226225Z Welcome to Gradle 9.8.1!
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9226524Z 
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9227397Z Here are the highlights of this release:
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9227832Z  - Java 27 support
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9228157Z  - Maven mirror settings reuse
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9237590Z  - Linked problem locations in build output
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9237798Z 
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9238096Z For more details see https://docs.gradle.org/9.8.1/release-notes.html
+build	Générer le wrapper Gradle	2026-10-27T21:43:50.9238406Z 
+build	Générer le wrapper Gradle	2026-10-27T21:43:51.5185795Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6197800Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6198787Z > Configure project :
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6227862Z e: file:///home/runner/work/tgme/tgme/build.gradle.kts:4:57: Expecting '}'
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6228298Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6228491Z FAILURE: Build failed with an exception.
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6228799Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6228896Z * Where:
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6229235Z Build file '/home/runner/work/tgme/tgme/build.gradle.kts' line: 4
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6229510Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6247613Z * What went wrong:
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6248041Z Script compilation error:
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6248203Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6248424Z   Line 4:     id("com.chaquo.python") version "17.0.0" apply false
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6248800Z                                                                   ^ Expecting '}'
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249007Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249093Z 1 error
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249197Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249315Z * Try:
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249625Z > Run with --stacktrace option to get the stack trace.
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6249982Z > Run with --info or --debug option to get more log output.
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6250393Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6250797Z > Get more help at https://help.gradle.org.
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6251342Z 
+build	Générer le wrapper Gradle	2026-10-27T21:44:16.6251424Z BUILD FAILED in 29s
+build	Générer le wrapper Gradle	2026-10-27T21:44:17.0405396Z ##[error]Process completed with exit code 1.
