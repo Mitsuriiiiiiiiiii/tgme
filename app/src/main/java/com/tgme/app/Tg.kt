@@ -6,35 +6,26 @@ import org.drinkless.tdlib.Client
 import org.drinkless.tdlib.TdApi
 import java.io.File
 
-/**
- * Singleton TDLib. Une seule instance, un seul flux d'updates.
- * L'app ne fait rien "en dur" : tout est piloté par les updates de Telegram.
- */
 object Tg {
-
     private const val TAG = "tgme"
     private var client: Client? = null
     private var started = false
 
-    /** Notifié à chaque changement d'état d'autorisation. */
-    var onAuthState: ((TdApi.AuthorizationState) -> Unit)? = null
+    /** Passe a true quand TDLib a fini de se fermer (apres Close()). */
+    var closed = false
+        private set
 
-    /** Notifié sur erreur TDLib. */
+    var onAuthState: ((TdApi.AuthorizationState) -> Unit)? = null
     var onError: ((String) -> Unit)? = null
 
     fun init(ctx: Context) {
         if (started) return
         started = true
+        closed = false
 
-        client = Client.create(
-            { obj -> handle(obj) },
-            { e -> Log.e(TAG, "tdlib", e) },
-            null
-        )
+        client = Client.create({ obj -> handle(obj) }, { e -> Log.e(TAG, "tdlib", e) }, null)
 
-        // Les bindings TDLib n'exposent pas de setters fluents : on affecte les champs.
         val dir = File(ctx.filesDir, "tdlib")
-
         val p = TdApi.SetTdlibParameters()
         p.useTestDc = false
         p.databaseDirectory = File(dir, "db").absolutePath
@@ -49,16 +40,21 @@ object Tg {
         p.deviceModel = Config.DEVICE_MODEL
         p.systemVersion = Config.SYSTEM_VERSION
         p.applicationVersion = Config.APP_VERSION
-
         send(p)
+    }
+
+    /** Apres un Close(), TDLib ne repond plus : on repart de zero. */
+    fun reset() {
+        client = null
+        started = false
+        closed = false
     }
 
     fun <T : TdApi.Object> send(query: TdApi.Function<T>, onResult: ((T) -> Unit)? = null) {
         val c = client ?: return
         c.send(query) { obj ->
-            if (obj is TdApi.Error) {
-                onError?.invoke("${obj.code}: ${obj.message}")
-            } else {
+            if (obj is TdApi.Error) onError?.invoke("${obj.code}: ${obj.message}")
+            else {
                 @Suppress("UNCHECKED_CAST")
                 onResult?.invoke(obj as T)
             }
@@ -67,7 +63,10 @@ object Tg {
 
     private fun handle(obj: TdApi.Object) {
         when (obj) {
-            is TdApi.UpdateAuthorizationState -> onAuthState?.invoke(obj.authorizationState)
+            is TdApi.UpdateAuthorizationState -> {
+                if (obj.authorizationState is TdApi.AuthorizationStateClosed) closed = true
+                onAuthState?.invoke(obj.authorizationState)
+            }
         }
     }
 }

