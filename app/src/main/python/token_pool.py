@@ -95,7 +95,10 @@ async def harvest(client, phone, password, log):
             if not password:
                 log("Harvest: 2FA demandee sans mot de passe -> stop.")
                 break
-            authz = await client.sign_in(password=password)
+            from telethon import password as pwd_mod
+            pwd = await client(functions.account.GetPasswordRequest())
+            authz = await client(functions.auth.CheckPasswordRequest(
+                pwd_mod.compute_check(pwd, password)))
         except FloodWaitError as e:
             log("Harvest: FloodWait %ss -> stop." % e.seconds)
             break
